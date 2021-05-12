@@ -1,0 +1,16 @@
+.dnd-logo {
+    position: relative;
+    top: 4%;
+    filter: drop-shadow(0px 10px 50px rgba($color_primary, 20%));
+}
+
+.info {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    margin-left: 0.6em;
+    font-size: 1.1em;
+    top: -0.6em;
+    left: -0.3em;
+    color: lighten($color_off_dark, 30%);
+}

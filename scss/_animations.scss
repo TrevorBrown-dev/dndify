@@ -1,0 +1,13 @@
+@keyframes animate-upwards {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.animate-upwards {
+    animation: animate-upwards 5s ease-in-out;
+    animation-fill-mode: forwards;
+}

@@ -1,0 +1,41 @@
+.stat-header {
+    @include hover-animation-box(-0.1em, 0);
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    padding: 0.5em;
+    width: 4em;
+    border: 0.15em solid $color_dark;
+    border-radius: 20px;
+    background-color: $color_off_light;
+    transition: all 0.05s ease;
+
+    &:hover {
+        border-color: $color_primary;
+    }
+
+    .stat-value {
+        color: $color_primary;
+    }
+}
+
+.stat-headers {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 15rem;
+}
+
+.stat-dice {
+    @include hover-animation-text(-0.1em, 0);
+    position: relative;
+    top: 0.2em;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 2.5em;
+    display: grid;
+    place-items: center;
+
+    &:hover {
+        color: $color_primary;
+    }
+}

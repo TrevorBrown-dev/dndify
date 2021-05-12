@@ -1,0 +1,76 @@
+.create-character {
+    .create-header {
+        text-align: center;
+
+        padding-bottom: 0.5em;
+        padding-top: 0.5em;
+
+        border-bottom: 2px solid $color_dark;
+        background-color: $color_off_light;
+        color: $color_dark;
+        .name {
+            height: 3em;
+            margin-bottom: 1rem;
+        }
+        .classes {
+            height: 1em;
+            margin-bottom: 0.7em;
+        }
+    }
+}
+
+.create-input {
+    display: grid;
+    grid-template-columns: 20% auto;
+    column-gap: 0.5em;
+    label {
+        text-align: right;
+    }
+}
+
+.race-input {
+    text-align: center;
+    font-size: 2em;
+    // border-width: 0.0em;
+}
+
+.create-char-name {
+    text-align: center;
+}
+
+.create-body {
+    display: flex;
+    margin-top: 0.3em;
+    justify-content: center;
+    .class-select {
+        .selected {
+            color: $color_primary;
+        }
+        .class {
+            user-select: none;
+            cursor: pointer;
+            @include hover-animation-text(-0.1em, 0);
+            &:hover {
+                color: lighten($color_primary, 5%);
+            }
+            &:active {
+                color: $color_primary;
+            }
+        }
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        row-gap: 0.7em;
+    }
+}
+
+.hp-icon {
+    position: relative;
+    top: 7px;
+    &:hover {
+        color: $color_primary;
+    }
+}
+
+.hp-input {
+    width: 4ch;
+}

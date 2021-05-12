@@ -1,0 +1,28 @@
+input {
+    font-size: inherit;
+    font-weight: inherit;
+    background-color: inherit;
+    border: none;
+    border-bottom: 0.07em solid $color_primary;
+    outline: none;
+    &:focus {
+        border-color: lighten($color_primary, 20%);
+        // border: none;
+        outline: none;
+    }
+    max-width: 60%;
+    &[type='number'] {
+        text-align: center;
+        border-bottom: 0.1em solid $color_primary;
+    }
+}
+
+.hit-dice-input {
+    width: 3ch;
+    display: inline-block;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        appearance: none;
+    }
+}

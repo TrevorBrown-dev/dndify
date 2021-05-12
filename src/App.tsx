@@ -1,25 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { CreateCharacter } from './components/CreateCharacter/CreateCharacter';
+import { DnDAndSVG } from './components/svg/DnDAndSVG';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Home } from './components/Home/Home';
+/*
+  The app will serve as an interactive character sheet for dnd 5e.
+  There will be a number of sections. All of the logic for the app will be contained on a single page
 
-function App() {
+
+  PAGES:
+    Character Select:
+      Here they can load their character json data into the app or create a new one
+    Character Create?:
+      Possibly unessicarry
+
+    Character View:
+      This is the main page of the app all of the apps logic will be here
+
+*/
+
+
+const App: React.FC = (props) => {
+  const [link, setLink] = useState('');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="page-container">
+        <Switch>
+          <Route path="/create">
+            <CreateCharacter />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+
+
+
+        </Switch>
+
+
+
+
+      </div>
+
+
+    </Router>
   );
 }
 
