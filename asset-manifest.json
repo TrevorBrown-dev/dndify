@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/dndify/static/js/main.e75dc490.chunk.js",
+    "main.js.map": "/dndify/static/js/main.e75dc490.chunk.js.map",
+    "runtime-main.js": "/dndify/static/js/runtime-main.439adeca.js",
+    "runtime-main.js.map": "/dndify/static/js/runtime-main.439adeca.js.map",
+    "static/js/2.aed3d02f.chunk.js": "/dndify/static/js/2.aed3d02f.chunk.js",
+    "static/js/2.aed3d02f.chunk.js.map": "/dndify/static/js/2.aed3d02f.chunk.js.map",
+    "static/js/3.185f9d1a.chunk.js": "/dndify/static/js/3.185f9d1a.chunk.js",
+    "static/js/3.185f9d1a.chunk.js.map": "/dndify/static/js/3.185f9d1a.chunk.js.map",
+    "index.html": "/dndify/index.html",
+    "static/js/2.aed3d02f.chunk.js.LICENSE.txt": "/dndify/static/js/2.aed3d02f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.439adeca.js",
+    "static/js/2.aed3d02f.chunk.js",
+    "static/js/main.e75dc490.chunk.js"
+  ]
+}
