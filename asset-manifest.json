@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/dndify/static/js/main.4de6eb41.chunk.js",
-    "main.js.map": "/dndify/static/js/main.4de6eb41.chunk.js.map",
+    "main.js": "/dndify/static/js/main.19caad2d.chunk.js",
+    "main.js.map": "/dndify/static/js/main.19caad2d.chunk.js.map",
     "runtime-main.js": "/dndify/static/js/runtime-main.439adeca.js",
     "runtime-main.js.map": "/dndify/static/js/runtime-main.439adeca.js.map",
     "static/js/2.aed3d02f.chunk.js": "/dndify/static/js/2.aed3d02f.chunk.js",
@@ -14,6 +14,6 @@
   "entrypoints": [
     "static/js/runtime-main.439adeca.js",
     "static/js/2.aed3d02f.chunk.js",
-    "static/js/main.4de6eb41.chunk.js"
+    "static/js/main.19caad2d.chunk.js"
   ]
 }
