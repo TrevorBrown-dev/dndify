@@ -1,5 +1,42 @@
 $color_primary: #e40712;
+$color_off_primary: lighten($color_primary, 10%);
 $color_off_light: rgb(230, 230, 230);
 $color_light: white;
 $color_off_dark: #2d2d2d;
 $color_dark: black;
+
+.color {
+    &-primary {
+        color: $color_primary;
+        &-hover:hover {
+            color: $color_primary;
+        }
+    }
+
+    &-off-primary {
+        color: $color_off_primary;
+        &-hover:hover {
+            color: $color_off_primary;
+        }
+    }
+
+    &-off-light {
+        color: $color_off_light;
+    }
+
+    &-off-dark {
+        &-hover:hover {
+            color: $color_off_dark;
+        }
+    }
+}
+
+.background-color {
+    &-primary {
+        background-color: $color_primary;
+    }
+
+    &-off-light {
+        background-color: $color_off_light;
+    }
+}

@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-import { CreateCharacter } from './components/CreateCharacter/CreateCharacter';
-import { DnDAndSVG } from './components/svg/DnDAndSVG';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Home } from './components/Home/Home';
+
+//Pages
+import Home from './components/Home';
+import CreateCharacter from './components/CreateCharacter';
+
 /*
+  GOAL:
   The app will serve as an interactive character sheet for dnd 5e.
   There will be a number of sections. All of the logic for the app will be contained on a single page
 
@@ -21,29 +24,32 @@ import { Home } from './components/Home/Home';
 
 
 const App: React.FC = (props) => {
-  const [link, setLink] = useState('');
+
   return (
     <Router>
       <div className="page-container">
+
+
         <Switch>
-          <Route path="/create">
+
+          {/* Create Character Page */}
+          <Route path="/create" exact>
             <CreateCharacter />
           </Route>
-          <Route path="/">
+
+
+          {/* Home Page */}
+          <Route path="/" exact>
+            <div></div>
             <Home />
           </Route>
-
 
 
         </Switch>
 
 
-
-
       </div>
-
-
-    </Router>
+    </Router >
   );
 }
 

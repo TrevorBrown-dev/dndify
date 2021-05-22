@@ -71,6 +71,47 @@
     }
 }
 
-.hp-input {
-    width: 4ch;
+.create-level-sub {
+    color: $color_primary;
+    margin-left: -0.2em;
+}
+
+.header-links {
+    text-align: center;
+    color: $color_light;
+    & :first-child {
+        margin-top: 1em;
+    }
+}
+
+.create-sidebar-link {
+    cursor: pointer;
+    padding: 0.5em 1em;
+    &:hover {
+        border: 0.1em solid $color_light;
+        // background-color: $color_primary;
+    }
+}
+.create-sec-saving-throws {
+    font-size: 1.5em;
+}
+
+.create-sec-proficiencies {
+    font-size: 1.2em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 0.5em;
+    width: 60%;
+    margin-bottom: 1em;
+    @media (max-width: $width_phone_small) {
+        font-size: 1.2rem;
+        width: 70%;
+    }
+}
+
+.create-proficiencies-subheader {
+    font-size: 0.6em;
+    display: inline-block;
+    user-select: none;
+    color: lighten($color_off_dark, 30%);
 }

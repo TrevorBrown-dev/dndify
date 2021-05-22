@@ -1,56 +1,144 @@
 import { useCallback, useState } from 'react';
-import { iClass, useClasses } from './classes';
+import { iClass, iClassModel, useClasses } from './classes';
+import { blankProficiencies, iProficiencies, iProficienciesModel, useProficiencies } from './proficiencies';
+import { iSavingThrowModel, iSavingThrows, useSavingThrows } from './savingThrows';
 import { iStatModel, iStats, useStats } from './stats';
-
+export interface iSerializable<T> {
+    serialize: () => T;
+    deserialize: (model: T) => void;
+}
+//SavingThrows aren't being serialized/deserialized
 export interface iCharacterModel {
     name: string;
     race: string;
+    background: string;
+    hp: number;
     stats: iStatModel[];
-    classes: string[];
+    classes: iClassModel[];
+    savingThrows: iSavingThrowModel;
+    proficiencies: iProficienciesModel;
 }
-
-export interface iCharacter {
+export interface iCharacter extends iSerializable<iCharacterModel> {
     name: string;
+    background: string;
+    hp: number;
+    savingThrows: iSavingThrows;
+    setHP: React.Dispatch<React.SetStateAction<number>>;
     setName: React.Dispatch<React.SetStateAction<string>>;
+    setBackground: React.Dispatch<React.SetStateAction<string>>;
     stats: iStats;
     classes: iClass;
+    proficiencies: iProficiencies;
     race: string;
     setRace: React.Dispatch<React.SetStateAction<string>>;
-    serialize: () => iCharacterModel;
-    deserialize: (char: iCharacterModel) => void;
+    level: number;
+    proficiency: number;
 }
 
+export const blankCharacter = (): iCharacterModel => {
+    const char: iCharacterModel = {
+        name: '',
+        race: '',
+        background: '',
+        hp: 0,
+        stats: [
+            {
+                name: 'Strength',
+                short_name: 'Str',
+                value: 0,
+            },
+            {
+                name: 'Dexterity',
+                short_name: 'Dex',
+                value: 0,
+            },
+            {
+                name: 'Constitution',
+                short_name: 'Con',
+                value: 0,
+            },
+            {
+                name: 'Intelligence',
+                short_name: 'Int',
+                value: 0,
+            },
+            {
+                name: 'Wisdom',
+                short_name: 'Wis',
+                value: 0,
+            },
+            {
+                name: 'Charisma',
+                short_name: 'Cha',
+                value: 0,
+            },
+        ],
+        savingThrows: {},
+        proficiencies: blankProficiencies(),
+        classes: [],
+    };
+
+    return char;
+};
+
 export const useCharacter = (char: iCharacterModel): iCharacter => {
+    const [background, setBackground] = useState(char.background);
     const [name, setName] = useState(char.name);
+    const [hp, setHP] = useState(char.hp);
     const [race, setRace] = useState(char.race);
     const classes = useClasses(char.classes);
     const stats = useStats(char.stats);
+    const savingThrows = useSavingThrows(char.stats);
+    const proficiencies = useProficiencies(char.proficiencies);
+    const _proficiency = useCallback(() => {
+        return 1 + Math.ceil(classes.totalLevel() / 4);
+    }, [classes]);
 
     const serialize = useCallback(() => {
-        const char = {
+        const char: iCharacterModel = {
             name,
+            hp,
             race,
             stats: stats.stats,
-            classes: classes.classes,
+            classes: classes.serialize(),
+            savingThrows: savingThrows.serialize(),
+            proficiencies: proficiencies.serialize(),
+            background,
         };
         return char;
-    }, [name, race, classes, stats]);
+    }, [savingThrows, name, race, hp, classes, stats, proficiencies, background]);
 
     const deserialize = useCallback(
         (char: iCharacterModel) => {
             setName(char.name);
+            setHP(char.hp);
             stats.deserialize(char.stats);
             classes.deserialize(char.classes);
             setRace(char.race);
+            savingThrows.deserialize(char.savingThrows);
+            proficiencies.deserialize(char.proficiencies);
+            setBackground(char.background);
         },
-        [setName, stats, classes]
+        [savingThrows, setName, stats, classes]
     );
 
     const character: iCharacter = {
         name,
+        hp,
+        background,
+        setBackground,
         setName,
+        setHP,
         stats,
         race,
+        savingThrows,
+        get proficiency() {
+            return _proficiency();
+        },
+        get level() {
+            return classes.totalLevel();
+        },
+        proficiencies,
         setRace,
         classes,
         serialize,

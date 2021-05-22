@@ -1,0 +1,36 @@
+.hp-heart-container {
+    transition: all 0.1s ease;
+    position: relative;
+    max-height: 6em;
+    top: -1em;
+    color: $color_off_dark;
+    &:focus-within {
+        color: $color_primary;
+    }
+    .heart {
+        position: relative;
+        font-size: 5em;
+        color: inherit;
+    }
+    .label {
+        position: relative;
+        top: 4.1em;
+        left: 0.05em;
+    }
+    .input {
+        position: relative;
+        display: block;
+        top: -4em;
+        left: 0.5px;
+        input {
+            width: 3.2em;
+        }
+    }
+}
+.hp-input {
+    width: 30%;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        appearance: none;
+    }
+}

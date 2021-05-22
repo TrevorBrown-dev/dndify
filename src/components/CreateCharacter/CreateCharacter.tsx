@@ -1,50 +1,25 @@
-import { iCharacterModel, useCharacter } from "../../models/character";
+import React from "react";
+import { blankCharacter, iCharacterModel, useCharacter } from "../../models/character";
 import { SaveUploadCharacter } from "../SaveUploadCharacter";
-import { CreateCharacterClass } from "./CreateCharacterClass";
-import { CreateCharacterHeader } from "./CreateCharacterHeader";
-import { CreateCharacterHitDice } from "./CreateCharacterHitDice";
-import { CreateCharacterRace } from "./CreateCharacterRace";
+import { Header, Race, Class, HitDice, Health, CreateSidebar } from "./";
+import { Background } from "./Background";
+import { MiniStats } from "./MiniStats";
+import { Skills } from "./Skills";
+import { SavingThrows } from "./SavingThrows";
+import { OtherProficiencies } from "./OtherProficiencies";
 
 
 
 export const CreateCharacter: React.FC = () => {
-  const char: iCharacterModel = {
-    name: '',
-    race: '',
-    stats: [
-      {
-        name: "Strength",
-        short_name: "Str",
-        value: 0
-      },
-      {
-        name: "Dexterity",
-        short_name: "Dex",
-        value: 0
-      },
-      {
-        name: "Constitution",
-        short_name: "Con",
-        value: 0
-      },
-      {
-        name: "Intelligence",
-        short_name: "Int",
-        value: 0
-      },
-      {
-        name: "Wisdom",
-        short_name: "Wis",
-        value: 0
-      },
-      {
-        name: "Charisma",
-        short_name: "Cha",
-        value: 0
-      },
-    ],
-    classes: []
-  }
+  // useEffect(() => {
+  //   window.onbeforeunload = () => {
+  //     return "Confirm Form Resubmision";
+  //   }
+  //   return (() => {
+  //     window.onbeforeunload = null;
+  //   })
+  // }, [])
+  const char: iCharacterModel = blankCharacter();
   const character = useCharacter(char);
   /* 
     Render the stats
@@ -52,15 +27,27 @@ export const CreateCharacter: React.FC = () => {
     create a button to roll the stats automatically
     Save button
   */
+
   return (
-    <div className="create-character">
-      <CreateCharacterHeader character={character} />
-      <main className="create-main">
-        <CreateCharacterRace character={character} />
-        <CreateCharacterClass character={character} />
-        <CreateCharacterHitDice />
-        <SaveUploadCharacter character={character} />
+    <>
+      <CreateSidebar />
+      <main className="page-main">
+        <div className="create-character">
+          <Header character={character} />
+          <div className="create-main">
+            <Race character={character} />
+            <Background character={character} />
+            <Class character={character} />
+            <HitDice character={character} />
+            <Health character={character} />
+            <SavingThrows character={character} />
+            <Skills character={character} />
+            <OtherProficiencies />
+
+          </div>
+        </div>
       </main>
-    </div>
+      <MiniStats character={character} />
+    </>
   );
 }

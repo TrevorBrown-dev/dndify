@@ -1,13 +1,13 @@
+import React from "react";
+import { CharacterProps } from ".";
 import { iCharacter } from "../../models/character";
 import { iStatModel } from "../../models/stats";
 import { useDice } from "../Dice";
-
-interface HeaderProps {
-    character: iCharacter;
-}
+import { CharacterInfo } from "./CharacterInfo";
 
 
-const StatHeaders: React.FC<HeaderProps> = ({ character }) => {
+
+const StatHeaders: React.FC<CharacterProps> = ({ character }) => {
     const dice = useDice();
 
     const onStatHeaderClick = (stat: iStatModel) => {
@@ -49,33 +49,26 @@ const StatHeaders: React.FC<HeaderProps> = ({ character }) => {
 
 
 
-export const CreateCharacterHeader: React.FC<HeaderProps> = ({ character }) => {
+export const Header: React.FC<CharacterProps> = ({ character }) => {
 
 
 
 
-    const renderInfo = () => {
-        const { classes } = character.classes;
-        const { race } = character;
-        return (
-            <div>
-                {(classes.length !== 0 || race.length !== 0) ? "The" : ""} <span>{race}</span> {(classes.length !== 0 && race.length !== 0) ? "-" : ""} <span>{classes.join(", ")}</span>
-            </div>
-        );
-    }
+
 
 
     return (
-        <div className="create-header">
+        <section className="create-header">
             <div className="name">
-                <h1><input type="text" autoComplete="off" className="create-char-name" placeholder="Name" name="char-name" id="char-name" value={character.name} onChange={(e) => character.setName(e.target.value)} /></h1>
+                <h1 id="name" title="Name"><input type="text" autoComplete="off" className="create-char-name" placeholder="Name" name="char-name" id="char-name" value={character.name} onChange={(e) => character.setName(e.target.value)} /></h1>
             </div>
             <div className="classes">
-                {renderInfo()}
+                {<CharacterInfo character={character} />}
+
 
             </div>
             <StatHeaders character={character} />
-        </div>
+        </section>
 
 
     );

@@ -1,0 +1,9 @@
+.mini-stats {
+    display: block;
+    color: $color_light;
+    text-align: center;
+    &-stats {
+        display: flex;
+        flex-direction: column;
+    }
+}

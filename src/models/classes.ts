@@ -1,42 +1,80 @@
 import { useCallback, useState } from 'react';
-export interface iClass {
-    classes: string[];
+import { iSerializable } from './character';
+export interface iClassModel {
+    name: string;
+    level?: number;
+    hitDice?: number;
+}
+export interface iClass extends iSerializable<iClassModel[]> {
+    classes: iClassModel[];
     addClass: (c: string) => void;
     removeClass: (c: string) => void;
     toggleClass: (c: string) => void;
-    deserialize: (c: string[]) => void;
+    setDice: (name: string, hitDice: number) => void;
+    setLevel: (name: string, level: number) => void;
+    totalLevel: () => number;
+    includes: (name: string) => boolean;
 }
-export const useClasses = (_classes: string[]) => {
-    const [classes, _setClasses] = useState(_classes);
+
+export const useClasses = (_classes: iClassModel[]): iClass => {
+    //Variables
+    const [classes, _setClasses] = useState<iClassModel[]>(_classes);
+
+    const includes = useCallback((name: string) => classes.some((oc) => oc.name === name), [classes]);
+    const _setClassProperty = useCallback(
+        (className: string, key: keyof iClassModel, value: iClassModel[keyof iClassModel]) => {
+            _setClasses((oldClasses) =>
+                oldClasses.map((c) => {
+                    return c.name === className ? { ...c, [key]: value } : c;
+                })
+            );
+        },
+        [_setClasses]
+    );
+    const setDice = useCallback((name: string, hitDice: number) => _setClassProperty(name, 'hitDice', hitDice), [_setClassProperty]);
+    const setLevel = useCallback((name: string, level: number) => _setClassProperty(name, 'level', level), [_setClassProperty]);
+
+    //Functions
     const addClass = useCallback(
         (c: string) => {
-            _setClasses((oldClasses) => (!oldClasses.includes(c) ? [...oldClasses, c] : oldClasses));
+            _setClasses((oldClasses) => (!oldClasses.some((oc) => oc.name === c) ? [...oldClasses, { name: c, level: 1 }] : oldClasses));
         },
         [_setClasses]
     );
     const removeClass = useCallback(
         (c: string) => {
-            _setClasses((oldClasses) => oldClasses.filter((cl) => cl.toLowerCase() !== c.toLowerCase()));
+            _setClasses((oldClasses) => oldClasses.filter((cl) => cl.name.toLowerCase() !== c.toLowerCase()));
         },
         [_setClasses]
     );
 
     const deserialize = useCallback(
-        (c: string[]) => {
+        (c: iClassModel[]) => {
             _setClasses(c);
         },
         [_setClasses]
     );
 
+    const totalLevel = useCallback(() => {
+        let level = 0;
+        classes.forEach((c) => (level += c.level || 0));
+        return level;
+    }, [classes]);
+
+    const serialize = useCallback(() => {
+        console.log('SERIALIZED CLASSES', classes);
+        return classes;
+    }, [classes]);
+
     const toggleClass = useCallback(
         (c: string) => {
-            if (classes.includes(c)) {
+            if (includes(c)) {
                 removeClass(c);
             } else {
                 addClass(c);
             }
         },
-        [classes, addClass, removeClass]
+        [includes, addClass, removeClass]
     );
 
     const cl: iClass = {
@@ -44,6 +82,11 @@ export const useClasses = (_classes: string[]) => {
         addClass,
         removeClass,
         toggleClass,
+        includes,
+        setDice,
+        setLevel,
+        totalLevel,
+        serialize,
         deserialize,
     };
 
