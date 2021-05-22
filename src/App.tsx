@@ -26,7 +26,7 @@ import CreateCharacter from './components/CreateCharacter';
 const App: React.FC = (props) => {
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <div className="page-container">
 
 
