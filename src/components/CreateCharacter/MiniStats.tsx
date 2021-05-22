@@ -1,4 +1,5 @@
 import { CharacterProps } from ".";
+import { SaveUploadCharacter } from "../SaveUploadCharacter";
 import { Sidebar } from "../Sidebar";
 import { CharacterInfo } from "./CharacterInfo";
 
@@ -22,7 +23,7 @@ export const MiniStats: React.FC<CharacterProps> = ({ character }) => {
 
     return (
         <Sidebar>
-            <div className="mini-stats">
+            <div className="mini-stats" style={{ height: '100vh', position: 'relative' }}>
                 <h3>{character.name}</h3>
                 <sub><CharacterInfo character={character} style={{ fontSize: '.8em', marginBottom: '.5em' }} /></sub>
                 <div className="mini-stats-stats">
@@ -31,6 +32,13 @@ export const MiniStats: React.FC<CharacterProps> = ({ character }) => {
                         (character.proficiency !== 1) ? <span>Proficiency: +{character.proficiency}</span> : ""
 
                     }
+                </div>
+
+                <div style={{
+                    position: 'absolute', bottom: '1em', left: '25%'
+                }}>
+
+                    <SaveUploadCharacter character={character} />
                 </div>
             </div>
         </Sidebar>
