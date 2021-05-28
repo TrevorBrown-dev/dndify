@@ -251,6 +251,10 @@ h6 {
   left: 13%;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .create-character .create-header {
   text-align: center;
   padding-bottom: 0.5em;
@@ -373,6 +377,31 @@ h6 {
   display: inline-block;
   user-select: none;
   color: #7a7a7a;
+}
+
+.other-proficiency-list {
+  width: 100%;
+  font-size: 1.2em;
+  min-height: 5em;
+  position: relative;
+  left: 10%;
+}
+
+.add-other-proficiency {
+  font-size: 1.6em;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+.add-other-proficiency input {
+  display: block;
+}
+.add-other-proficiency i {
+  display: block;
+  position: relative;
+  top: 0.3em;
+  margin-left: 1em;
 }
 
 .stat-header {

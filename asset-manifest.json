@@ -1,19 +1,22 @@
 {
   "files": {
-    "main.js": "/dndify/static/js/main.19caad2d.chunk.js",
-    "main.js.map": "/dndify/static/js/main.19caad2d.chunk.js.map",
-    "runtime-main.js": "/dndify/static/js/runtime-main.439adeca.js",
-    "runtime-main.js.map": "/dndify/static/js/runtime-main.439adeca.js.map",
-    "static/js/2.aed3d02f.chunk.js": "/dndify/static/js/2.aed3d02f.chunk.js",
-    "static/js/2.aed3d02f.chunk.js.map": "/dndify/static/js/2.aed3d02f.chunk.js.map",
-    "static/js/3.185f9d1a.chunk.js": "/dndify/static/js/3.185f9d1a.chunk.js",
-    "static/js/3.185f9d1a.chunk.js.map": "/dndify/static/js/3.185f9d1a.chunk.js.map",
+    "main.css": "/dndify/static/css/main.3d9ed111.chunk.css",
+    "main.js": "/dndify/static/js/main.a5961cc7.chunk.js",
+    "main.js.map": "/dndify/static/js/main.a5961cc7.chunk.js.map",
+    "runtime-main.js": "/dndify/static/js/runtime-main.39004dc3.js",
+    "runtime-main.js.map": "/dndify/static/js/runtime-main.39004dc3.js.map",
+    "static/js/2.f0f976f5.chunk.js": "/dndify/static/js/2.f0f976f5.chunk.js",
+    "static/js/2.f0f976f5.chunk.js.map": "/dndify/static/js/2.f0f976f5.chunk.js.map",
+    "static/js/3.980cc8e7.chunk.js": "/dndify/static/js/3.980cc8e7.chunk.js",
+    "static/js/3.980cc8e7.chunk.js.map": "/dndify/static/js/3.980cc8e7.chunk.js.map",
     "index.html": "/dndify/index.html",
-    "static/js/2.aed3d02f.chunk.js.LICENSE.txt": "/dndify/static/js/2.aed3d02f.chunk.js.LICENSE.txt"
+    "static/css/main.3d9ed111.chunk.css.map": "/dndify/static/css/main.3d9ed111.chunk.css.map",
+    "static/js/2.f0f976f5.chunk.js.LICENSE.txt": "/dndify/static/js/2.f0f976f5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.439adeca.js",
-    "static/js/2.aed3d02f.chunk.js",
-    "static/js/main.19caad2d.chunk.js"
+    "static/js/runtime-main.39004dc3.js",
+    "static/js/2.f0f976f5.chunk.js",
+    "static/css/main.3d9ed111.chunk.css",
+    "static/js/main.a5961cc7.chunk.js"
   ]
 }
