@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/dndify/static/css/main.bc8c0824.chunk.css",
-    "main.js": "/dndify/static/js/main.8e8db80d.chunk.js",
-    "main.js.map": "/dndify/static/js/main.8e8db80d.chunk.js.map",
+    "main.css": "/dndify/static/css/main.c023c5fd.chunk.css",
+    "main.js": "/dndify/static/js/main.7a2c7887.chunk.js",
+    "main.js.map": "/dndify/static/js/main.7a2c7887.chunk.js.map",
     "runtime-main.js": "/dndify/static/js/runtime-main.6f9a0948.js",
     "runtime-main.js.map": "/dndify/static/js/runtime-main.6f9a0948.js.map",
     "static/js/2.505658c5.chunk.js": "/dndify/static/js/2.505658c5.chunk.js",
@@ -10,14 +10,14 @@
     "static/js/3.bece0815.chunk.js": "/dndify/static/js/3.bece0815.chunk.js",
     "static/js/3.bece0815.chunk.js.map": "/dndify/static/js/3.bece0815.chunk.js.map",
     "index.html": "/dndify/index.html",
-    "static/css/main.bc8c0824.chunk.css.map": "/dndify/static/css/main.bc8c0824.chunk.css.map",
+    "static/css/main.c023c5fd.chunk.css.map": "/dndify/static/css/main.c023c5fd.chunk.css.map",
     "static/js/2.505658c5.chunk.js.LICENSE.txt": "/dndify/static/js/2.505658c5.chunk.js.LICENSE.txt",
     "static/media/faall.min.css": "/dndify/static/media/pro-fa-solid-900-5.9.0.d42d1669.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.6f9a0948.js",
     "static/js/2.505658c5.chunk.js",
-    "static/css/main.bc8c0824.chunk.css",
-    "static/js/main.8e8db80d.chunk.js"
+    "static/css/main.c023c5fd.chunk.css",
+    "static/js/main.7a2c7887.chunk.js"
   ]
 }
