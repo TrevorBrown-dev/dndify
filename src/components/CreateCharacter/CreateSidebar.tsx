@@ -12,9 +12,14 @@ export const CreateSidebar: React.FC = () => {
         if (!elements) return;
         const l: [string, string][] = [];
         elements.forEach(({ id, title }) => l.push([id, title]));
+
         setLinks(l.map(([id, title]) => {
+            const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
+                const el = document.getElementById(id);
+                el?.scrollIntoView();
+            }
             return (
-                <a href={`#${id}`} key={`hlink-${id}`}>
+                <a onClick={handleClick} key={`hlink-${id}`}>
                     <div className="create-sidebar-link">
                         {title}
                     </div>

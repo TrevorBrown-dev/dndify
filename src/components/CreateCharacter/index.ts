@@ -12,4 +12,5 @@ export * from './Health';
 export * from './Skills';
 export * from './CreateSidebar';
 export * from './Background';
+export * from './Alignment';
 export default CreateCharacter;

@@ -16,7 +16,8 @@ const mapProficiencies = (character: iCharacter) => {
     const els: JSX.Element[] = [];
     for (let key in proficiencies) {
         const { proficiencyLevel, governingSkill } = proficiencies[key];
-        const mod = character.stats.modifier(governingSkill) + (proficiencyLevel * character.proficiency);
+        const gs = (governingSkill) ? character.stats.modifier(governingSkill) : 0;
+        const mod = gs + (proficiencyLevel * character.proficiency);
         const modifier = (mod >= 0) ? `+${mod}` : mod;
         els.push(
             <div className="center-grid-justified hoverable color-off-primary-hover" key={`tpk-${key}`}
@@ -44,7 +45,7 @@ const mapProficiencies = (character: iCharacter) => {
                 <div className="right" >
                     <div className="center-grid-justified">
                         <div className="left">
-                            <div className="create-proficiencies-subheader" style={{ marginRight: '.2em' }}>{governingSkill.substring(0, 3)}</div>
+                            <div className="create-proficiencies-subheader" style={{ marginRight: '.2em' }}>{governingSkill?.substring(0, 3)}</div>
 
                         </div>
                         <div className="right">

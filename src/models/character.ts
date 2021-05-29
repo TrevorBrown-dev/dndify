@@ -17,6 +17,7 @@ export interface iCharacterModel {
     classes: iClassModel[];
     savingThrows: iSavingThrowModel;
     proficiencies: iProficienciesModel;
+    otherProficiencies: iProficienciesModel;
 }
 export interface iCharacter extends iSerializable<iCharacterModel> {
     name: string;
@@ -29,6 +30,7 @@ export interface iCharacter extends iSerializable<iCharacterModel> {
     stats: iStats;
     classes: iClass;
     proficiencies: iProficiencies;
+    otherProficiencies: iProficiencies;
     race: string;
     setRace: React.Dispatch<React.SetStateAction<string>>;
     level: number;
@@ -75,6 +77,7 @@ export const blankCharacter = (): iCharacterModel => {
         ],
         savingThrows: {},
         proficiencies: blankProficiencies(),
+        otherProficiencies: {},
         classes: [],
     };
 
@@ -90,6 +93,7 @@ export const useCharacter = (char: iCharacterModel): iCharacter => {
     const stats = useStats(char.stats);
     const savingThrows = useSavingThrows(char.stats);
     const proficiencies = useProficiencies(char.proficiencies);
+    const otherProficiencies = useProficiencies(char.otherProficiencies);
     const _proficiency = useCallback(() => {
         return 1 + Math.ceil(classes.totalLevel() / 4);
     }, [classes]);
@@ -103,10 +107,11 @@ export const useCharacter = (char: iCharacterModel): iCharacter => {
             classes: classes.serialize(),
             savingThrows: savingThrows.serialize(),
             proficiencies: proficiencies.serialize(),
+            otherProficiencies: otherProficiencies.serialize(),
             background,
         };
         return char;
-    }, [savingThrows, name, race, hp, classes, stats, proficiencies, background]);
+    }, [savingThrows, name, race, hp, classes, stats, proficiencies, background, otherProficiencies]);
 
     const deserialize = useCallback(
         (char: iCharacterModel) => {
@@ -117,9 +122,10 @@ export const useCharacter = (char: iCharacterModel): iCharacter => {
             setRace(char.race);
             savingThrows.deserialize(char.savingThrows);
             proficiencies.deserialize(char.proficiencies);
+            otherProficiencies.deserialize(char.otherProficiencies);
             setBackground(char.background);
         },
-        [savingThrows, setName, stats, classes]
+        [savingThrows, otherProficiencies, proficiencies, setName, stats, classes]
     );
 
     const character: iCharacter = {
@@ -139,6 +145,7 @@ export const useCharacter = (char: iCharacterModel): iCharacter => {
             return classes.totalLevel();
         },
         proficiencies,
+        otherProficiencies,
         setRace,
         classes,
         serialize,

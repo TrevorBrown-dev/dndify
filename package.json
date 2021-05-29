@@ -1,7 +1,7 @@
 {
     "name": "dndify",
     "version": "0.1.0",
-    "homepage": "https://trevorbrown-dev.github.io/dndify",
+    "homepage": "https://trevorbrown-dev.github.io/dndify/",
     "private": true,
     "dependencies": {
         "@testing-library/jest-dom": "^5.12.0",
@@ -21,12 +21,12 @@
     },
     "scripts": {
         "start": "react-scripts start",
-        "build": "react-scripts build",
+        "build": "sass ./scss/main.scss src/styles/style.css && react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build",
-        "sass": "sass --watch ./scss/main.scss public/styles/style.css"
+        "sass": "sass --watch ./scss/main.scss src/styles/style.css"
     },
     "eslintConfig": {
         "extends": [

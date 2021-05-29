@@ -7,6 +7,7 @@ import { MiniStats } from "./MiniStats";
 import { Skills } from "./Skills";
 import { SavingThrows } from "./SavingThrows";
 import { OtherProficiencies } from "./OtherProficiencies";
+import { Alignment } from "./Alignment";
 
 
 
@@ -36,13 +37,14 @@ export const CreateCharacter: React.FC = () => {
           <Header character={character} />
           <div className="create-main">
             <Race character={character} />
+            <Alignment character={character} />
             <Background character={character} />
             <Class character={character} />
             <HitDice character={character} />
             <Health character={character} />
             <SavingThrows character={character} />
             <Skills character={character} />
-            <OtherProficiencies />
+            <OtherProficiencies character={character} />
 
           </div>
         </div>

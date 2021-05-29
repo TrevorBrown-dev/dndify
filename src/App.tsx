@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import './styles/style.css';
+import './styles/faall.min.css';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 //Pages
 import Home from './components/Home';
@@ -26,11 +28,11 @@ import CreateCharacter from './components/CreateCharacter';
 const App: React.FC = (props) => {
 
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router >
       <div className="page-container">
 
 
-        <Switch>
+        <Switch >
 
           {/* Create Character Page */}
           <Route path="/create" exact>

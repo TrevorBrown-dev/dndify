@@ -80,16 +80,19 @@ export const blankProficiencies = () => {
     return names;
 };
 
+interface ProficiencyModel {
+    proficiencyLevel: ProficiencyLevels;
+    governingSkill?: string;
+}
 export interface iProficienciesModel {
-    [key: string]: {
-        proficiencyLevel: ProficiencyLevels;
-        governingSkill: string;
-    };
+    [key: string]: ProficiencyModel;
 }
 
 export interface iProficiencies extends iSerializable<iProficienciesModel> {
     proficiencies: iProficienciesModel;
     setProficiencyLevel: (key: keyof iProficienciesModel, value: ProficiencyLevels) => void;
+    addProficiency: (prof: keyof iProficienciesModel) => void;
+    removeProficiency: (name: string) => void;
 }
 export const useProficiencies = (profs: iProficienciesModel = blankProficiencies()) => {
     const [proficiencies, _setProficiencies] = useState<iProficienciesModel>(profs);
@@ -97,6 +100,7 @@ export const useProficiencies = (profs: iProficienciesModel = blankProficiencies
         (key: keyof iProficienciesModel, character: iCharacter): number => {
             const { proficiencyLevel, governingSkill } = proficiencies[key];
             const { proficiency } = character;
+            if (!governingSkill) return proficiencyLevel * proficiency;
             const statModifier = character.stats.modifier(governingSkill);
 
             return statModifier + proficiencyLevel * proficiency;
@@ -104,6 +108,22 @@ export const useProficiencies = (profs: iProficienciesModel = blankProficiencies
         [proficiencies]
     );
 
+    const removeProficiency = useCallback(
+        (name: string) => {
+            _setProficiencies((oldProfs) => {
+                delete oldProfs[name];
+                return oldProfs;
+            });
+        },
+        [_setProficiencies]
+    );
+
+    const addProficiency = useCallback(
+        (prof: keyof iProficienciesModel) => {
+            _setProficiencies((oldProfs) => ({ ...oldProfs, [prof]: { proficiencyLevel: 1 } }));
+        },
+        [_setProficiencies]
+    );
     const setProficiencyLevel = useCallback(
         (key: keyof iProficienciesModel, value: ProficiencyLevels) => {
             _setProficiencies((profs) => {
@@ -118,12 +138,15 @@ export const useProficiencies = (profs: iProficienciesModel = blankProficiencies
         },
         [_setProficiencies]
     );
+
     const serialize = useCallback(() => proficiencies, [proficiencies]);
     const deserialize = useCallback((incomingProficiencies: iProficienciesModel) => _setProficiencies(incomingProficiencies), [_setProficiencies]);
 
     const exportedProficiencies: iProficiencies = {
         proficiencies,
         setProficiencyLevel,
+        addProficiency,
+        removeProficiency,
         serialize,
         deserialize,
     };

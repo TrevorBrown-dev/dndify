@@ -87,6 +87,7 @@
 .create-sidebar-link {
     cursor: pointer;
     padding: 0.5em 1em;
+    border: 0.1em solid transparent;
     &:hover {
         border: 0.1em solid $color_light;
         // background-color: $color_primary;
@@ -114,4 +115,35 @@
     display: inline-block;
     user-select: none;
     color: lighten($color_off_dark, 30%);
+}
+
+.other-proficiency-list {
+    width: 100%;
+    font-size: 1.2em;
+    min-height: 5em;
+    position: relative;
+    left: 10%;
+}
+
+.add-other-proficiency {
+    font-size: 1.6em;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    margin-bottom: 1em;
+    input {
+        display: block;
+    }
+    i {
+        display: block;
+        position: relative;
+        top: 0.3em;
+        margin-left: 1em;
+    }
+}
+
+.create-alignment {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
 }

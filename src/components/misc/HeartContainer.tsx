@@ -15,15 +15,20 @@ export const HeartContainer: React.FC<HeartContainerProps> = ({ character, size 
         ref.current?.focus();
     }
     return (
-        <div className="hp-heart-container hoverable color-off-primary-hover" style={{ fontSize: size || '5em' }} onClick={(e) => focusInput()}>
-            <div className="label">
-                <span>HP</span>
-            </div>
-            <div className="heart">
-                <i className="far fa-heart"></i>
-            </div>
-            <div className="input">
-                <input type="number" ref={ref} placeholder="-" min="0" value={character.hp || ""} className="hp-input" onChange={(e) => onHPChange(Math.abs(parseInt(e.target.value)))} />
+        <div className="hp-heart-container" style={{ fontSize: size || '5em' }} onClick={(e) => focusInput()}>
+            <div className="hp-heart-content hoverable color-primary-hover">
+                <div className="label">
+                    <span>HP</span>
+                </div>
+                <div>
+
+                    <div className="heart">
+                        <i className="far fa-heart"></i>
+                    </div>
+                    <div className="input">
+                        <input type="number" ref={ref} placeholder="-" min="0" value={character.hp || ""} className="hp-input" onChange={(e) => onHPChange(Math.abs(parseInt(e.target.value)))} />
+                    </div>
+                </div>
             </div>
         </div>
     );

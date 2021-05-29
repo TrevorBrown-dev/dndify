@@ -251,6 +251,10 @@ h6 {
   left: 13%;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .create-character .create-header {
   text-align: center;
   padding-bottom: 0.5em;
@@ -344,6 +348,7 @@ h6 {
 .create-sidebar-link {
   cursor: pointer;
   padding: 0.5em 1em;
+  border: 0.1em solid transparent;
 }
 .create-sidebar-link:hover {
   border: 0.1em solid white;
@@ -373,6 +378,37 @@ h6 {
   display: inline-block;
   user-select: none;
   color: #7a7a7a;
+}
+
+.other-proficiency-list {
+  width: 100%;
+  font-size: 1.2em;
+  min-height: 5em;
+  position: relative;
+  left: 10%;
+}
+
+.add-other-proficiency {
+  font-size: 1.6em;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+.add-other-proficiency input {
+  display: block;
+}
+.add-other-proficiency i {
+  display: block;
+  position: relative;
+  top: 0.3em;
+  margin-left: 1em;
+}
+
+.create-alignment {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
 }
 
 .stat-header {
@@ -484,12 +520,18 @@ input[type=number] {
 .hp-heart-container {
   transition: all 0.1s ease;
   position: relative;
+  display: grid;
+  place-items: center;
   max-height: 6em;
-  top: -1em;
   color: #2d2d2d;
+  overflow: hidden;
 }
 .hp-heart-container:focus-within {
   color: #e40712;
+}
+.hp-heart-container .hp-heart-content {
+  position: relative;
+  top: -1em;
 }
 .hp-heart-container .heart {
   position: relative;
