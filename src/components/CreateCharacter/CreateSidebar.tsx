@@ -19,11 +19,11 @@ export const CreateSidebar: React.FC = () => {
                 el?.scrollIntoView();
             }
             return (
-                <a onClick={handleClick} key={`hlink-${id}`}>
+                <span onClick={handleClick} key={`hlink-${id}`}>
                     <div className="create-sidebar-link">
                         {title}
                     </div>
-                </a>
+                </span>
             );
         }))
     }, [elements])

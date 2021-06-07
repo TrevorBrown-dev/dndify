@@ -3,6 +3,11 @@ Base settings inspired by Sakura CSS.
 https://github.com/oxalorg/sakura
 */
 @import 'mixins';
+
+:root {
+    --scrollbar-width: 50px;
+}
+
 *,
 *::after,
 *::before {
@@ -14,6 +19,9 @@ html {
     scroll-behavior: smooth;
     font-size: 62.5%;
     font-family: sans-serif;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: overlay;
 }
 label {
     cursor: pointer;
@@ -129,8 +137,10 @@ $width_phone_tiny: 600px;
     width: 100%;
 }
 .page-sidebar {
+    height: 100vh;
     width: 20%;
     position: fixed;
+
     @media (max-width: $width_tablet) {
         width: 25%;
     }
@@ -168,4 +178,14 @@ $width_phone_tiny: 600px;
 
 .pointer {
     cursor: pointer;
+}
+
+.no-select {
+    user-select: none !important;
+}
+
+.link {
+    &:hover {
+        text-decoration: underline;
+    }
 }

@@ -6,6 +6,7 @@ import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 //Pages
 import Home from './components/Home';
 import CreateCharacter from './components/CreateCharacter';
+import { useScrollbarAnimation } from './models/scrollbarAnimation';
 
 /*
   GOAL:
@@ -26,10 +27,11 @@ import CreateCharacter from './components/CreateCharacter';
 
 
 const App: React.FC = (props) => {
-
+  const detectScrollbar = useScrollbarAnimation({ from: 15, to: 25, speed: 1 });
   return (
     <Router >
-      <div className="page-container">
+      <div className="page-container" onMouseMove={detectScrollbar}>
+
 
 
         <Switch >

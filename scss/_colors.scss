@@ -7,9 +7,9 @@ $color_dark: black;
 
 .color {
     &-primary {
-        color: $color_primary;
+        color: $color_primary !important;
         &-hover:hover {
-            color: $color_primary;
+            color: $color_primary !important;
         }
     }
 

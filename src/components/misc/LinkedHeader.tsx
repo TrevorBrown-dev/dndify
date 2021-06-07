@@ -12,9 +12,9 @@ export const LinkedHeader: React.FC<LinkedHeaderProps> = ({ id, title, children 
         <h1 id={id} title={title || id} ref={myRef} style={{ display: "inline-block", userSelect: 'none', cursor: 'pointer' }} onClick={
             () => myRef?.current?.scrollIntoView()
         }>
-            <a>
+            <span className="link">
                 {children || ""}
-            </a>
+            </span>
         </h1 >
     );
 }
