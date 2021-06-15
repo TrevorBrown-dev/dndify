@@ -8,13 +8,8 @@ export interface iSerializable<T> {
     deserialize: (model: T) => void;
 }
 
-interface Description {
-    age: string;
-    height: string;
-    weight: string;
-    eyes: string;
-    skin: string;
-    hair: string;
+export interface Description {
+    [key: string]: string;
 }
 
 const blankDescription = (): Description => ({
