@@ -411,6 +411,11 @@ h6 {
   grid-template-rows: 1fr 1fr 1fr;
 }
 
+.load-page-container {
+  background-color: #e6e6e6;
+  height: 100vh;
+}
+
 .stat-header {
   transition: all 0.05s ease;
   cursor: pointer;

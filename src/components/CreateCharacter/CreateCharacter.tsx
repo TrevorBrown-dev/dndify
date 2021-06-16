@@ -1,7 +1,7 @@
 import React from "react";
 import { blankCharacter, iCharacterModel, useCharacter } from "../../models/character";
 import { SaveUploadCharacter } from "../SaveUploadCharacter";
-import { Header, Race, Class, HitDice, Health, CreateSidebar } from "./";
+import { Header, Race, Class, HitDice, Health, CreateSidebar, CharacterProps } from "./";
 import { Background } from "./Background";
 import { MiniStats } from "./MiniStats";
 import { Skills } from "./Skills";
@@ -11,17 +11,7 @@ import { Alignment } from "./Alignment";
 
 
 
-export const CreateCharacter: React.FC = () => {
-  // useEffect(() => {
-  //   window.onbeforeunload = () => {
-  //     return "Confirm Form Resubmision";
-  //   }
-  //   return (() => {
-  //     window.onbeforeunload = null;
-  //   })
-  // }, [])
-  const char: iCharacterModel = blankCharacter();
-  const character = useCharacter(char);
+export const CreateCharacter: React.FC<CharacterProps> = ({character}) => {
   /* 
     Render the stats
     Create inputs for the stats,
