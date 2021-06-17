@@ -98,6 +98,11 @@
 }
 
 .create-sec-proficiencies {
+    position: relative;
+    //ADD MEDIA QUERY HERE
+    left: -10%;
+    // @media (max-width: $width_tablet) {
+    // }
     font-size: 1.2em;
     display: grid;
     grid-template-columns: 1fr 1fr;

@@ -36,7 +36,7 @@ export const useStats = (statModels: iStatModel[]) => {
 
     const modifier = useCallback(
         (name: string) => {
-            const stat = stats.find((stat) => stat.name === name);
+            const stat = stats.find((stat) => stat.name.toLowerCase().startsWith(name.toLowerCase()));
             if (stat) {
                 return Math.floor((stat.value - 10) / 2);
             }

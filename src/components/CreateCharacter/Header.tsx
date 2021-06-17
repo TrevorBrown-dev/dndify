@@ -2,21 +2,22 @@ import React from "react";
 import { CharacterProps } from ".";
 import { iCharacter } from "../../models/character";
 import { iStatModel } from "../../models/stats";
-import { useDice } from "../Dice";
+import { useDice } from "../../models/dice/dice";
 import { CharacterInfo } from "./CharacterInfo";
 
 
 
 const StatHeaders: React.FC<CharacterProps> = ({ character }) => {
-    const dice = useDice();
+    const dice = useDice(character);
+
 
     const onStatHeaderClick = (stat: iStatModel) => {
-        character.stats.setValue({ ...stat, value: dice.roll("3:4d6") || 0 });
+        character.stats.setValue({ ...stat, value: dice.roll("3:4d6").value || 0 });
     }
     const rollStats = (character: iCharacter) => {
         const { stats } = character.stats;
         stats.forEach(stat => {
-            character.stats.setValue({ ...stat, value: dice.roll('3:4d6') || 0 });
+            character.stats.setValue({ ...stat, value: dice.roll('3:4d6').value || 0 });
         });
     }
     const buildHeaders = (character: iCharacter) => {
