@@ -12,9 +12,11 @@ export const Home: React.FC = () => {
                         Create Character
                 </button>
                 </Link>
-                <button>
-                    Load Character
-                </button>
+                <Link to="/load">
+                    <button>
+                        Load Character
+                    </button>
+                </Link>
 
             </div>
         </div>

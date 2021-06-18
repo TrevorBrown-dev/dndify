@@ -1,9 +1,44 @@
+/*
+    This file should be reworked.
+   Features needed: The abillity to chain operations
+   a map of possible operators
+
+   So there are three types of operands:
+   dice, stat modifiers and plain numbers
+   so a dice operands looks like this:
+       h:xdy
+   ex: 2:4d8
+   h -> the highest number of dice to take
+   x -> the number of total dice to roll
+   y -> the size of the dice
+
+   A stat operand can be any of the following:
+   str, wis, dex, int, con, cha
+
+   Then finally there are plain old numbers:
+   3, 54, 69
+
+   Plan:
+   given the dice string 4:2d6 + str * 2
+   we would first go through and compute all of the non-number operands. The dice would
+   get rolled and computed, and the stats would be looked up and replaced with their numbers
+*/
 import React, { useCallback, useState } from 'react';
 
 export interface iDice {
     value: number,
     rolls: number[],
     roll: (diceInput: string) => number | undefined,
+}
+
+const computeDice = (dice: string): number => {
+    const match = dice.match(/(\d+:)?\d+d\d+/);
+    if (!(match && match[0] === dice))
+        return 0;
+    
+    //The dice string is guarenteed to be in proper format now
+    
+    return 0;
 }
 
 export const useDice = () => {

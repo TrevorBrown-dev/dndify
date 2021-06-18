@@ -1,6 +1,7 @@
 import React from "react";
 import { blankCharacter, iCharacterModel, useCharacter } from "../../models/character";
-import { Header, Race, Class, HitDice, Health, CreateSidebar } from "./";
+import { SaveUploadCharacter } from "../SaveUploadCharacter";
+import { Header, Race, Class, HitDice, Health, CreateSidebar, CharacterProps } from "./";
 import { Background } from "./Background";
 import { MiniStats } from "./MiniStats";
 import { Skills } from "./Skills";
@@ -12,10 +13,8 @@ import { CharacterDescription } from "./CharacterDescription";
 
 
 
-export const CreateCharacter: React.FC = () => {
+export const CreateCharacter: React.FC<CharacterProps> = ({ character }) => {
 
-  const char: iCharacterModel = blankCharacter();
-  const character = useCharacter(char);
   /* 
     Render the stats
     Create inputs for the stats,

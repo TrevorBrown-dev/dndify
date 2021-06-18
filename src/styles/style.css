@@ -531,6 +531,11 @@ h6 {
   margin-right: 0.5em;
 }
 
+.load-page-container {
+  background-color: #e6e6e6;
+  height: 100vh;
+}
+
 .stat-header {
   transition: all 0.05s ease;
   cursor: pointer;
