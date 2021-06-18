@@ -20,7 +20,7 @@ export const CharacterDescription: React.FC<CharacterProps> = ({ character }) =>
         }
         for (let key in character.description) {
             els.push(
-                <div className="center-grid-justified">
+                <div className="center-grid-justified" key={key} >
                     <div className="left">
                         <label htmlFor={key}>{`${key.substr(0, 1).toUpperCase()}${key.substr(1).toLowerCase()}`}: </label>
                     </div>

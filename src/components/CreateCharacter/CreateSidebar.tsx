@@ -6,7 +6,7 @@ export const CreateSidebar: React.FC = () => {
     const [links, setLinks] = useState<JSX.Element[]>();
     const [elements, setElements] = useState<NodeListOf<HTMLHeadingElement>>();
     useEffect(() => {
-        setElements(document.querySelectorAll('h1'));
+        setElements(document.querySelectorAll('.create-header h1.header'));
     }, [])
     useEffect(() => {
         if (!elements) return;
