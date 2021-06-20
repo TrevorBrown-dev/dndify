@@ -79,6 +79,8 @@
 .header-links {
     text-align: center;
     color: $color_light;
+    height: 95%;
+    overflow-y: auto;
     & :first-child {
         margin-top: 1em;
     }
@@ -86,11 +88,10 @@
 
 .create-sidebar-link {
     cursor: pointer;
-    padding: 0.5em 1em;
+    padding: 0.2em 1em;
     border: 0.1em solid transparent;
     &:hover {
         border: 0.1em solid $color_light;
-        // background-color: $color_primary;
     }
 }
 .create-sec-saving-throws {
@@ -149,6 +150,95 @@
 
 .create-alignment {
     display: grid;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: 1.3em;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    background-color: $color_off_dark;
+    color: $color_off_light;
+    padding: 1em;
+    gap: 0.2em;
+
+    .alignment {
+        cursor: pointer;
+        height: 4em;
+        width: 4em;
+        display: grid;
+        place-items: center;
+        transition: all 0.1s ease-in-out;
+        user-select: none;
+        &:hover {
+            background-color: $color_light;
+            color: $color_off_dark;
+            border-radius: 1em;
+        }
+
+        &.active {
+            @keyframes fill-box {
+                from {
+                    border-radius: initial;
+                }
+
+                to {
+                    border-radius: 0em;
+                    background-color: $color_light;
+                    color: $color_off_dark;
+                }
+            }
+            animation: fill-box 0.5s;
+            animation-fill-mode: forwards;
+            animation-timing-function: ease-in-out;
+        }
+    }
+}
+
+.sec-backstory {
+    margin-bottom: 3em;
+
+    textarea {
+        font-size: 1em;
+        padding: 0.5em;
+    }
+}
+.preview {
+    text-overflow: wrap;
+    text-align: center;
+    margin-top: 1em;
+    padding: 1em;
+
+    border: 1px solid $color_dark;
+}
+.placeholder {
+    color: #737373 !important;
+    border-color: #737373 !important;
+}
+.wmde-markdown {
+    display: grid;
+    place-items: center;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        border-color: $color_off_dark !important;
+    }
+    hr {
+        border-color: $color_off_dark !important;
+        width: 100%;
+    }
+}
+
+.create-description-inputs {
+    display: grid;
+    $col_width: 18em;
+    grid-template-columns: $col_width $col_width;
+    margin: 1em 0em;
+    row-gap: 0.5em;
+    place-items: center;
+    label {
+        margin-right: 0.5em;
+    }
 }

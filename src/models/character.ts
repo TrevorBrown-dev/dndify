@@ -7,11 +7,27 @@ export interface iSerializable<T> {
     serialize: () => T;
     deserialize: (model: T) => void;
 }
-//SavingThrows aren't being serialized/deserialized
+
+export interface Description {
+    [key: string]: string;
+}
+
+const blankDescription = (): Description => ({
+    age: '',
+    height: '',
+    weight: '',
+    eyes: '',
+    skin: '',
+    hair: '',
+});
+
 export interface iCharacterModel {
     name: string;
     race: string;
     background: string;
+    alignment: string;
+    backstory: string;
+    description: Description;
     hp: number;
     stats: iStatModel[];
     classes: iClassModel[];
@@ -22,11 +38,18 @@ export interface iCharacterModel {
 export interface iCharacter extends iSerializable<iCharacterModel> {
     name: string;
     background: string;
+    alignment: string;
+    backstory: string;
     hp: number;
     savingThrows: iSavingThrows;
+    description: Description;
+    setDescription: React.Dispatch<React.SetStateAction<Description>>;
+
     setHP: React.Dispatch<React.SetStateAction<number>>;
     setName: React.Dispatch<React.SetStateAction<string>>;
     setBackground: React.Dispatch<React.SetStateAction<string>>;
+    setBackstory: React.Dispatch<React.SetStateAction<string>>;
+    setAlignment: React.Dispatch<React.SetStateAction<string>>;
     stats: iStats;
     classes: iClass;
     proficiencies: iProficiencies;
@@ -42,6 +65,9 @@ export const blankCharacter = (): iCharacterModel => {
         name: '',
         race: '',
         background: '',
+        alignment: '',
+        backstory: '',
+        description: blankDescription(),
         hp: 0,
         stats: [
             {
@@ -86,6 +112,9 @@ export const blankCharacter = (): iCharacterModel => {
 
 export const useCharacter = (char: iCharacterModel): iCharacter => {
     const [background, setBackground] = useState(char.background);
+    const [backstory, setBackstory] = useState(char.backstory);
+    const [alignment, setAlignment] = useState(char.alignment);
+    const [description, setDescription] = useState(char.description);
     const [name, setName] = useState(char.name);
     const [hp, setHP] = useState(char.hp);
     const [race, setRace] = useState(char.race);
@@ -103,6 +132,9 @@ export const useCharacter = (char: iCharacterModel): iCharacter => {
             name,
             hp,
             race,
+            alignment,
+            backstory,
+            description,
             stats: stats.stats,
             classes: classes.serialize(),
             savingThrows: savingThrows.serialize(),
@@ -111,28 +143,37 @@ export const useCharacter = (char: iCharacterModel): iCharacter => {
             background,
         };
         return char;
-    }, [savingThrows, name, race, hp, classes, stats, proficiencies, background, otherProficiencies]);
+    }, [savingThrows, name, description, race, hp, classes, stats, proficiencies, background, otherProficiencies, alignment, backstory]);
 
     const deserialize = useCallback(
         (char: iCharacterModel) => {
             setName(char.name);
             setHP(char.hp);
+            setAlignment(char.alignment);
             stats.deserialize(char.stats);
             classes.deserialize(char.classes);
             setRace(char.race);
+            setDescription(char.description);
+            setBackstory(char.backstory);
             savingThrows.deserialize(char.savingThrows);
             proficiencies.deserialize(char.proficiencies);
             otherProficiencies.deserialize(char.otherProficiencies);
             setBackground(char.background);
         },
-        [savingThrows, otherProficiencies, proficiencies, setName, stats, classes]
+        [savingThrows, otherProficiencies, proficiencies, setName, stats, classes, setDescription, setAlignment, setBackstory]
     );
 
     const character: iCharacter = {
         name,
         hp,
+        alignment,
         background,
+        backstory,
+        description,
+        setDescription,
+        setBackstory,
         setBackground,
+        setAlignment,
         setName,
         setHP,
         stats,

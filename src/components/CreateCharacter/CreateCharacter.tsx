@@ -8,10 +8,13 @@ import { Skills } from "./Skills";
 import { SavingThrows } from "./SavingThrows";
 import { OtherProficiencies } from "./OtherProficiencies";
 import { Alignment } from "./Alignment";
+import { Backstory } from "./Backstory";
+import { CharacterDescription } from "./CharacterDescription";
 
 
 
-export const CreateCharacter: React.FC<CharacterProps> = ({character}) => {
+export const CreateCharacter: React.FC<CharacterProps> = ({ character }) => {
+
   /* 
     Render the stats
     Create inputs for the stats,
@@ -19,10 +22,34 @@ export const CreateCharacter: React.FC<CharacterProps> = ({character}) => {
     Save button
   */
 
+  const handleDrop: React.DragEventHandler<HTMLElement> = (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+    try {
+      const file = event.dataTransfer.files[0];
+      const read = new FileReader();
+
+      read.readAsBinaryString(file);
+
+      read.onloadend = function () {
+        if (typeof read.result === "string") {
+          const char = JSON.parse(read.result);
+          character.deserialize(char);
+        }
+      }
+    } catch (e) {
+      console.log("Invalid file dropped!")
+    }
+  }
+  const handleDrag: React.DragEventHandler<HTMLElement> = (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+  }
+
   return (
     <>
       <CreateSidebar />
-      <main className="page-main">
+      <main className="page-main" onDrop={handleDrop} onDragOver={handleDrag} >
         <div className="create-character">
           <Header character={character} />
           <div className="create-main">
@@ -35,6 +62,8 @@ export const CreateCharacter: React.FC<CharacterProps> = ({character}) => {
             <SavingThrows character={character} />
             <Skills character={character} />
             <OtherProficiencies character={character} />
+            <CharacterDescription character={character} />
+            <Backstory character={character} />
 
           </div>
         </div>

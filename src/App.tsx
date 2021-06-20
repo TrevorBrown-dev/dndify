@@ -6,8 +6,9 @@ import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 //Pages
 import Home from './components/Home';
 import CreateCharacter from './components/CreateCharacter';
-import { blankCharacter, useCharacter } from './models/character';
-import { LoadCharacter } from './components/LoadCharacter/LoadCharacter';
+import { useScrollbarAnimation } from './models/scrollbarAnimation';
+import { blankCharacter, iCharacterModel, useCharacter } from './models/character';
+import { LoadCharacter } from './components/LoadCharacter/LoadCharacter'
 
 /*
   GOAL:
@@ -28,17 +29,20 @@ import { LoadCharacter } from './components/LoadCharacter/LoadCharacter';
 
 
 const App: React.FC = (props) => {
-  const character = useCharacter(blankCharacter());
+  const char: iCharacterModel = blankCharacter();
+  const character = useCharacter(char);
+  const detectScrollbar = useScrollbarAnimation({ from: 15, to: 25, speed: 1 });
   return (
     <Router >
-      <div className="page-container">
+      <div className="page-container" onMouseMove={detectScrollbar}>
+
 
 
         <Switch >
 
           {/* Create Character Page */}
           <Route path="/create" exact>
-            <CreateCharacter character={ character }/>
+            <CreateCharacter character={character} />
           </Route>
 
           <Route path="/load" exact>

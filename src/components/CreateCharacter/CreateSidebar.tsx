@@ -6,7 +6,7 @@ export const CreateSidebar: React.FC = () => {
     const [links, setLinks] = useState<JSX.Element[]>();
     const [elements, setElements] = useState<NodeListOf<HTMLHeadingElement>>();
     useEffect(() => {
-        setElements(document.querySelectorAll('h1'));
+        setElements(document.querySelectorAll('.create-header h1.header'));
     }, [])
     useEffect(() => {
         if (!elements) return;
@@ -19,11 +19,11 @@ export const CreateSidebar: React.FC = () => {
                 el?.scrollIntoView();
             }
             return (
-                <a onClick={handleClick} key={`hlink-${id}`}>
+                <span onClick={handleClick} key={`hlink-${id}`}>
                     <div className="create-sidebar-link">
                         {title}
                     </div>
-                </a>
+                </span>
             );
         }))
     }, [elements])

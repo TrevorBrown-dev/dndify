@@ -1,6 +1,5 @@
-import { serialize } from 'node:v8';
 import { useCallback, useState } from 'react';
-import { iCharacter, iSerializable } from './character';
+import { iSerializable } from './character';
 import { ProficiencyLevels } from './savingThrows';
 export const blankProficiencies = () => {
     const names: iProficienciesModel = {
@@ -96,17 +95,6 @@ export interface iProficiencies extends iSerializable<iProficienciesModel> {
 }
 export const useProficiencies = (profs: iProficienciesModel = blankProficiencies()) => {
     const [proficiencies, _setProficiencies] = useState<iProficienciesModel>(profs);
-    const getModifier = useCallback(
-        (key: keyof iProficienciesModel, character: iCharacter): number => {
-            const { proficiencyLevel, governingSkill } = proficiencies[key];
-            const { proficiency } = character;
-            if (!governingSkill) return proficiencyLevel * proficiency;
-            const statModifier = character.stats.modifier(governingSkill);
-
-            return statModifier + proficiencyLevel * proficiency;
-        },
-        [proficiencies]
-    );
 
     const removeProficiency = useCallback(
         (name: string) => {
@@ -139,6 +127,7 @@ export const useProficiencies = (profs: iProficienciesModel = blankProficiencies
         [_setProficiencies]
     );
 
+    // eslint-disable-next-line
     const serialize = useCallback(() => proficiencies, [proficiencies]);
     const deserialize = useCallback((incomingProficiencies: iProficienciesModel) => _setProficiencies(incomingProficiencies), [_setProficiencies]);
 

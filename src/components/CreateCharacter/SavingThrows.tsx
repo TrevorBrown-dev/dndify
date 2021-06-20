@@ -16,8 +16,10 @@ export const SavingThrows: React.FC<CharacterProps> = ({ character }) => {
             const mod = character.savingThrows.getProficiencyValue(name, character);
             const modifier = (mod >= 0) ? `+${mod}` : mod;
             els.push(
-                <div className="center-grid-justified centered hoverable-half color-off-primary-hover" key={`saving-throw-${name}`}
+                <div className="center-grid-justified centered hoverable-half color-off-primary-hover no-select" key={`saving-throw-${name}`}
                     onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
                         (e.currentTarget.querySelector('.checkbox') as HTMLDivElement)?.click();
                     }}
                 >

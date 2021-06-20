@@ -1,8 +1,8 @@
 .color-primary {
-  color: #e40712;
+  color: #e40712 !important;
 }
 .color-primary-hover:hover {
-  color: #e40712;
+  color: #e40712 !important;
 }
 .color-off-primary {
   color: #f82630;
@@ -41,6 +41,10 @@
 Base settings inspired by Sakura CSS.
 https://github.com/oxalorg/sakura
 */
+:root {
+  --scrollbar-width: 50px;
+}
+
 *,
 *::after,
 *::before {
@@ -53,6 +57,9 @@ html {
   scroll-behavior: smooth;
   font-size: 62.5%;
   font-family: sans-serif;
+  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: overlay;
 }
 
 label {
@@ -210,6 +217,7 @@ h6 {
 }
 
 .page-sidebar {
+  height: 100vh;
   width: 20%;
   position: fixed;
 }
@@ -253,6 +261,31 @@ h6 {
 
 .pointer {
   cursor: pointer;
+}
+
+.no-select {
+  user-select: none !important;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  position: absolute;
+  width: var(--scrollbar-width);
+  background-color: #2d2d2d;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #b3b3b3;
+  border-radius: 2rem;
+  border: 0.6rem solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: white;
 }
 
 .create-character .create-header {
@@ -340,6 +373,8 @@ h6 {
 .header-links {
   text-align: center;
   color: white;
+  height: 95%;
+  overflow-y: auto;
 }
 .header-links :first-child {
   margin-top: 1em;
@@ -347,7 +382,7 @@ h6 {
 
 .create-sidebar-link {
   cursor: pointer;
-  padding: 0.5em 1em;
+  padding: 0.2em 1em;
   border: 0.1em solid transparent;
 }
 .create-sidebar-link:hover {
@@ -409,8 +444,93 @@ h6 {
 
 .create-alignment {
   display: grid;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-size: 1.3em;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
+  background-color: #2d2d2d;
+  color: #e6e6e6;
+  padding: 1em;
+  gap: 0.2em;
+}
+.create-alignment .alignment {
+  cursor: pointer;
+  height: 4em;
+  width: 4em;
+  display: grid;
+  place-items: center;
+  transition: all 0.1s ease-in-out;
+  user-select: none;
+}
+.create-alignment .alignment:hover {
+  background-color: white;
+  color: #2d2d2d;
+  border-radius: 1em;
+}
+.create-alignment .alignment.active {
+  animation: fill-box 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+@keyframes fill-box {
+  from {
+    border-radius: initial;
+  }
+  to {
+    border-radius: 0em;
+    background-color: white;
+    color: #2d2d2d;
+  }
+}
+
+.sec-backstory {
+  margin-bottom: 3em;
+}
+.sec-backstory textarea {
+  font-size: 1em;
+  padding: 0.5em;
+}
+
+.preview {
+  text-overflow: wrap;
+  text-align: center;
+  margin-top: 1em;
+  padding: 1em;
+  border: 1px solid black;
+}
+
+.placeholder {
+  color: #737373 !important;
+  border-color: #737373 !important;
+}
+
+.wmde-markdown {
+  display: grid;
+  place-items: center;
+}
+.wmde-markdown h1,
+.wmde-markdown h2,
+.wmde-markdown h3,
+.wmde-markdown h4,
+.wmde-markdown h5,
+.wmde-markdown h6 {
+  border-color: #2d2d2d !important;
+}
+.wmde-markdown hr {
+  border-color: #2d2d2d !important;
+  width: 100%;
+}
+
+.create-description-inputs {
+  display: grid;
+  grid-template-columns: 18em 18em;
+  margin: 1em 0em;
+  row-gap: 0.5em;
+  place-items: center;
+}
+.create-description-inputs label {
+  margin-right: 0.5em;
 }
 
 .load-page-container {
