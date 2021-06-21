@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { CharacterProps } from "../../components/CreateCharacter";
 import { iCharacter } from "../character";
-import { computeDice, DiceReport } from "./computeDice";
 import { DiceExpressionReport, parseExpression } from "./parseExpression";
+
 
 
 interface iDice {
