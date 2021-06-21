@@ -11,6 +11,12 @@ export const LoadCharacter: React.FC<CharacterProps> = ({ character }) => {
         </div>
             <main className="page-main">
                 <div className="load-page-container">
+                    {/* 
+                        I need to design this page properly. It should be
+                        streamlined in such a way that the information is
+                        interactive, easy to read, and easily accessible.
+                    */}
+
                     <header className="load-header">
                         <h1>{character.name}</h1>
                         <div className="flex"><i className="fa fa-heart"></i> {character.hp}</div>
