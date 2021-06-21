@@ -23,7 +23,8 @@
    we would first go through and compute all of the non-number operands. The dice would
    get rolled and computed, and the stats would be looked up and replaced with their numbers
 */
-
+export const diceRegex = /((\d+:)?\d+d\d+)/g;
+export const diceRegexNoCap = /(?:\d+:)?\d+d\d+/;
 
 export interface DiceReport {
     diceExpr: string;
@@ -37,7 +38,8 @@ export interface DiceReport {
 }
 export const computeDice = (dice: string): DiceReport => {
     dice = dice.toLowerCase();
-    const match = dice.match(/(\d+:)?\d+d\d+/);
+
+    const match = dice.match(diceRegex);
     const diceReport: DiceReport = {
         diceExpr: dice,
         numOfDice: -1,

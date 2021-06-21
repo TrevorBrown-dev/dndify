@@ -13,6 +13,7 @@
         "@types/react-dom": "^17.0.3",
         "@types/react-router-dom": "^5.1.7",
         "@uiw/react-md-editor": "^3.3.4",
+        "mathjs": "^9.4.2",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-router-dom": "^5.2.0",

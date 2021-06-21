@@ -12,12 +12,12 @@ const StatHeaders: React.FC<CharacterProps> = ({ character }) => {
 
 
     const onStatHeaderClick = (stat: iStatModel) => {
-        character.stats.setValue({ ...stat, value: dice.roll("3:4d6").value || 0 });
+        character.stats.setValue({ ...stat, value: dice.roll("3:4d6").value});
     }
     const rollStats = (character: iCharacter) => {
         const { stats } = character.stats;
         stats.forEach(stat => {
-            character.stats.setValue({ ...stat, value: dice.roll('3:4d6').value || 0 });
+            character.stats.setValue({ ...stat, value: dice.roll('3:4d6').value });
         });
     }
     const buildHeaders = (character: iCharacter) => {

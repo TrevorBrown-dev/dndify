@@ -1,8 +1,9 @@
+import { useDice } from "../../models/dice/dice";
 import { CharacterProps } from "../CreateCharacter";
 import { SaveUploadCharacter } from "../SaveUploadCharacter";
 
 export const LoadCharacter: React.FC<CharacterProps> = ({ character }) => {
-
+    const { roll, DiceRoller } = useDice(character);
     return (
         <>
             <div>
@@ -15,6 +16,7 @@ export const LoadCharacter: React.FC<CharacterProps> = ({ character }) => {
                         <div className="flex"><i className="fa fa-heart"></i> {character.hp}</div>
                         
                     </header>  
+                    <DiceRoller character={ character }/>
                 </div>
             </main>
         </>
