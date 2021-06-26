@@ -395,13 +395,17 @@ h6 {
 
 .create-sec-proficiencies {
   position: relative;
-  left: -10%;
   font-size: 1.2em;
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 0.5em;
   width: 60%;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
+}
+@media (max-width: 1500px) {
+  .create-sec-proficiencies {
+    font-size: 0.9em;
+  }
 }
 @media (max-width: 750px) {
   .create-sec-proficiencies {
@@ -524,10 +528,16 @@ h6 {
 
 .create-description-inputs {
   display: grid;
-  grid-template-columns: 18em 18em;
+  grid-template-columns: 1fr 1fr;
   margin: 1em 0em;
+  padding: 0em 5em;
   row-gap: 0.5em;
   place-items: center;
+}
+@media (max-width: 1300px) {
+  .create-description-inputs {
+    font-size: 0.9em;
+  }
 }
 .create-description-inputs label {
   margin-right: 0.5em;

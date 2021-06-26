@@ -10,6 +10,7 @@ import { OtherProficiencies } from "./OtherProficiencies";
 import { Alignment } from "./Alignment";
 import { Backstory } from "./Backstory";
 import { CharacterDescription } from "./CharacterDescription";
+import { Items } from "./Items";
 
 
 
@@ -61,6 +62,7 @@ export const CreateCharacter: React.FC<CharacterProps> = ({ character }) => {
             <Health character={character} />
             <SavingThrows character={character} />
             <Skills character={character} />
+            <Items character={character} />
             <OtherProficiencies character={character} />
             <CharacterDescription character={character} />
             <Backstory character={character} />

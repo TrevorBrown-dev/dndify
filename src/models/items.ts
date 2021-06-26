@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { iCharacterModel } from './character';
 /* 
     Authored by:
@@ -17,6 +18,15 @@ interface RollableProperty {
     An item will contain the barebones set of properties needed to encapsulate everything needed to
     define a weapon. A name, description, rarity and a set of rollable properties.
 */
+export enum Rarity {
+    COMMON,
+    UNCOMMON,
+    RARE,
+    VERY_RARE,
+    LEGENDARY,
+    ARTIFACT,
+}
+const MapRarity = (rarityLevel: Rarity): string => ['Common', 'Uncommon', 'Rare', 'Very Rare', 'Legendary', 'Artifact'][rarityLevel];
 
 /* 
 Rollable Properties:
@@ -28,7 +38,7 @@ TODO: Add "+- mod" to useDice ex: + con to add constitution modifier.
 
 export interface Item {
     name: string;
-    rarity?: string;
+    rarity?: Rarity;
     description?: string;
     cost?: string;
     weight?: string;
@@ -36,5 +46,5 @@ export interface Item {
 }
 
 export const useItems = (character: iCharacterModel) => {
-    // const [items, setItems] = useState({});
+    const [items, setItems] = useState<Item[]>([]);
 };
