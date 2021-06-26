@@ -12,7 +12,7 @@ interface iDice {
 export const useDice = (character: iCharacter) => {
 
     const roll = useCallback(
-        (diceString: string) => parseExpression(diceString),
+        (diceString: string) => parseExpression(diceString, character),
         [character],
     )
 
@@ -23,7 +23,7 @@ export const useDice = (character: iCharacter) => {
             <input type="text" value={diceString} onChange={e => setDiceString(e.target.value)} />
             <button onClick={e => setVal(roll(diceString).value)}>Roll</button>
             <span>Value: {val}</span>
-            
+
         </div>)
     }
     const obj: iDice = {
