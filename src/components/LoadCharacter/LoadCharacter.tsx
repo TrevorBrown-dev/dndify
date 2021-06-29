@@ -9,7 +9,7 @@ export const LoadCharacter: React.FC<CharacterProps> = ({ character }) => {
             <div>
                 <SaveUploadCharacter character={ character }/>
         </div>
-            <main className="page-main">
+            <main className="page-main" style={{gridColumn: "2/-1"}}>
                 <div className="load-page-container">
                     {/* 
                         I need to design this page properly. It should be
