@@ -1,6 +1,5 @@
 import React from "react";
-import { CharacterProps, Section } from ".";
-import { Item } from "../../models/items";
+import { CharacterProps, Section } from "..";
 
 
 /*
@@ -8,10 +7,9 @@ import { Item } from "../../models/items";
     
     It should be displayed in a tiled-grid form similar to a equipment card
 */
-const ItemCard: React.FC<Item> = (item) => {
+const ItemCard: React.FC = () => {
     return (
         <div>
-            {item.name}
         </div>
     );
 }

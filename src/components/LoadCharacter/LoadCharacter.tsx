@@ -17,12 +17,17 @@ export const LoadCharacter: React.FC<CharacterProps> = ({ character }) => {
                         interactive, easy to read, and easily accessible.
                     */}
 
-                    <header className="load-header">
-                        <h1>{character.name}</h1>
-                        <div className="flex"><i className="fa fa-heart"></i> {character.hp}</div>
-                        
-                    </header>  
-                    <DiceRoller character={ character }/>
+                    <div className="load-character-grid">
+                        <div className="load-character-main">
+                            <header className="load-player-header" style={{backgroundColor: 'hotpink'}}>
+                                Header
+                            </header>
+                            main
+                        </div>
+                        <aside className="load-character-sidebar">
+                            aside
+                        </aside>
+                        </div>
                 </div>
             </main>
         </>

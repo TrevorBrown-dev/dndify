@@ -1,8 +1,10 @@
 import { useCallback, useState } from 'react';
-import { iClass, iClassModel, useClasses } from './classes';
-import { blankProficiencies, iProficiencies, iProficienciesModel, useProficiencies } from './proficiencies';
-import { iSavingThrowModel, iSavingThrows, useSavingThrows } from './savingThrows';
-import { iStatModel, iStats, useStats } from './stats';
+import {  iClassModel, useClasses } from './classes';
+import { iItemModel,  useItems } from './items';
+import { iMoney, iMoneyModel, useMoney } from './money';
+import { blankProficiencies,  iProficienciesModel, useProficiencies } from './proficiencies';
+import { iSavingThrowModel,  useSavingThrows } from './savingThrows';
+import { iStatModel,  useStats } from './stats';
 export interface iSerializable<T> {
     serialize: () => T;
     deserialize: (model: T) => void;
@@ -27,39 +29,17 @@ export interface iCharacterModel {
     background: string;
     alignment: string;
     backstory: string;
+    money: iMoneyModel;
     description: Description;
     hp: number;
+    items: iItemModel[]
     stats: iStatModel[];
     classes: iClassModel[];
     savingThrows: iSavingThrowModel;
     proficiencies: iProficienciesModel;
     otherProficiencies: iProficienciesModel;
 }
-export interface iCharacter extends iSerializable<iCharacterModel> {
-    name: string;
-    background: string;
-    alignment: string;
-    backstory: string;
-    hp: number;
-    savingThrows: iSavingThrows;
-    description: Description;
-    setDescription: React.Dispatch<React.SetStateAction<Description>>;
-
-    setHP: React.Dispatch<React.SetStateAction<number>>;
-    setName: React.Dispatch<React.SetStateAction<string>>;
-    setBackground: React.Dispatch<React.SetStateAction<string>>;
-    setBackstory: React.Dispatch<React.SetStateAction<string>>;
-    setAlignment: React.Dispatch<React.SetStateAction<string>>;
-    stats: iStats;
-    classes: iClass;
-    proficiencies: iProficiencies;
-    otherProficiencies: iProficiencies;
-    race: string;
-    setRace: React.Dispatch<React.SetStateAction<string>>;
-    level: number;
-    proficiency: number;
-}
-
+export type iCharacter = ReturnType<typeof useCharacter> & iSerializable<iCharacterModel>;
 export const blankCharacter = (): iCharacterModel => {
     const char: iCharacterModel = {
         name: '',
@@ -67,6 +47,8 @@ export const blankCharacter = (): iCharacterModel => {
         background: '',
         alignment: '',
         backstory: '',
+        money: [0,0,0,0,0],
+        items: [],
         description: blankDescription(),
         hp: 0,
         stats: [
@@ -110,7 +92,7 @@ export const blankCharacter = (): iCharacterModel => {
     return char;
 };
 
-export const useCharacter = (char: iCharacterModel): iCharacter => {
+export const useCharacter = (char: iCharacterModel) => {
     const [background, setBackground] = useState(char.background);
     const [backstory, setBackstory] = useState(char.backstory);
     const [alignment, setAlignment] = useState(char.alignment);
@@ -123,6 +105,8 @@ export const useCharacter = (char: iCharacterModel): iCharacter => {
     const savingThrows = useSavingThrows(char.stats);
     const proficiencies = useProficiencies(char.proficiencies);
     const otherProficiencies = useProficiencies(char.otherProficiencies);
+    const money: iMoney = useMoney(char.money);
+    const items = useItems(char);
     const _proficiency = useCallback(() => {
         return 1 + Math.ceil(classes.totalLevel() / 4);
     }, [classes]);
@@ -140,10 +124,12 @@ export const useCharacter = (char: iCharacterModel): iCharacter => {
             savingThrows: savingThrows.serialize(),
             proficiencies: proficiencies.serialize(),
             otherProficiencies: otherProficiencies.serialize(),
+            items: items.serialize(),
+            money: money.serialize(),
             background,
         };
         return char;
-    }, [savingThrows, name, description, race, hp, classes, stats, proficiencies, background, otherProficiencies, alignment, backstory]);
+    }, [savingThrows, name, description, race, hp, classes, stats, proficiencies, background, otherProficiencies, alignment, backstory, items, items.items]);
 
     const deserialize = useCallback(
         (char: iCharacterModel) => {
@@ -152,18 +138,20 @@ export const useCharacter = (char: iCharacterModel): iCharacter => {
             setAlignment(char.alignment);
             stats.deserialize(char.stats);
             classes.deserialize(char.classes);
+            items.deserialize(char.items);
             setRace(char.race);
             setDescription(char.description);
             setBackstory(char.backstory);
             savingThrows.deserialize(char.savingThrows);
             proficiencies.deserialize(char.proficiencies);
             otherProficiencies.deserialize(char.otherProficiencies);
+            money.deserialize(char.money);
             setBackground(char.background);
         },
         [savingThrows, otherProficiencies, proficiencies, setName, stats, classes, setDescription, setAlignment, setBackstory]
     );
 
-    const character: iCharacter = {
+    const character= {
         name,
         hp,
         alignment,
@@ -173,6 +161,7 @@ export const useCharacter = (char: iCharacterModel): iCharacter => {
         setDescription,
         setBackstory,
         setBackground,
+        items,
         setAlignment,
         setName,
         setHP,

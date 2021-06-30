@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { iCharacterModel } from './character';
+import { useCallback, useState } from 'react';
+import { iCharacterModel, iSerializable } from './character';
 /* 
     Authored by:
         Trevor Brown
@@ -26,7 +26,7 @@ export enum Rarity {
     LEGENDARY,
     ARTIFACT,
 }
-const MapRarity = (rarityLevel: Rarity): string => ['Common', 'Uncommon', 'Rare', 'Very Rare', 'Legendary', 'Artifact'][rarityLevel];
+const mapRarity = (rarityLevel: Rarity): string => ['Common', 'Uncommon', 'Rare', 'Very Rare', 'Legendary', 'Artifact'][rarityLevel];
 
 /* 
 Rollable Properties:
@@ -36,7 +36,7 @@ some sort of effect. Defining rollable properties allows them to be automaticall
 TODO: Add "+- mod" to useDice ex: + con to add constitution modifier.
 */
 
-export interface Item {
+export interface iItemModel {
     name: string;
     rarity?: Rarity;
     description?: string;
@@ -44,7 +44,41 @@ export interface Item {
     weight?: string;
     weaponProps?: RollableProperty[];
 }
+export type iItems = ReturnType<typeof useItems> & iSerializable<iItemModel>;
+
+
 
 export const useItems = (character: iCharacterModel) => {
-    const [items, setItems] = useState<Item[]>([]);
+    const [items, setItems] = useState<iItemModel[]>([]);
+    const addItem = useCallback((item: iItemModel) => {
+        setItems((items) => [...items, item]);
+    }, [setItems])
+
+    const removeItem = useCallback((id: string | number) => {
+        let index = (typeof id === "string") ?
+            items.findIndex((item) => item.name === id)
+            : id;
+        
+        setItems((items) => {
+                items.splice(index, 1);
+                return items;
+            })
+    }, [setItems])
+
+
+    const serialize = useCallback(() => items, [items]);
+    const deserialize = useCallback((items: iItemModel[]) => setItems(items), [setItems]);
+
+
+    const obj = {
+        items,
+        addItem,
+        removeItem,
+        mapRarity,
+        serialize,
+        deserialize
+
+    }
+    
+    return obj;
 };

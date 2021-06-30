@@ -7,7 +7,7 @@ import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
 import CreateCharacter from './components/CreateCharacter';
 import { useScrollbarAnimation } from './models/scrollbarAnimation';
-import { blankCharacter, iCharacterModel, useCharacter } from './models/character';
+import { blankCharacter, iCharacter, iCharacterModel, useCharacter } from './models/character';
 import { LoadCharacter } from './components/LoadCharacter/LoadCharacter'
 
 /*
@@ -30,7 +30,7 @@ import { LoadCharacter } from './components/LoadCharacter/LoadCharacter'
 
 const App: React.FC = (props) => {
   const char: iCharacterModel = blankCharacter();
-  const character = useCharacter(char);
+  const character: iCharacter = useCharacter(char);
   const detectScrollbar = useScrollbarAnimation({ from: 15, to: 25, speed: 1 });
   return (
     <Router >
