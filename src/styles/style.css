@@ -83,7 +83,7 @@ p {
   text-indent: 1em;
   line-height: 1.3em;
   margin-bottom: 0.5em;
-  width: clamp(40ch, 50%, 75ch);
+  max-width: clamp(40ch, 50%, 75ch);
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
@@ -621,6 +621,18 @@ h6 {
 }
 .stat-dice:hover {
   color: #e40712;
+}
+
+.item-card-container {
+  border-radius: 15px;
+  padding: 1em;
+  width: 10em;
+  height: 14em;
+  border: 2px solid #2d2d2d;
+  background-color: #e6e6e6;
+}
+.item-card-content {
+  font-size: 0.5em;
 }
 
 input {
