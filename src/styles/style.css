@@ -326,6 +326,7 @@ h6 {
 .create-body {
   display: flex;
   margin-top: 0.3em;
+  width: 100%;
   justify-content: center;
 }
 .create-body .class-select {
@@ -486,6 +487,22 @@ h6 {
     background-color: white;
     color: #2d2d2d;
   }
+}
+
+.create-sec-items {
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+}
+.create-sec-items .item-form {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.create-sec-items .item-cards {
+  font-size: 0.8em;
+  padding: 1em;
+  border: 1px solid black;
+  display: flex;
+  overflow-y: auto;
 }
 
 .sec-backstory {
