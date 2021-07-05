@@ -4,12 +4,56 @@
         border-radius: 15px;
         padding: 1em;
         width: 2.5em * $scale;
-        height: 3.5em * $scale;
+        height: 4.5em * $scale;
         border: 2px solid $color_off_dark;
         background-color: $color_off_light;
     }
 
     &-content {
+        height: 100%;
         font-size: 0.5em;
+        display: grid;
+        grid-template-rows: 1fr 0.5fr 4fr 2fr;
+        .header {
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            grid-template-columns: 5fr 1fr;
+            grid-template-areas:
+                'name icon'
+                'rarity icon';
+            .name {
+                grid-area: name;
+            }
+
+            .rarity {
+                grid-area: rarity;
+            }
+
+            .icon {
+                grid-area: icon;
+                font-size: 2.5em;
+            }
+        }
+        .description {
+            overflow-y: scroll;
+            padding: 1em;
+            border: 1px solid $color_dark;
+        }
+
+        .rollable {
+            display: grid;
+            place-items: center;
+            font-size: 5em;
+            height: 100%;
+        }
+        .weight {
+            float: right;
+
+            color: $color_off_dark;
+            font-size: 0.8em;
+            vertical-align: bottom;
+            position: relative;
+            top: 4px;
+        }
     }
 }

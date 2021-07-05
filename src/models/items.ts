@@ -26,7 +26,36 @@ export enum Rarity {
     LEGENDARY,
     ARTIFACT,
 }
-const mapRarity = (rarityLevel: Rarity): string => ['Common', 'Uncommon', 'Rare', 'Very Rare', 'Legendary', 'Artifact'][rarityLevel];
+export const mapRarity = (rarityLevel: Rarity): string => ['Common', 'Uncommon', 'Rare', 'Very Rare', 'Legendary', 'Artifact'][rarityLevel];
+
+export enum ItemType {
+    WEAPON = 'Weapon',
+    ARMOR = 'Armor',
+    AMMUNITION = 'Ammunition',
+    TOOL = 'Tool',
+    POISON = 'Poison',
+    POTION = 'Potion',
+    AVENTURING_GEAR = 'Adventuring Gear',
+    GEMSTONE = 'Gemstone',
+    HOLY_SYMBOL = 'Holy Symbol',
+    ARCANE_FOCUS = 'Arcane Focus',
+    DRUIDIC_FOCUS = 'Druidic Focus',
+    MOUNT = 'Mount',
+    VEHICLE = 'Vehicle',
+    EQUIPMENT_PACK = 'Equipment Pack',
+}
+
+//TODO: Map ItemType to FontAwesome icon.
+export const mapItemType = (itemType: ItemType): string => {
+    const enumNames = [];
+    for (const t in ItemType) {
+        enumNames.push(t);
+    }
+    const index = enumNames.indexOf(itemType);
+
+    const types: string[] = [];
+    return types[index];
+};
 
 /* 
 Rollable Properties:
@@ -42,33 +71,34 @@ export interface iItemModel {
     description?: string;
     cost?: string;
     weight?: string;
+    type?: ItemType;
     weaponProps?: RollableProperty[];
 }
 export type iItems = ReturnType<typeof useItems> & iSerializable<iItemModel>;
 
-
-
 export const useItems = (character: iCharacterModel) => {
     const [items, setItems] = useState<iItemModel[]>([]);
-    const addItem = useCallback((item: iItemModel) => {
-        setItems((items) => [...items, item]);
-    }, [setItems])
+    const addItem = useCallback(
+        (item: iItemModel) => {
+            setItems((items) => [...items, item]);
+        },
+        [setItems]
+    );
 
-    const removeItem = useCallback((id: string | number) => {
-        let index = (typeof id === "string") ?
-            items.findIndex((item) => item.name === id)
-            : id;
-        
-        setItems((items) => {
+    const removeItem = useCallback(
+        (id: string | number) => {
+            let index = typeof id === 'string' ? items.findIndex((item) => item.name === id) : id;
+
+            setItems((items) => {
                 items.splice(index, 1);
                 return items;
-            })
-    }, [setItems])
-
+            });
+        },
+        [setItems]
+    );
 
     const serialize = useCallback(() => items, [items]);
     const deserialize = useCallback((items: iItemModel[]) => setItems(items), [setItems]);
-
 
     const obj = {
         items,
@@ -76,9 +106,8 @@ export const useItems = (character: iCharacterModel) => {
         removeItem,
         mapRarity,
         serialize,
-        deserialize
+        deserialize,
+    };
 
-    }
-    
     return obj;
 };
