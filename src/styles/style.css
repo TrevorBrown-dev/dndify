@@ -704,6 +704,15 @@ html > ::-webkit-scrollbar {
   top: 4px;
 }
 
+.item-modal {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+}
+.item-modal .item-form {
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+}
+
 input {
   font-size: inherit;
   font-weight: inherit;
@@ -752,6 +761,44 @@ input[type=number] {
 
 .checkbox {
   display: inline-block;
+}
+
+@keyframes pop-open {
+  0% {
+    transform: scale(0.2, 0.2);
+  }
+  80% {
+    transform: scale(1.1, 1.1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+.modal {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 999;
+  display: grid;
+  place-items: center;
+}
+.modal .close-button {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}
+.modal .modal-content {
+  position: absolute;
+  backdrop-filter: blur(3px);
+  animation: pop-open 0.2s ease forwards;
+  color: white;
+  background-color: rgba(45, 45, 45, 0.9);
+  padding: 2em;
+  border: 2px solid #fb898e;
+  border-radius: 20px;
+  height: 80%;
+  width: 40%;
 }
 
 .hp-heart-container {

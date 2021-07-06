@@ -9,6 +9,7 @@ import CreateCharacter from './components/CreateCharacter';
 import { blankCharacter, iCharacter, iCharacterModel, useCharacter } from './models/character';
 import { LoadCharacter } from './components/LoadCharacter/LoadCharacter'
 import { ItemCard } from './components/CreateCharacter/Items/ItemCard';
+import { Testing } from './Testing';
 
 /*
   GOAL:
@@ -53,18 +54,8 @@ const App: React.FC = (props) => {
             <Home />
           </Route>
           <Route path="/testing" exact>
-            <div style={{ background: "white", height: '100vh', gridColumn: "1/-1", }}>
-              <div style={{ display: 'flex', flexWrap: "wrap" }}>
-
-                <ItemCard />
-                <ItemCard />
-                <ItemCard />
-                <ItemCard />
-                <ItemCard />
-                <ItemCard />
-              </div>
-            </div>
-
+            
+              <Testing />
           </Route>
 
         </Switch>

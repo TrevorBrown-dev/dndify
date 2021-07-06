@@ -10,7 +10,7 @@ import { iCharacterModel, iSerializable } from './character';
 
 interface RollableProperty {
     magnitude: string;
-    magnitudeType?: string;
+    magnitudeType?: string; // ? What the fuck does this mean?
     description?: string;
 }
 
