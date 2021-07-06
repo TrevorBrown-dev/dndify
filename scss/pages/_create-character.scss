@@ -196,9 +196,56 @@
 .create-sec-items {
     display: grid;
     grid-template-rows: 1fr 3fr;
+    row-gap: 1em;
+    max-height: 110vh; // ! Why is this section way too big?
     .item-form {
         display: grid;
-        grid-template-columns: 1fr;
+        gap: 0.5em;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(7, 1fr);
+        grid-template-areas:
+            'name name name name name name name name'
+            'rarity rarity rarity rarity type type type type'
+            'weight weight weight cost cost cost cost cost'
+            'desc desc desc desc desc desc desc desc'
+            'desc desc desc desc desc desc desc desc'
+            'desc desc desc desc desc desc desc desc'
+            'submit submit submit submit submit submit submit submit';
+
+        #name {
+            grid-area: name;
+            input {
+                max-width: 100% !important;
+                width: 100%;
+            }
+        }
+
+        #rarity {
+            grid-area: rarity;
+        }
+
+        #type {
+            grid-area: type;
+        }
+
+        #weight {
+            grid-area: weight;
+        }
+
+        #cost {
+            grid-area: cost;
+        }
+
+        #desc {
+            grid-area: desc;
+        }
+        #submit {
+            grid-area: submit;
+
+            .add-item {
+                //TODO Add styles here
+            }
+        }
     }
     .item-cards {
         max-height: 41em;

@@ -502,10 +502,40 @@ html > ::-webkit-scrollbar {
 .create-sec-items {
   display: grid;
   grid-template-rows: 1fr 3fr;
+  row-gap: 1em;
+  max-height: 110vh;
 }
 .create-sec-items .item-form {
   display: grid;
-  grid-template-columns: 1fr;
+  gap: 0.5em;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  grid-template-areas: "name name name name name name name name" "rarity rarity rarity rarity type type type type" "weight weight weight cost cost cost cost cost" "desc desc desc desc desc desc desc desc" "desc desc desc desc desc desc desc desc" "desc desc desc desc desc desc desc desc" "submit submit submit submit submit submit submit submit";
+}
+.create-sec-items .item-form #name {
+  grid-area: name;
+}
+.create-sec-items .item-form #name input {
+  max-width: 100% !important;
+  width: 100%;
+}
+.create-sec-items .item-form #rarity {
+  grid-area: rarity;
+}
+.create-sec-items .item-form #type {
+  grid-area: type;
+}
+.create-sec-items .item-form #weight {
+  grid-area: weight;
+}
+.create-sec-items .item-form #cost {
+  grid-area: cost;
+}
+.create-sec-items .item-form #desc {
+  grid-area: desc;
+}
+.create-sec-items .item-form #submit {
+  grid-area: submit;
 }
 .create-sec-items .item-cards {
   max-height: 41em;
