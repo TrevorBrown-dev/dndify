@@ -17,7 +17,7 @@ const mapItemTypes = (): JSX.Element[] => {
     const vals = Object.values(ItemType);
 
     for (const key of vals) {
-        els.push(<option key={key} value={key}>
+        els.push(<option key={key} defaultValue={key}>
             {key}
         </option>)
     }
@@ -34,7 +34,7 @@ const SelectItemType: React.FC = () => {
             <div className="right">
 
                 <select name="item-type" id="item-type">
-                <option selected value="" style={{color: "darkgray"}}>Chose a Type...</option>
+                <option selected defaultValue="" style={{color: "darkgray"}}>Chose a Type...</option>
                     {mapItemTypes()}
                 </select>
             </div>
@@ -68,6 +68,8 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
                 </div>
                 <fieldset className="item-cards">
                     <legend>Items</legend>
+                    <ItemCard />
+                    <ItemCard />
                     <ItemCard />
                     <ItemCard />
                     <ItemCard />

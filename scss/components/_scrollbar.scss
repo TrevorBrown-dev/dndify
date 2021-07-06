@@ -1,20 +1,31 @@
 /* custom scrollbar */
+html {
+    & > ::-webkit-scrollbar {
+        position: absolute;
+        width: 2em;
 
-::-webkit-scrollbar {
-    position: absolute;
-    width: var(--scrollbar-width);
-
-    background-color: $color_off_dark;
+        background-color: $color_off_dark;
+    }
 }
 
 // ::-webkit-scrollbar-track {
 //     background-color: $color_off_dark;
 // }
 
+::-webkit-scrollbar {
+    position: absolute;
+    width: 1.4em;
+
+    background-color: $color_off_dark;
+}
+.description > ::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+}
+
 ::-webkit-scrollbar-thumb {
     background-color: darken($color_off_light, 20%);
     border-radius: 2rem;
-    border: 0.6rem solid transparent;
+    border: 0.5em solid transparent;
     background-clip: content-box;
     &:hover {
         background-color: $color_light;

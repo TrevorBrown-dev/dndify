@@ -272,16 +272,26 @@ h6 {
 }
 
 /* custom scrollbar */
+html > ::-webkit-scrollbar {
+  position: absolute;
+  width: 2em;
+  background-color: #2d2d2d;
+}
+
 ::-webkit-scrollbar {
   position: absolute;
-  width: var(--scrollbar-width);
+  width: 1.4em;
   background-color: #2d2d2d;
+}
+
+.description > ::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: #b3b3b3;
   border-radius: 2rem;
-  border: 0.6rem solid transparent;
+  border: 0.5em solid transparent;
   background-clip: content-box;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -498,10 +508,13 @@ h6 {
   grid-template-columns: 1fr;
 }
 .create-sec-items .item-cards {
+  max-height: 41em;
   font-size: 0.8em;
   padding: 1em;
   border: 1px solid black;
   display: flex;
+  max-width: 34.5em;
+  flex-wrap: wrap;
   overflow-y: auto;
 }
 
@@ -642,6 +655,7 @@ h6 {
 
 .item-card-container {
   border-radius: 15px;
+  margin: 0.1em;
   padding: 1em;
   width: 10em;
   height: 18em;

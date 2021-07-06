@@ -6,7 +6,6 @@ import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 //Pages
 import Home from './components/Home';
 import CreateCharacter from './components/CreateCharacter';
-import { useScrollbarAnimation } from './models/scrollbarAnimation';
 import { blankCharacter, iCharacter, iCharacterModel, useCharacter } from './models/character';
 import { LoadCharacter } from './components/LoadCharacter/LoadCharacter'
 import { ItemCard } from './components/CreateCharacter/Items/ItemCard';
@@ -32,10 +31,9 @@ import { ItemCard } from './components/CreateCharacter/Items/ItemCard';
 const App: React.FC = (props) => {
   const char: iCharacterModel = blankCharacter();
   const character: iCharacter = useCharacter(char);
-  const detectScrollbar = useScrollbarAnimation({ from: 15, to: 25, speed: 1 });
   return (
     <Router >
-      <div className="page-container" onMouseMove={detectScrollbar}>
+      <div className="page-container" >
 
 
 

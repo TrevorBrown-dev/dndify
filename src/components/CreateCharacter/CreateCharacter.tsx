@@ -1,16 +1,14 @@
 import React from "react";
-import { blankCharacter, iCharacterModel, useCharacter } from "../../models/character";
-import { SaveUploadCharacter } from "../SaveUploadCharacter";
-import { Header, Race, Class, HitDice, Health, CreateSidebar, CharacterProps } from "./";
-import { Background } from "./Background";
-import { MiniStats } from "./MiniStats";
-import { Skills } from "./Skills";
-import { SavingThrows } from "./SavingThrows";
-import { OtherProficiencies } from "./OtherProficiencies";
+import { CharacterProps, Class, CreateSidebar, Header, Health, HitDice, Race } from "./";
 import { Alignment } from "./Alignment";
+import { Background } from "./Background";
 import { Backstory } from "./Backstory";
 import { CharacterDescription } from "./CharacterDescription";
 import { Items } from "./Items";
+import { MiniStats } from "./MiniStats";
+import { OtherProficiencies } from "./OtherProficiencies";
+import { SavingThrows } from "./SavingThrows";
+import { Skills } from "./Skills";
 
 
 
