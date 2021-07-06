@@ -1,0 +1,12 @@
+.item-modal {
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+
+    .item-form {
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+    }
+
+    // .rollable-prop-form {
+    // }
+}
