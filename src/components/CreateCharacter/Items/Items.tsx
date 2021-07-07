@@ -1,6 +1,6 @@
 import React from 'react';
 import { CharacterProps, Section } from '..';
-import { ItemType } from '../../../models/items';
+import { ItemType, mapRarity } from '../../../models/items';
 import { ItemCard } from './ItemCard';
 
 /*
@@ -8,7 +8,6 @@ import { ItemCard } from './ItemCard';
     
     It should be displayed in a tiled-grid form similar to a equipment card
 */
-
 const mapItemTypes = (): JSX.Element[] => {
     const els: JSX.Element[] = [];
     const vals = Object.values(ItemType);
@@ -23,6 +22,17 @@ const mapItemTypes = (): JSX.Element[] => {
     return els;
 };
 
+const mapRarityLevels = (): JSX.Element[] => {
+    const els: JSX.Element[] = mapRarity().map((rarity) => {
+        return (
+            <option key={rarity} defaultValue={rarity}>
+                {rarity}
+            </option>
+        );
+    });
+    return els;
+};
+
 const SelectItemType: React.FC = () => {
     return (
         <select
@@ -33,6 +43,20 @@ const SelectItemType: React.FC = () => {
                 Chose a Type...
             </option>
             {mapItemTypes()}
+        </select>
+    );
+};
+
+const SelectRarity: React.FC = () => {
+    return (
+        <select
+            name="item-rarity"
+            id="item-rarity"
+            style={{ width: '100%', height: '100%' }}>
+            <option selected defaultValue="" style={{ color: 'darkgray' }}>
+                Chose a Rarity...
+            </option>
+            {mapRarityLevels()}
         </select>
     );
 };
@@ -56,7 +80,9 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
                             />
                         </h3>
                     </div>
-                    <div id="rarity">rarity</div>
+                    <div id="rarity">
+                        <SelectRarity />
+                    </div>
                     <div id="type">
                         <SelectItemType />
                     </div>

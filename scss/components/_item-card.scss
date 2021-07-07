@@ -14,10 +14,11 @@
         height: 100%;
         font-size: 0.5em;
         display: grid;
-        grid-template-rows: 1fr 0.5fr 4fr 2fr;
+        // grid-template-rows: repeat(4, 1fr);
+        grid-template-rows: 1fr 0.5fr 5fr 2fr; //For some reason the proportions are off
         .header {
             display: grid;
-            grid-template-rows: 1fr 1fr;
+            grid-template-rows: 2em 1fr;
             grid-template-columns: 5fr 1fr;
             grid-template-areas:
                 'name icon'
@@ -38,6 +39,7 @@
         .description {
             overflow-y: scroll;
             padding: 1em;
+            text-align: left;
             border: 1px solid $color_dark;
         }
 

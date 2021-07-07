@@ -195,9 +195,8 @@
 }
 .create-sec-items {
     display: grid;
-    grid-template-rows: 1fr 3fr;
+    grid-template-rows: 1fr 1fr;
     row-gap: 1em;
-    max-height: 110vh; // ! Why is this section way too big?
     .item-form {
         display: grid;
         gap: 0.5em;

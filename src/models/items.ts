@@ -26,7 +26,11 @@ export enum Rarity {
     LEGENDARY,
     ARTIFACT,
 }
-export const mapRarity = (rarityLevel: Rarity): string => ['Common', 'Uncommon', 'Rare', 'Very Rare', 'Legendary', 'Artifact'][rarityLevel];
+export const mapRarity = (): string[] => {
+    
+    const map = ['Common', 'Uncommon', 'Rare', 'Very Rare', 'Legendary', 'Artifact']
+        return map;
+};
 
 export enum ItemType {
     WEAPON = 'Weapon',

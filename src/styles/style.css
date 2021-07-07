@@ -501,9 +501,8 @@ html > ::-webkit-scrollbar {
 
 .create-sec-items {
   display: grid;
-  grid-template-rows: 1fr 3fr;
+  grid-template-rows: 1fr 1fr;
   row-gap: 1em;
-  max-height: 110vh;
 }
 .create-sec-items .item-form {
   display: grid;
@@ -696,11 +695,11 @@ html > ::-webkit-scrollbar {
   height: 100%;
   font-size: 0.5em;
   display: grid;
-  grid-template-rows: 1fr 0.5fr 4fr 2fr;
+  grid-template-rows: 1fr 0.5fr 5fr 2fr;
 }
 .item-card-content .header {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 2em 1fr;
   grid-template-columns: 5fr 1fr;
   grid-template-areas: "name icon" "rarity icon";
 }
@@ -717,6 +716,7 @@ html > ::-webkit-scrollbar {
 .item-card-content .description {
   overflow-y: scroll;
   padding: 1em;
+  text-align: left;
   border: 1px solid black;
 }
 .item-card-content .rollable {
