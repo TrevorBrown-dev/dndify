@@ -1,4 +1,11 @@
-import { iItemModel, mapRarity, Rarity } from '../../../models/items';
+import {
+    iItemModel,
+    ItemType,
+    mapItemType,
+    mapRarity,
+    Rarity,
+    unmapRarity,
+} from '../../../models/items';
 const defaultItem: iItemModel = {
     name: 'Diamond Sword',
     cost: '3gp',
@@ -12,10 +19,10 @@ const defaultItem: iItemModel = {
     rarity: Rarity.ARTIFACT,
     weight: '20lbs',
 };
-export const ItemCard: React.FC<{ item?: iItemModel }> = ({ item }) => {
-    if (!item) item = defaultItem;
-
-    let { name, description, cost, rarity, weaponProps, weight } = item;
+export const ItemCard: React.FC<{ item?: iItemModel }> = ({
+    item = defaultItem,
+}) => {
+    let { name, description, cost, rarity, type, weaponProps, weight } = item;
     weaponProps = [];
     weaponProps.push({
         magnitude: '2d4',
@@ -35,11 +42,16 @@ export const ItemCard: React.FC<{ item?: iItemModel }> = ({ item }) => {
                     <h4 className="name">{name}</h4>
                     <h5
                         className="rarity"
-                        style={{ color: colors[rarity || 0] }}>
-                        <em>{mapRarity()[rarity || Rarity.COMMON]}</em>{' '}
+                        style={{
+                            color: colors[rarity || 0],
+                        }}>
+                        <em>{rarity || mapRarity()[Rarity.COMMON]}</em>{' '}
                         <span className="weight">{weight}</span>
                     </h5>
-                    <i className="fas fa-dice-d20 icon"></i>
+                    <i
+                        className={`${mapItemType(
+                            type || ItemType.WEAPON
+                        )} icon`}></i>
                 </header>
                 <div style={{ textAlign: 'center' }}>{cost}</div>
                 <div className="description">{description}</div>

@@ -18,6 +18,7 @@ interface RollableProperty {
     An item will contain the barebones set of properties needed to encapsulate everything needed to
     define a weapon. A name, description, rarity and a set of rollable properties.
 */
+
 export enum Rarity {
     COMMON,
     UNCOMMON,
@@ -31,7 +32,20 @@ export const mapRarity = (): string[] => {
     const map = ['Common', 'Uncommon', 'Rare', 'Very Rare', 'Legendary', 'Artifact']
         return map;
 };
-
+export const unmapRarity = (rarity: string) => {
+    rarity = rarity.toUpperCase();
+    const map = {
+        "COMMON": Rarity.COMMON,
+        "UNCOMMON": Rarity.UNCOMMON,
+        "RARE": Rarity.RARE,
+        "VERY RARE": Rarity.VERY_RARE,
+        "LEGENDARY": Rarity.LEGENDARY,
+        "ARTIFACT": Rarity.ARTIFACT
+    }
+    type r = typeof map;
+    return map[rarity as keyof r];
+    
+}
 export enum ItemType {
     WEAPON = 'Weapon',
     ARMOR = 'Armor',
@@ -51,13 +65,23 @@ export enum ItemType {
 
 //TODO: Map ItemType to FontAwesome icon.
 export const mapItemType = (itemType: ItemType): string => {
-    const enumNames = [];
-    for (const t in ItemType) {
-        enumNames.push(t);
-    }
-    const index = enumNames.indexOf(itemType);
+    const itemTypes = Object.values(ItemType);
+    console.log(itemTypes, itemType);
+    const index = itemType.indexOf(itemType);
 
-    const types: string[] = [];
+    const types: string[] = ["fas fa-sword", "fas fa-helmet-battle", "fas fa-bow-arrow", "fas fa-hammer",
+        "fas fa-flask-poison",
+        "fas fa-flask-potion",
+        "fas fa-cog",
+        "fas fa-gem",
+        "fas fa-cross",
+        "fas fa-hand-holding-magic",
+        "fas fa-acorn",
+        "fas fa-horse-head",
+        "far fa-wagon-covered",
+        "fas fa-sack"
+    ];
+    console.log(types, index, types[index]);
     return types[index];
 };
 
