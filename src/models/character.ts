@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import {  iClassModel, useClasses } from './classes';
-import { iItemModel,  useItems } from './items';
+import { iItemModel,  useItems } from './items/items';
 import { iMoney, iMoneyModel, useMoney } from './money';
 import { blankProficiencies,  iProficienciesModel, useProficiencies } from './proficiencies';
 import { iSavingThrowModel,  useSavingThrows } from './savingThrows';

@@ -195,13 +195,16 @@
 }
 .create-sec-items {
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
+    max-width: 75%;
     row-gap: 1em;
+    place-items: center;
+
     .item-form {
         display: grid;
         gap: 0.5em;
         grid-template-columns: repeat(8, 1fr);
-        grid-template-rows: repeat(7, 1fr);
+        grid-template-rows: 1fr 1fr 1fr 3fr 4fr 1fr;
         grid-template-areas:
             'name name name name name name name name'
             'rarity rarity rarity rarity type type type type'
@@ -209,6 +212,7 @@
             'desc desc desc desc desc desc desc desc'
             'desc desc desc desc desc desc desc desc'
             'desc desc desc desc desc desc desc desc'
+            'rp rp rp rp rp rp rp rp'
             'submit submit submit submit submit submit submit submit';
 
         #name {
@@ -258,9 +262,59 @@
         }
         #submit {
             grid-area: submit;
+        }
+        #rollable-property {
+            grid-area: rp;
+            max-width: 100%;
+            overflow: hidden;
+            .rollable-property {
+                margin-top: 1em;
+                max-width: 100%;
+                .rp-form {
+                    display: grid;
+                    grid-template-rows: 1fr;
+                    grid-template-columns: 30% 30% 30% 10%;
+                    i {
+                        font-size: 1.5em;
+                    }
+                }
+                .list {
+                    border: 1px solid $color_off_primary;
+                    border-radius: 2px;
+                    display: grid;
+                    background-color: $color_off_dark;
+                    $rp-row-height: 3.1em;
+                    max-height: 5 * $rp-row-height;
+                    overflow-y: scroll;
+                    & > :not(:first-child) {
+                        margin-top: 1em;
+                    }
+                    .rollable-row {
+                        color: darken($color_off_light, 10%);
+                        font-weight: 200;
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 1fr 0.1fr;
+                        grid-template-areas: 'name dice type trash';
+                        border-bottom: 1px dashed $color_off_light;
+                        & > * {
+                            padding: 0.5em;
+                        }
+                        #name {
+                            grid-area: name;
+                        }
+                        #dice {
+                            grid-area: dice;
+                        }
 
-            .add-item {
-                //TODO Add styles here
+                        #type {
+                            grid-area: type;
+                        }
+
+                        #trash {
+                            grid-area: trash;
+                        }
+                    }
+                }
             }
         }
     }

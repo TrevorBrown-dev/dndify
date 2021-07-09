@@ -2,7 +2,7 @@
 html {
     & > ::-webkit-scrollbar {
         position: absolute;
-        width: 2em;
+        width: 1em;
 
         background-color: $color_off_dark;
     }
@@ -14,7 +14,7 @@ html {
 
 ::-webkit-scrollbar {
     position: absolute;
-    width: 1.4em;
+    width: 0.5em;
 
     background-color: $color_off_dark;
 }
@@ -24,10 +24,9 @@ html {
 
 ::-webkit-scrollbar-thumb {
     background-color: darken($color_off_light, 20%);
-    border-radius: 2rem;
-    border: 0.5em solid transparent;
-    background-clip: content-box;
+    border: 1em solid transparent;
+    border-radius: 20px;
     &:hover {
-        background-color: $color_light;
+        background-color: darken($color_light, 20%);
     }
 }

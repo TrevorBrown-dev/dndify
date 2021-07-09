@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { CharacterProps, Section } from '..';
-import { iItemModel, ItemType, mapRarity, Rarity } from '../../../models/items';
+import { iItemModel } from '../../../models/items';
+import { ItemType, ItemTypes } from '../../../models/items/ItemType';
+import { Rarities, Rarity } from '../../../models/items/Rarity';
 import { ItemCard } from './ItemCard';
+import { RollablePropertyForm } from './RollableProperty';
 
 /*
     The item card should take in an item object and render its details.
@@ -10,22 +13,20 @@ import { ItemCard } from './ItemCard';
 */
 const mapItemTypes = (): JSX.Element[] => {
     const els: JSX.Element[] = [];
-    const vals = Object.values(ItemType);
-
-    for (const key of vals) {
+    ItemTypes.forEach((key, index) => {
         els.push(
-            <option key={key} defaultValue={key}>
-                {key}
+            <option key={index} value={index}>
+                {key.name}
             </option>
         );
-    }
+    });
     return els;
 };
 
 const mapRarityLevels = (): JSX.Element[] => {
-    const els: JSX.Element[] = mapRarity().map((rarity) => {
+    const els: JSX.Element[] = Rarities.map((rarity, index) => {
         return (
-            <option key={rarity} defaultValue={rarity}>
+            <option key={index} value={index}>
                 {rarity}
             </option>
         );
@@ -35,15 +36,16 @@ const mapRarityLevels = (): JSX.Element[] => {
 
 interface SelectProps {
     onChange: React.ChangeEventHandler<HTMLSelectElement>;
+    ref: React.RefObject<HTMLSelectElement>;
 }
-const SelectItemType: React.FC<SelectProps> = ({ onChange }) => {
+const SelectItemType: React.FC<SelectProps> = (props) => {
     return (
         <select
+            {...props}
             name="item-type"
             id="item-type"
-            style={{ width: '100%', height: '100%' }}
-            onChange={onChange}>
-            <option selected defaultValue="" style={{ color: 'darkgray' }}>
+            style={{ width: '100%', height: '100%' }}>
+            <option defaultValue="" style={{ color: 'darkgray' }}>
                 Chose a Type...
             </option>
             {mapItemTypes()}
@@ -51,14 +53,14 @@ const SelectItemType: React.FC<SelectProps> = ({ onChange }) => {
     );
 };
 
-const SelectRarity: React.FC<SelectProps> = ({ onChange }) => {
+const SelectRarity: React.FC<SelectProps> = (props) => {
     return (
         <select
-            onChange={onChange}
+            {...props}
             name="item-rarity"
             id="item-rarity"
             style={{ width: '100%', height: '100%' }}>
-            <option selected defaultValue="" style={{ color: 'darkgray' }}>
+            <option defaultValue="" style={{ color: 'darkgray' }}>
                 Chose a Rarity...
             </option>
             {mapRarityLevels()}
@@ -76,6 +78,14 @@ const blankItem = {
     weaponProps: [],
 };
 export const Items: React.FC<CharacterProps> = ({ character }) => {
+    const itemRefs = {
+        name: useRef<HTMLInputElement>(null),
+        cost: useRef<HTMLInputElement>(null),
+        description: useRef<HTMLInputElement>(null),
+        weight: useRef(null),
+        rarity: useRef<HTMLSelectElement>(null),
+        type: useRef<HTMLSelectElement>(null),
+    };
     const [item, setItem] = useState<iItemModel>(blankItem);
     const renderItems = () => {
         return character.items.items.map((item, index) => {
@@ -106,6 +116,7 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
                                 type="text"
                                 id="item-name"
                                 placeholder="Name"
+                                ref={itemRefs.name}
                                 onChange={(e) =>
                                     setItem((i) => ({
                                         ...i,
@@ -117,6 +128,7 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
                     </div>
                     <div id="rarity">
                         <SelectRarity
+                            ref={itemRefs.rarity}
                             onChange={(e) =>
                                 setItem((i) => ({
                                     ...i,
@@ -127,12 +139,14 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
                     </div>
                     <div id="type">
                         <SelectItemType
-                            onChange={(e) =>
+                            ref={itemRefs.type}
+                            onChange={(e) => {
+                                console.log(e.target.value);
                                 setItem((i) => ({
                                     ...i,
                                     type: e.target.value,
-                                }))
-                            }
+                                }));
+                            }}
                         />
                     </div>
                     <div id="weight">
@@ -181,6 +195,9 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
                                 padding: '1em',
                                 resize: 'none',
                             }}></textarea>
+                    </div>
+                    <div id="rollable-property">
+                        <RollablePropertyForm item={item} setItem={setItem} />
                     </div>
                     <div id="submit">
                         <button
