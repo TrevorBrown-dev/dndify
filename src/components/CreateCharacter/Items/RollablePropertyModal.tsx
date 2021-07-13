@@ -11,7 +11,7 @@ interface RoallablePropertyModalProps {
     character: iCharacter;
 }
 export const RollablePropertyModal: React.FC<RoallablePropertyModalProps> = ({ weaponProps, character }) => {
-    const [selectedProp, setSelectedProp] = useState(0);
+    const [selectedProp, setSelectedProp] = useState(-1);
     const [diceString, setDiceString] = useState('');
     const { roll } = useDice(character);
     const mapWeaponProps = useCallback(() => {
@@ -25,7 +25,7 @@ export const RollablePropertyModal: React.FC<RoallablePropertyModalProps> = ({ w
                 </div>
             );
         });
-    }, [weaponProps]);
+    }, [weaponProps, selectedProp, setSelectedProp]);
     return (
         <div className='weapon-props-modal'>
             <div id='wp-list'>{mapWeaponProps()}</div>

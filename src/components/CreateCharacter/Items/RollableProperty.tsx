@@ -35,22 +35,18 @@ interface ItemFormProps {
 }
 
 const RollableEditForm: React.FC<ItemFormProps> = ({ item, setItem }) => {
-    const name = useRef<HTMLInputElement>(null);
-    const magnitude = useRef<HTMLInputElement>(null);
-    const magnitudeType = useRef<HTMLInputElement>(null);
+    const initialValues = {
+        name: '',
+        magnitude: '',
+        magnitudeType: '',
+    };
+    const [rpVals, setRpVals] = useState(initialValues);
 
     const clearRefs = () => {
-        if (name.current) name.current.value = '';
-        if (magnitude.current) magnitude.current.value = '';
-        if (magnitudeType.current) magnitudeType.current.value = '';
+        setRpVals(initialValues);
     };
     const getPropsFromRefs = () => {
-        const wp: RollableProperty = {
-            name: name.current?.value || '',
-            magnitude: magnitude.current?.value || '',
-            magnitudeType: magnitudeType.current?.value || '',
-        };
-        return wp;
+        return rpVals as RollableProperty;
     };
 
     const onAddClick = () => {
@@ -64,13 +60,13 @@ const RollableEditForm: React.FC<ItemFormProps> = ({ item, setItem }) => {
     return (
         <div className='rp-form'>
             <div id='rp-name'>
-                <input type='text' ref={name} placeholder='Name' />
+                <input type='text' value={rpVals.name} onChange={(e) => setRpVals((v) => ({ ...v, name: e.target.value }))} placeholder='Name' />
             </div>
             <div id='rp-dice'>
-                <input type='text' ref={magnitude} placeholder='Dice' />
+                <input type='text' value={rpVals.magnitude} onChange={(e) => setRpVals((v) => ({ ...v, magnitude: e.target.value }))} placeholder='Dice' />
             </div>
             <div id='rp-type'>
-                <input type='text' ref={magnitudeType} placeholder='Type' />
+                <input type='text' value={rpVals.magnitudeType} onChange={(e) => setRpVals((v) => ({ ...v, magnitudeType: e.target.value }))} placeholder='Type' />
             </div>
             <div id='rp-add'>
                 <i className='far fa-plus-square hoverable' onClick={onAddClick}></i>
