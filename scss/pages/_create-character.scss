@@ -204,7 +204,7 @@
         display: grid;
         gap: 0.5em;
         grid-template-columns: repeat(8, 1fr);
-        grid-template-rows: 1fr 2em 2em 2fr 1fr 1fr;
+        grid-template-rows: 2.5em 2em 2em 10em 1fr 3.5em;
         grid-template-areas:
             'name name name name name name name name'
             'rarity rarity rarity rarity type type type type'
@@ -294,24 +294,24 @@
                         font-weight: 200;
                         display: grid;
                         grid-template-columns: 1fr 1fr 1fr 0.1fr;
-                        grid-template-areas: 'name dice type trash';
+                        grid-template-areas: 'rr-name rr-dice rr-type rr-trash';
                         border-bottom: 1px dashed $color_off_light;
                         & > * {
                             padding: 0.5em;
                         }
-                        #name {
-                            grid-area: name;
+                        #rr-name {
+                            grid-area: rr-name;
                         }
-                        #dice {
-                            grid-area: dice;
-                        }
-
-                        #type {
-                            grid-area: type;
+                        #rr-dice {
+                            grid-area: rr-dice;
                         }
 
-                        #trash {
-                            grid-area: trash;
+                        #rr-type {
+                            grid-area: rr-type;
+                        }
+
+                        #rr-trash {
+                            grid-area: rr-trash;
                         }
                     }
                 }

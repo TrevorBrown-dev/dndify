@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react';
-import {  iClassModel, useClasses } from './classes';
-import { iItemModel,  useItems } from './items/items';
+import { iClassModel, useClasses } from './classes';
+import { iItemModel, useItems } from './items/items';
 import { iMoney, iMoneyModel, useMoney } from './money';
-import { blankProficiencies,  iProficienciesModel, useProficiencies } from './proficiencies';
-import { iSavingThrowModel,  useSavingThrows } from './savingThrows';
-import { iStatModel,  useStats } from './stats';
+import { blankProficiencies, iProficienciesModel, useProficiencies } from './proficiencies';
+import { iSavingThrowModel, useSavingThrows } from './savingThrows';
+import { iStatModel, useStats } from './stats';
 export interface iSerializable<T> {
     serialize: () => T;
     deserialize: (model: T) => void;

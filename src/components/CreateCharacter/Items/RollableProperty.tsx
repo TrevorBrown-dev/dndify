@@ -10,19 +10,20 @@ const RollableEditRow: React.FC<RollableRowProps> = ({ rollableProps, setItem, i
     const onRemoveClick = () => {
         setItem((i: iItemModel) => {
             const wp = i.weaponProps || [];
+
             return {
                 ...i,
-                weaponProps: [...wp],
+                weaponProps: wp.filter((rp, i) => index !== i),
             };
         });
     };
 
     return (
         <div className='rollable-row'>
-            <div id='name'>{name}</div>
-            <div id='dice'>{magnitude}</div>
-            <div id='type'>{magnitudeType}</div>
-            <div id='trash'>
+            <div id='rr-name'>{name}</div>
+            <div id='rr-dice'>{magnitude}</div>
+            <div id='rr-type'>{magnitudeType}</div>
+            <div id='rr-trash'>
                 <i className='fas fa-trash-alt hoverable color-off-primary-hover' onClick={onRemoveClick}></i>
             </div>
         </div>

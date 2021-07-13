@@ -509,7 +509,7 @@ html > ::-webkit-scrollbar {
   display: grid;
   gap: 0.5em;
   grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: 1fr 2em 2em 2fr 1fr 1fr;
+  grid-template-rows: 2.5em 2em 2em 10em 1fr 3.5em;
   grid-template-areas: "name name name name name name name name" "rarity rarity rarity rarity type type type type" "weight weight weight cost cost cost cost cost" "desc desc desc desc desc desc desc desc" "rp rp rp rp rp rp rp rp" "submit submit submit submit submit submit submit submit";
 }
 .create-sec-items .item-form #name {
@@ -590,23 +590,23 @@ html > ::-webkit-scrollbar {
   font-weight: 200;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 0.1fr;
-  grid-template-areas: "name dice type trash";
+  grid-template-areas: "rr-name rr-dice rr-type rr-trash";
   border-bottom: 1px dashed #e6e6e6;
 }
 .create-sec-items .item-form #rollable-property .rollable-property .list .rollable-row > * {
   padding: 0.5em;
 }
-.create-sec-items .item-form #rollable-property .rollable-property .list .rollable-row #name {
-  grid-area: name;
+.create-sec-items .item-form #rollable-property .rollable-property .list .rollable-row #rr-name {
+  grid-area: rr-name;
 }
-.create-sec-items .item-form #rollable-property .rollable-property .list .rollable-row #dice {
-  grid-area: dice;
+.create-sec-items .item-form #rollable-property .rollable-property .list .rollable-row #rr-dice {
+  grid-area: rr-dice;
 }
-.create-sec-items .item-form #rollable-property .rollable-property .list .rollable-row #type {
-  grid-area: type;
+.create-sec-items .item-form #rollable-property .rollable-property .list .rollable-row #rr-type {
+  grid-area: rr-type;
 }
-.create-sec-items .item-form #rollable-property .rollable-property .list .rollable-row #trash {
-  grid-area: trash;
+.create-sec-items .item-form #rollable-property .rollable-property .list .rollable-row #rr-trash {
+  grid-area: rr-trash;
 }
 .create-sec-items .item-cards-container {
   width: 100%;
@@ -873,6 +873,20 @@ input[type=number] {
   display: inline-block;
 }
 
+.weapon-props-modal {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+.weapon-props-modal i {
+  font-size: 5em;
+}
+
+.wp-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 @keyframes pop-open {
   0% {
     transform: scale(0.2, 0.2);
@@ -887,6 +901,7 @@ input[type=number] {
 .modal {
   position: fixed;
   top: 0;
+  left: 0;
   height: 100vh;
   width: 100vw;
   z-index: 999;

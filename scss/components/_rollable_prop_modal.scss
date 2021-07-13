@@ -1,0 +1,13 @@
+.weapon-props-modal {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    i {
+        font-size: 5em;
+    }
+}
+
+.wp-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}

@@ -1,5 +1,4 @@
 import { useCallback, useState } from "react";
-import { iCharacterModel, iSerializable } from "./character";
 export enum Money {
     COPPER,
     SILVER,

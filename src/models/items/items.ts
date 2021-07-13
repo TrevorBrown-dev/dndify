@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { iCharacterModel, iSerializable } from '../character';
+import { iCharacterModel } from '../character';
 import { ItemType } from './ItemType';
 import { mapRarity, Rarity } from './Rarity';
 /* 

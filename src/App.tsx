@@ -1,14 +1,12 @@
 import React from 'react';
-import './styles/style.css';
-import './styles/faall.min.css';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
-
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import CreateCharacter from './components/CreateCharacter';
 //Pages
 import Home from './components/Home';
-import CreateCharacter from './components/CreateCharacter';
+import { LoadCharacter } from './components/LoadCharacter/LoadCharacter';
 import { blankCharacter, iCharacter, iCharacterModel, useCharacter } from './models/character';
-import { LoadCharacter } from './components/LoadCharacter/LoadCharacter'
-import { ItemCard } from './components/CreateCharacter/Items/ItemCard';
+import './styles/faall.min.css';
+import './styles/style.css';
 import { Testing } from './Testing';
 
 /*
@@ -28,42 +26,33 @@ import { Testing } from './Testing';
 
 */
 
-
 const App: React.FC = (props) => {
-  const char: iCharacterModel = blankCharacter();
-  const character: iCharacter = useCharacter(char);
-  return (
-    <Router >
-      <div className="page-container" >
+    const char: iCharacterModel = blankCharacter();
+    const character: iCharacter = useCharacter(char);
+    return (
+        <Router>
+            <div className='page-container'>
+                <Switch>
+                    {/* Create Character Page */}
+                    <Route path='/create' exact>
+                        <CreateCharacter character={character} />
+                    </Route>
 
+                    <Route path='/load' exact>
+                        <LoadCharacter character={character} />
+                    </Route>
 
-
-        <Switch >
-
-          {/* Create Character Page */}
-          <Route path="/create" exact>
-            <CreateCharacter character={character} />
-          </Route>
-
-          <Route path="/load" exact>
-            <LoadCharacter character={character} />
-          </Route>
-
-          {/* Home Page */}
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/testing" exact>
-            
-              <Testing />
-          </Route>
-
-        </Switch>
-
-
-      </div>
-    </Router >
-  );
-}
+                    {/* Home Page */}
+                    <Route path='/' exact>
+                        <Home />
+                    </Route>
+                    <Route path='/testing' exact>
+                        <Testing />
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
+    );
+};
 
 export default App;
