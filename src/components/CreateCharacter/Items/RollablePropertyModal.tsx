@@ -3,9 +3,8 @@ import { iCharacter } from 'src/models/character';
 import { useDice } from 'src/models/dice/dice';
 import { RollableProperty } from 'src/models/items';
 /* 
-
-This isnt working yet and neither is the item form, I think I need to start over with a cleaner approach...
-Finally its starting to work, just needs some more cleanup
+    // This isnt working yet and neither is the item form, I think I need to start over with a cleaner approach...
+    Finally its starting to work, just needs some more cleanup
 */
 interface RoallablePropertyModalProps {
     weaponProps: RollableProperty[];
