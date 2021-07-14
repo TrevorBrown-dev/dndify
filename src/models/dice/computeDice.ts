@@ -46,19 +46,17 @@ export const computeDice = (dice: string): DiceReport => {
         magnitude: -1,
         rolls: [],
         filteredRolls: [],
-        value: -1
+        value: -1,
     };
-    if (!(match && match[0] === dice))
-        return diceReport;
+    if (!(match && match[0] === dice)) return diceReport;
     //The dice string is guarenteed to be in proper format now
-    
-    const expr = dice.split(":");
+
+    const expr = dice.split(':');
     if (expr.length > 1) {
         const high = expr.shift();
-        if (high) 
-            diceReport.highestN = parseInt(high);
+        if (high) diceReport.highestN = parseInt(high);
     }
-    const expr2 = expr[0].split("d");
+    const expr2 = expr[0].split('d');
     diceReport.numOfDice = parseInt(expr2[0]);
     diceReport.magnitude = parseInt(expr2[1]);
     const rollDice = (size: number) => {
@@ -74,13 +72,11 @@ export const computeDice = (dice: string): DiceReport => {
 
     diceReport.rolls = diceArr;
     diceReport.filteredRolls = diceReport.rolls;
-    
 
     if (diceReport.highestN) {
         const sortedCopy = [...diceReport.rolls].sort((a, b) => a + b);
-        diceReport.filteredRolls = sortedCopy.splice(0, Math.min(diceReport.highestN, sortedCopy.length))
-    } 
+        diceReport.filteredRolls = sortedCopy.splice(0, Math.min(diceReport.highestN, sortedCopy.length));
+    }
     diceReport.value = diceReport.filteredRolls.reduce((a, b) => a + b);
     return diceReport;
-}
-
+};

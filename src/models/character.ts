@@ -32,7 +32,7 @@ export interface iCharacterModel {
     money: iMoneyModel;
     description: Description;
     hp: number;
-    items: iItemModel[]
+    items: iItemModel[];
     stats: iStatModel[];
     classes: iClassModel[];
     savingThrows: iSavingThrowModel;
@@ -47,7 +47,7 @@ export const blankCharacter = (): iCharacterModel => {
         background: '',
         alignment: '',
         backstory: '',
-        money: [0,0,0,0,0],
+        money: [0, 0, 0, 0, 0],
         items: [],
         description: blankDescription(),
         hp: 0,
@@ -129,7 +129,7 @@ export const useCharacter = (char: iCharacterModel) => {
             background,
         };
         return char;
-    }, [savingThrows, name, description, race, hp, classes, stats, proficiencies, background, otherProficiencies, alignment, backstory, items, items.items]);
+    }, [savingThrows, name, description, race, money, items, hp, classes, stats, proficiencies, background, otherProficiencies, alignment, backstory, items, items.items]);
 
     const deserialize = useCallback(
         (char: iCharacterModel) => {
@@ -151,7 +151,7 @@ export const useCharacter = (char: iCharacterModel) => {
         [savingThrows, otherProficiencies, proficiencies, setName, stats, classes, setDescription, setAlignment, setBackstory]
     );
 
-    const character= {
+    const character = {
         name,
         hp,
         alignment,

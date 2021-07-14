@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { iItemModel, RollableProperty } from 'src/models/items';
 interface RollableRowProps {
     rollableProps: RollableProperty;
@@ -83,7 +83,7 @@ export const RollablePropertyForm: React.FC<ItemFormProps> = (props) => {
         if (!weaponProps || weaponProps === undefined) return;
         const r = weaponProps.map((rp, index) => <RollableEditRow setItem={props.setItem} rollableProps={rp} index={index} key={index} />);
         setRows(r);
-    }, [weaponProps]);
+    }, [weaponProps, props.setItem]);
     return (
         <div className='rollable-property'>
             <div className='form'>

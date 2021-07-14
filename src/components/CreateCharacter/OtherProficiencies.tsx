@@ -9,15 +9,14 @@ interface ProficiencyProps extends CharacterProps {
 }
 const Proficiency: React.FC<ProficiencyProps> = ({ name, onDelete, character }) => {
     /* 
-        TODO: I need to add observers to the checkboxes. These need to update the character model appropriately.
+        // TODO: I need to add observers to the checkboxes. These need to update the character model appropriately.
     */
     const { proficiencies } = character.otherProficiencies;
     const key = name;
-    console.log(character);
     return (
-        <div className="center-grid-justified">
+        <div className="center-grid-justified ">
             <div className="left">
-                <div className="center-grid-justified">
+                <div className="center-grid-justified hoverable color-primary-hover">
                     <div className="left" style={{ marginRight: '1em' }}><TripleCheckBox id={`tp-${name}`}
                         value={proficiencies[key]?.proficiencyLevel as unknown as CheckState}
                         setValue={(value) => {

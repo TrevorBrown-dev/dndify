@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { CharacterProps, Section } from '..';
 import { iItemModel } from '../../../models/items';
 import { ItemType, ItemTypes } from '../../../models/items/ItemType';
@@ -36,12 +36,12 @@ const mapRarityLevels = (): JSX.Element[] => {
 
 interface SelectProps {
     onChange: React.ChangeEventHandler<HTMLSelectElement>;
-    myRef: React.RefObject<HTMLSelectElement>;
+    defaultValue: string;
 }
 const SelectItemType: React.FC<SelectProps> = (props) => {
     return (
-        <select onChange={props.onChange} ref={props.myRef} name='item-type' id='item-type' style={{ width: '100%', height: '100%' }}>
-            <option defaultValue='' style={{ color: 'darkgray' }}>
+        <select value={props.defaultValue} onChange={props.onChange} name='item-type' id='item-type' style={{ width: '100%', height: '100%' }}>
+            <option style={{ color: 'darkgray' }}>
                 Chose a Type...
             </option>
             {mapItemTypes()}
@@ -51,8 +51,8 @@ const SelectItemType: React.FC<SelectProps> = (props) => {
 
 const SelectRarity: React.FC<SelectProps> = (props) => {
     return (
-        <select onChange={props.onChange} ref={props.myRef} name='item-rarity' id='item-rarity' style={{ width: '100%', height: '100%' }}>
-            <option defaultValue='' style={{ color: 'darkgray' }}>
+        <select value={props.defaultValue} onChange={props.onChange} name='item-rarity' id='item-rarity' style={{ width: '100%', height: '100%' }}>
+            <option style={{ color: 'darkgray' }}>
                 Chose a Rarity...
             </option>
             {mapRarityLevels()}
@@ -70,19 +70,6 @@ const blankItem = {
     weaponProps: [],
 };
 export const Items: React.FC<CharacterProps> = ({ character }) => {
-    const itemRefs: { [key: string]: React.RefObject<any> } = {
-        name: useRef<HTMLInputElement>(null),
-        cost: useRef<HTMLInputElement>(null),
-        description: useRef<HTMLInputElement>(null),
-        weight: useRef<HTMLInputElement>(null),
-        rarity: useRef<HTMLSelectElement>(null),
-        type: useRef<HTMLSelectElement>(null),
-    };
-    const clearItemRefs = () => {
-        for (const ref in itemRefs) {
-            if (itemRefs[ref] && itemRefs[ref].current) itemRefs[ref].current.value = '';
-        }
-    };
     const [item, setItem] = useState<iItemModel>(blankItem);
     const renderItems = () => {
         return character.items.items.map((item, index) => {
@@ -94,7 +81,6 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
         if (!item.name) return;
         character.items.addItem(item);
         setItem(blankItem);
-        clearItemRefs();
     };
     /* 
         This form is massive and glitchy this project is spiraling out of control
@@ -109,30 +95,31 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
                                 type='text'
                                 id='item-name'
                                 placeholder='Name'
-                                ref={itemRefs.name}
                                 onChange={(e) =>
                                     setItem((i) => ({
                                         ...i,
                                         name: e.target.value,
                                     }))
                                 }
+                                value={item.name}
                             />
                         </h3>
                     </div>
                     <div id='rarity'>
                         <SelectRarity
-                            myRef={itemRefs.rarity}
+                            defaultValue={`${item.rarity || ""}`}
                             onChange={(e) =>
                                 setItem((i) => ({
                                     ...i,
                                     rarity: e.target.value,
                                 }))
                             }
+
                         />
                     </div>
                     <div id='type'>
                         <SelectItemType
-                            myRef={itemRefs.type}
+                            defaultValue={`${item.type || ""}`}
                             onChange={(e) => {
                                 console.log(e.target.value);
                                 setItem((i) => ({
@@ -154,6 +141,7 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
                                     weight: e.target.value,
                                 }))
                             }
+                            value={item.weight}
                         />
                     </div>
                     <div id='cost'>
@@ -168,6 +156,7 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
                                 }))
                             }
                             placeholder='Cost'
+                            value={item.cost}
                         />
                     </div>
                     <div id='desc'>
@@ -188,6 +177,7 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
                                 padding: '1em',
                                 resize: 'none',
                             }}
+                            value={item.description}
                         ></textarea>
                     </div>
                     <div id='rollable-property'>

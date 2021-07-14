@@ -794,7 +794,7 @@ html > ::-webkit-scrollbar {
   font-size: 2.5em;
 }
 .item-card-content .description {
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 1em;
   text-align: left;
   border: 1px solid black;

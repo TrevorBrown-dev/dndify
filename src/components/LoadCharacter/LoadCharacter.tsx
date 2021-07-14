@@ -1,15 +1,15 @@
-import { useDice } from "../../models/dice/dice";
+// import { useDice } from "../../models/dice/dice";
 import { CharacterProps } from "../CreateCharacter";
 import { SaveUploadCharacter } from "../SaveUploadCharacter";
 
 export const LoadCharacter: React.FC<CharacterProps> = ({ character }) => {
-    const { roll, DiceRoller } = useDice(character);
+    // const { roll, DiceRoller } = useDice(character);
     return (
         <>
             <div>
-                <SaveUploadCharacter character={ character }/>
-        </div>
-            <main className="page-main" style={{gridColumn: "2/-1"}}>
+                <SaveUploadCharacter character={character} />
+            </div>
+            <main className="page-main" style={{ gridColumn: "2/-1" }}>
                 <div className="load-page-container">
                     {/* 
                         I need to design this page properly. It should be
@@ -19,7 +19,7 @@ export const LoadCharacter: React.FC<CharacterProps> = ({ character }) => {
 
                     <div className="load-character-grid">
                         <div className="load-character-main">
-                            <header className="load-player-header" style={{backgroundColor: 'hotpink'}}>
+                            <header className="load-player-header" style={{ backgroundColor: 'hotpink' }}>
                                 Header
                             </header>
                             main
@@ -27,10 +27,10 @@ export const LoadCharacter: React.FC<CharacterProps> = ({ character }) => {
                         <aside className="load-character-sidebar">
                             aside
                         </aside>
-                        </div>
+                    </div>
                 </div>
             </main>
         </>
     );
-    
+
 }

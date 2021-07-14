@@ -1,5 +1,4 @@
 import React, { useCallback, useState } from 'react';
-import { CharacterProps } from './CreateCharacter';
 interface ModalProps {
     active: boolean;
     setActive: (active: boolean) => void;

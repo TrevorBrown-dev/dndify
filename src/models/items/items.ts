@@ -21,10 +21,6 @@ export interface RollableProperty {
     define a weapon. A name, description, rarity and a set of rollable properties.
 */
 
-
-
-
-
 /* 
 Rollable Properties:
 A rollable property is an additional property added onto an item, this could be like the dice for a weapon or
@@ -61,7 +57,7 @@ export const useItems = (character: iCharacterModel) => {
                 return items;
             });
         },
-        [setItems]
+        [setItems, items]
     );
     const serialize = useCallback(() => items, [items]);
     const deserialize = useCallback((items: iItemModel[]) => setItems(items), [setItems]);
