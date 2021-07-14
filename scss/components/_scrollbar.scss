@@ -2,7 +2,7 @@
 html {
     & > ::-webkit-scrollbar {
         position: absolute;
-        width: 1em;
+        width: 0.8em;
 
         background-color: $color_off_dark;
     }

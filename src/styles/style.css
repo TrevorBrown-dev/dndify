@@ -274,7 +274,7 @@ h6 {
 /* custom scrollbar */
 html > ::-webkit-scrollbar {
   position: absolute;
-  width: 1em;
+  width: 0.8em;
   background-color: #2d2d2d;
 }
 
@@ -987,6 +987,31 @@ button:hover {
 
 .back-button {
   width: 100%;
+}
+
+@keyframes rotate-chevron {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+.button-collapse {
+  display: block;
+  font-size: 1em;
+  position: relative;
+  top: 1em;
+  right: 1em;
+  float: right;
+}
+
+.rotate {
+  transition: all 0.2s ease;
+  transform: rotate(180deg);
+}
+.rotate.reverse {
+  transform: rotate(0deg);
 }
 
 .mini-stats {

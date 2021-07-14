@@ -19,11 +19,11 @@ export const RollablePropertyModal: React.FC<RoallablePropertyModalProps> = ({ w
             const classList = index !== selectedProp ? 'wp-row hoverable color-primary-hover ' : 'wp-row hoverable color-primary color-primary-hover';
             console.log('SELECTED: ', selectedProp);
             return (
-                <div className={classList} key={index} onClick={() => setSelectedProp(index)}>
+                <li className={classList} key={index} onClick={() => setSelectedProp(index)}>
                     <div className='wp-name'>{wp.name}</div>
                     <div className='wp-dice'>{wp.magnitude}</div>
                     <div className='wp-type'>{wp.magnitudeType}</div>
-                </div>
+                </li>
             );
         });
     }, [weaponProps, selectedProp, setSelectedProp]);
@@ -33,7 +33,7 @@ export const RollablePropertyModal: React.FC<RoallablePropertyModalProps> = ({ w
     };
     return (
         <div className='weapon-props-modal'>
-            <div id='wp-list'>{mapWeaponProps()}</div>
+            <ul id='wp-list'>{mapWeaponProps()}</ul>
             <div id='wp-dice-button'>
                 <i className='fas fa-dice-d20 hoverable color-primary-hover' onClick={handleClick}></i>
             </div>

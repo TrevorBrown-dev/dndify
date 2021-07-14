@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { WikiReference } from 'src/components/misc/WikiReference';
+import { useModal } from 'src/components/Modal';
 import { CharacterProps, Section } from '..';
 import { iItemModel } from '../../../models/items';
 import { ItemType, ItemTypes } from '../../../models/items/ItemType';
@@ -41,9 +43,7 @@ interface SelectProps {
 const SelectItemType: React.FC<SelectProps> = (props) => {
     return (
         <select value={props.defaultValue} onChange={props.onChange} name='item-type' id='item-type' style={{ width: '100%', height: '100%' }}>
-            <option style={{ color: 'darkgray' }}>
-                Chose a Type...
-            </option>
+            <option style={{ color: 'darkgray' }}>Chose a Type...</option>
             {mapItemTypes()}
         </select>
     );
@@ -52,9 +52,7 @@ const SelectItemType: React.FC<SelectProps> = (props) => {
 const SelectRarity: React.FC<SelectProps> = (props) => {
     return (
         <select value={props.defaultValue} onChange={props.onChange} name='item-rarity' id='item-rarity' style={{ width: '100%', height: '100%' }}>
-            <option style={{ color: 'darkgray' }}>
-                Chose a Rarity...
-            </option>
+            <option style={{ color: 'darkgray' }}>Chose a Rarity...</option>
             {mapRarityLevels()}
         </select>
     );
@@ -85,8 +83,19 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
     /* 
         This form is massive and glitchy this project is spiraling out of control
     */
+    const [toggleRpInfo, rpModal] = useModal(
+        <>
+            <p style={{ marginTop: '2em' }}>
+                These are <em>Rollable Properties</em>. You can attach dice to your items and spells. These are predefined values for quick rolling.
+            </p>
+        </>
+    );
+    const handleQuestionClick = () => {
+        toggleRpInfo();
+    };
     return (
         <Section header='Items' id='items' title='Items' wikiReference='https://www.dndbeyond.com/equipment' icon='fas fa-swords'>
+            {rpModal}
             <div className='create-sec-items'>
                 <div className='item-form'>
                     <div id='name'>
@@ -107,19 +116,18 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
                     </div>
                     <div id='rarity'>
                         <SelectRarity
-                            defaultValue={`${item.rarity || ""}`}
+                            defaultValue={`${item.rarity || ''}`}
                             onChange={(e) =>
                                 setItem((i) => ({
                                     ...i,
                                     rarity: e.target.value,
                                 }))
                             }
-
                         />
                     </div>
                     <div id='type'>
                         <SelectItemType
-                            defaultValue={`${item.type || ""}`}
+                            defaultValue={`${item.type || ''}`}
                             onChange={(e) => {
                                 console.log(e.target.value);
                                 setItem((i) => ({
@@ -181,7 +189,10 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
                         ></textarea>
                     </div>
                     <div id='rollable-property'>
-                        <h5 style={{ color: '#1f1f1f' }}>Add Rollable Property</h5>
+                        <h5 style={{ color: '#1f1f1f', overflow: 'visible' }}>
+                            Add Rollable Property
+                            <i title={'Wiki Reference'} onClick={handleQuestionClick} className='far fa-question-circle info hoverable-half' style={{ position: 'relative', top: '.1em' }}></i>
+                        </h5>
                         <RollablePropertyForm item={item} setItem={setItem} />
                     </div>
                     <div id='submit'>

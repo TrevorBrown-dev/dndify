@@ -19,3 +19,29 @@ button {
 .back-button {
     width: 100%;
 }
+
+@keyframes rotate-chevron {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+.button-collapse {
+    display: block;
+    font-size: 1em;
+    position: relative;
+    top: 1em;
+    right: 1em;
+    float: right;
+}
+
+.rotate {
+    transition: all 0.2s ease;
+    transform: rotate(180deg);
+    &.reverse {
+        transform: rotate(0deg);
+    }
+}
