@@ -845,6 +845,7 @@ html > ::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   text-align: center;
+  justify-content: center;
   grid-area: sc-school;
 }
 .spell-card-header #sc-school span {
