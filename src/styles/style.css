@@ -814,6 +814,75 @@ html > ::-webkit-scrollbar {
   top: 4px;
 }
 
+.spell-card-container {
+  border-radius: 15px;
+  margin: 0.1em;
+  padding: 1em;
+  width: 10em;
+  height: 18em;
+  border: 2px solid #2d2d2d;
+  background-color: #e6e6e6;
+}
+.spell-card-content {
+  display: grid;
+  grid-template-rows: 25% 50% 25%;
+  grid-template-columns: 100%;
+}
+.spell-card-header {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 25%);
+  grid-template-areas: "sc-name sc-name sc-level sc-school" "sc-range sc-range  sc-dur sc-dur" "sc-cast sc-cast sc-components sc-components";
+}
+.spell-card-header #sc-name {
+  grid-area: sc-name;
+  font-size: 0.7em;
+}
+.spell-card-header #sc-level {
+  grid-area: sc-level;
+}
+.spell-card-header #sc-school {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  grid-area: sc-school;
+}
+.spell-card-header #sc-school span {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 0.5em;
+}
+.spell-card-header #sc-range {
+  grid-area: sc-range;
+  font-size: 0.5em;
+}
+.spell-card-header #sc-dur {
+  font-size: 0.5em;
+  grid-area: sc-dur;
+}
+.spell-card-header #sc-cast {
+  font-size: 0.5em;
+  grid-area: sc-cast;
+}
+.spell-card-header #sc-components {
+  font-size: 0.5em;
+  grid-area: sc-components;
+}
+.spell-card-description .description {
+  overflow-y: auto;
+  height: 100%;
+  padding: 1em;
+  text-align: left;
+  border: 1px solid black;
+  font-size: 0.6em;
+}
+.spell-card-rollable .rollable {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  font-size: 2.5em;
+}
+
 .item-modal {
   display: grid;
   grid-template-rows: 2fr 1fr;

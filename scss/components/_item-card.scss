@@ -59,3 +59,84 @@
         }
     }
 }
+
+.spell-card {
+    &-container {
+        $scale: 4;
+        border-radius: 15px;
+        margin: 0.1em;
+        padding: 1em;
+        width: 2.5em * $scale;
+        height: 4.5em * $scale;
+        border: 2px solid $color_off_dark;
+        background-color: $color_off_light;
+    }
+    &-content {
+        display: grid;
+        grid-template-rows: 25% 50% 25%;
+        grid-template-columns: 100%;
+    }
+
+    &-header {
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: repeat(4, 25%);
+        grid-template-areas:
+            'sc-name sc-name sc-level sc-school'
+            'sc-range sc-range  sc-dur sc-dur'
+            'sc-cast sc-cast sc-components sc-components';
+
+        #sc-name {
+            grid-area: sc-name;
+            font-size: 0.7em;
+        }
+        #sc-level {
+            grid-area: sc-level;
+        }
+        #sc-school {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            grid-area: sc-school;
+            span {
+                display: block;
+                margin-top: 0.5em;
+                font-size: 0.5em;
+            }
+        }
+        #sc-range {
+            grid-area: sc-range;
+            font-size: 0.5em;
+        }
+        #sc-dur {
+            font-size: 0.5em;
+            grid-area: sc-dur;
+        }
+        #sc-cast {
+            font-size: 0.5em;
+            grid-area: sc-cast;
+        }
+        #sc-components {
+            font-size: 0.5em;
+            grid-area: sc-components;
+        }
+    }
+    &-description {
+        .description {
+            overflow-y: auto;
+            height: 100%;
+            padding: 1em;
+            text-align: left;
+            border: 1px solid $color_dark;
+            font-size: 0.6em;
+        }
+    }
+    &-rollable {
+        .rollable {
+            display: grid;
+            place-items: center;
+            height: 100%;
+            font-size: 2.5em;
+        }
+    }
+}

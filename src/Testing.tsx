@@ -1,31 +1,30 @@
+import { SpellCard } from './components/CreateCharacter/Spells/SpellCard';
 import { useModal } from './components/Modal';
-
+import { SPELL_LEVEL, SPELL_SCHOOL } from './models/spells';
+const spells = {
+    'Acid Splash': {
+        name: 'Acid Splash',
+        casting_time: 'instant',
+        school: SPELL_SCHOOL.CONJURATION,
+        level: SPELL_LEVEL.CANTRIP,
+        component: 'V, S',
+        duration: 'Instantaneous',
+        description:
+            'You hurl a bubble of acid. Choose one creature within range, or choose two creatures within range that are within 5 feet of each other. A target must succeed on a Dexterity saving throw or take 1d6 acid damage.',
+        range: '60 feet',
+        spellProps: [],
+    },
+};
 export const Testing: React.FC = () => {
-    const [toggleActive, Modal] = useModal(
-        <>
-            <div className="item-modal">
-                <div className="item-form">Form</div>
-                <div className="rollable-prop-form">rollable</div>
-            </div>
-        </>
-    );
     return (
         <div
             style={{
                 background: 'white',
                 height: '100vh',
                 gridColumn: '1/-1',
-            }}>
-            <button onClick={() => toggleActive()}>Toggle Active</button>
-            {Modal}
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Nostrum aliquid quasi exercitationem fugiat rem, quae
-                perferendis hic quas, cum eaque quibusdam consectetur similique
-                fuga, illo provident ab soluta voluptatem harum. Optio odio modi
-                tenetur! Minima inventore ipsa vero vitae commodi quos aliquid
-                obcaecati ratione possimus iusto, hic esse minus culpa?
-            </p>
+            }}
+        >
+            <SpellCard spell={spells['Acid Splash']} />
         </div>
     );
 };
