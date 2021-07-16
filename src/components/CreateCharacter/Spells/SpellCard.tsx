@@ -4,7 +4,7 @@ interface SpellCardProps {
     spell: iSpellModel;
 }
 export const SpellCard: React.FC<SpellCardProps> = ({ spell }) => {
-    const { name, level, range, casting_time, component, description, duration, school, spellProps } = spell;
+    const { name, level, range, casting_time, component, description, duration, school, rollableProps } = spell;
     return (
         <div className='spell-card-container'>
             <div className='spell-card-content'>

@@ -825,14 +825,15 @@ html > ::-webkit-scrollbar {
 }
 .spell-card-content {
   display: grid;
-  grid-template-rows: 25% 50% 25%;
+  grid-template-rows: 25% 50% 15%;
   grid-template-columns: 100%;
 }
 .spell-card-header {
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: repeat(4, 25%);
-  grid-template-areas: "sc-name sc-name sc-level sc-school" "sc-range sc-range  sc-dur sc-dur" "sc-cast sc-cast sc-components sc-components";
+  grid-template-rows: 1fr 1fr 0.5em 0.5em;
+  grid-template-columns: repeat(10, 10%);
+  margin-bottom: 1em;
+  grid-template-areas: "sc-name sc-name sc-name sc-name sc-name sc-name sc-school sc-school sc-school sc-school" "sc-level sc-level sc-level sc-level sc-level sc-level sc-level sc-level sc-level sc-level" "sc-range sc-range sc-range sc-range sc-range sc-dur sc-dur sc-dur sc-dur sc-dur" "sc-cast sc-cast sc-cast sc-cast sc-cast sc-components sc-components sc-components sc-components sc-components";
 }
 .spell-card-header #sc-name {
   grid-area: sc-name;
@@ -842,6 +843,7 @@ html > ::-webkit-scrollbar {
   grid-area: sc-level;
 }
 .spell-card-header #sc-school {
+  width: 100%;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -850,6 +852,7 @@ html > ::-webkit-scrollbar {
 }
 .spell-card-header #sc-school span {
   display: block;
+  width: 100%;
   margin-top: 0.5em;
   font-size: 0.5em;
 }
@@ -876,6 +879,9 @@ html > ::-webkit-scrollbar {
   text-align: left;
   border: 1px solid black;
   font-size: 0.6em;
+}
+.spell-card-rollable {
+  margin-top: 0.5em;
 }
 .spell-card-rollable .rollable {
   display: grid;

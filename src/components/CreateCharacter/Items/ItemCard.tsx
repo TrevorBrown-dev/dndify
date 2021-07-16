@@ -18,9 +18,9 @@ const defaultItem: iItemModel = {
     weight: '20lbs',
 };
 export const ItemCard: React.FC<{ item?: iItemModel; character: iCharacter }> = ({ item = defaultItem, character }) => {
-    let { name, description, cost, rarity, type, weaponProps, weight } = item;
+    let { name, description, cost, rarity, type, rollableProps: weaponProps, weight } = item;
     console.log('CREATED ITEM', item);
-    const [toggleOpen, modal] = useModal(<RollablePropertyModal weaponProps={item.weaponProps || []} character={character} />);
+    const [toggleOpen, modal] = useModal(<RollablePropertyModal weaponProps={item.rollableProps || []} character={character} />);
     weaponProps = [];
     weaponProps.push({
         name: 'Attack',

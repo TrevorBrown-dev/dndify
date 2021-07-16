@@ -28,15 +28,16 @@ some sort of effect. Defining rollable properties allows them to be automaticall
 
 TODO: Add "+- mod" to useDice ex: + con to add constitution modifier.
 */
-
-export interface iItemModel {
+export interface Rollable {
+    rollableProps: RollableProperty[];
+}
+export interface iItemModel extends Rollable {
     name: string;
     rarity?: Rarity;
     description?: string;
     cost?: string;
     weight?: string;
     type?: ItemType;
-    weaponProps?: RollableProperty[];
 }
 
 export const useItems = (character: iCharacterModel) => {

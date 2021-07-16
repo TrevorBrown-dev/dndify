@@ -1,6 +1,5 @@
-import { string } from "mathjs"
 import { useCallback, useState } from "react";
-import { RollableProperty } from "../items";
+import { Rollable, RollableProperty } from "../items";
 
 export enum SPELL_LEVEL {
     CANTRIP,
@@ -44,7 +43,7 @@ export const mapSpellSchool = (school: SPELL_SCHOOL) => {
 /**
  * This is the schema for a single spell
  */
-export interface iSpellModel {
+export interface iSpellModel extends Rollable {
     name: string;
     level: SPELL_LEVEL;
     school: SPELL_SCHOOL;
@@ -53,7 +52,6 @@ export interface iSpellModel {
     component: string;
     duration: string;
     description: string;
-    spellProps: RollableProperty[]
 
 }
 
@@ -71,7 +69,7 @@ export const blankSpell: iSpellModel = {
     component: '',
     duration: '',
     description: '',
-    spellProps: []
+    rollableProps: []
 }
 
 

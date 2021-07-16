@@ -9,11 +9,11 @@ const RollableEditRow: React.FC<RollableRowProps> = ({ rollableProps, setItem, i
     const { name, magnitude, magnitudeType } = rollableProps;
     const onRemoveClick = () => {
         setItem((i: iItemModel) => {
-            const wp = i.weaponProps || [];
+            const wp = i.rollableProps || [];
 
             return {
                 ...i,
-                weaponProps: wp.filter((rp, i) => index !== i),
+                rollableProps: wp.filter((rp, i) => index !== i),
             };
         });
     };
@@ -51,8 +51,8 @@ const RollableEditForm: React.FC<ItemFormProps> = ({ item, setItem }) => {
 
     const onAddClick = () => {
         setItem((i: iItemModel) => {
-            const wps: RollableProperty[] = i.weaponProps || [];
-            return { ...i, weaponProps: [...wps, getPropsFromRefs()] };
+            const wps: RollableProperty[] = i.rollableProps || [];
+            return { ...i, rollableProps: [...wps, getPropsFromRefs()] };
         });
         clearRefs();
     };
@@ -77,7 +77,7 @@ const RollableEditForm: React.FC<ItemFormProps> = ({ item, setItem }) => {
 
 export const RollablePropertyForm: React.FC<ItemFormProps> = (props) => {
     const { item } = props;
-    const { weaponProps } = item;
+    const { rollableProps: weaponProps } = item;
     const [rows, setRows] = useState<JSX.Element[]>([]);
     useEffect(() => {
         if (!weaponProps || weaponProps === undefined) return;

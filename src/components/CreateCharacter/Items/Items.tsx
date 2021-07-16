@@ -65,7 +65,7 @@ const blankItem = {
     weight: '',
     rarity: Rarity.COMMON,
     type: ItemType.WEAPON,
-    weaponProps: [],
+    rollableProps: [],
 };
 export const Items: React.FC<CharacterProps> = ({ character }) => {
     const [item, setItem] = useState<iItemModel>(blankItem);
@@ -120,7 +120,7 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
                             onChange={(e) =>
                                 setItem((i) => ({
                                     ...i,
-                                    rarity: e.target.value,
+                                    rarity: parseInt(e.target.value),
                                 }))
                             }
                         />
@@ -132,7 +132,7 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
                                 console.log(e.target.value);
                                 setItem((i) => ({
                                     ...i,
-                                    type: e.target.value,
+                                    type: parseInt(e.target.value),
                                 }));
                             }}
                         />
