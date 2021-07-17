@@ -75,7 +75,7 @@
 
     &-header {
         display: grid;
-        grid-template-rows: 1fr 1fr 0.5em 0.5em;
+        grid-template-rows: 1fr 1em 0.5em 0.5em;
         grid-template-columns: repeat(10, 10%);
         margin-bottom: 1em;
         grid-template-areas:
@@ -89,7 +89,9 @@
             font-size: 0.7em;
         }
         #sc-level {
+            font-size: 0.7em;
             grid-area: sc-level;
+            text-align: center;
         }
         #sc-school {
             width: 100%;

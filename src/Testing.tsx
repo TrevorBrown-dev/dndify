@@ -1,5 +1,8 @@
 import { SpellCard } from './components/CreateCharacter/Spells/SpellCard';
-import { iSpellModel, SPELL_LEVEL, SPELL_SCHOOL } from './models/spells';
+import { usePopup } from './components/misc/Notification';
+import { iSpellModel } from './models/spells';
+import { SPELL_LEVEL } from './models/spells/SpellLevel';
+import { SPELL_SCHOOL } from './models/spells/SpellSchool';
 /* 
     TODO: Rework the RollableProp form to be used twice.
     TODO: Rework the RollableProp modal to be used twice.
@@ -22,7 +25,12 @@ const spells: SpellRegistry = {
         rollableProps: [],
     },
 };
+
+
+
+
 export const Testing: React.FC = () => {
+    const [setVisible, Popup] = usePopup("Hello There!");
     return (
         <div
             style={{
@@ -31,7 +39,9 @@ export const Testing: React.FC = () => {
                 gridColumn: '1/-1',
             }}
         >
+            <button onClick={() => setVisible()}>Set Visible</button>
             <SpellCard spell={spells['Acid Splash']} />
+            {Popup()}
         </div>
     );
 };

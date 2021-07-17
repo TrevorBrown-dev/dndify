@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { Dispatch, useState } from 'react';
 import { WikiReference } from 'src/components/misc/WikiReference';
 import { useModal } from 'src/components/Modal';
 import { CharacterProps, Section } from '..';
-import { iItemModel } from '../../../models/items';
+import { iItemModel, Rollable } from '../../../models/items';
 import { ItemType, ItemTypes } from '../../../models/items/ItemType';
 import { Rarities, Rarity } from '../../../models/items/Rarity';
 import { ItemCard } from './ItemCard';
@@ -58,7 +58,7 @@ const SelectRarity: React.FC<SelectProps> = (props) => {
     );
 };
 
-const blankItem = {
+const blankItem: iItemModel = {
     name: '',
     cost: '',
     description: '',
@@ -193,7 +193,7 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
                             Add Rollable Property
                             <i title={'Wiki Reference'} onClick={handleQuestionClick} className='far fa-question-circle info hoverable-half' style={{ position: 'relative', top: '.1em' }}></i>
                         </h5>
-                        <RollablePropertyForm item={item} setItem={setItem} />
+                        <RollablePropertyForm item={item} setItem={setItem as Dispatch<React.SetStateAction<Rollable>>} />
                     </div>
                     <div id='submit'>
                         <button

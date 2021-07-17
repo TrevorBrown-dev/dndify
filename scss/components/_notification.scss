@@ -1,0 +1,54 @@
+@keyframes in-from-right {
+    0% {
+        right: -11em;
+    }
+    80% {
+        right: 1em;
+    }
+    100% {
+        right: 0em;
+    }
+}
+
+@keyframes fill-from-right {
+    from {
+        left: 0;
+        transform: translateX(100%);
+    }
+    to {
+        left: 0;
+        transform: translateX(-10%);
+    }
+}
+
+.notification {
+    z-index: 0 !important;
+    animation: in-from-right 0.5s ease forwards;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background-color: $color_off_light;
+    border: 2px solid $color_off_primary;
+    width: 11em;
+    height: 3em;
+    padding: 0.4em;
+    $radius: 6px;
+    overflow: hidden;
+    border-radius: $radius 0px 0px $radius;
+    .content {
+        position: absolute;
+        z-index: 2 !important;
+    }
+    .fill {
+        z-index: 1 !important;
+        transform: translateX(100%);
+        top: 0;
+        animation: fill-from-right 4s ease forwards;
+        animation-delay: 0.1s;
+
+        position: absolute;
+        width: 110%;
+        height: 100%;
+        background-color: rgba($color_off_primary, 50%);
+    }
+}

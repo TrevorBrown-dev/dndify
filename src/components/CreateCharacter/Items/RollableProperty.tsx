@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { iItemModel, RollableProperty } from 'src/models/items';
+import React, { Dispatch, useEffect, useState } from 'react';
+import { SetStateAction } from 'react';
+import { iItemModel, Rollable, RollableProperty } from 'src/models/items';
 interface RollableRowProps {
     rollableProps: RollableProperty;
     index: number;
-    setItem: (item: React.SetStateAction<iItemModel>) => void;
+    setItem: (item: React.SetStateAction<Rollable>) => void;
 }
 const RollableEditRow: React.FC<RollableRowProps> = ({ rollableProps, setItem, index }) => {
     const { name, magnitude, magnitudeType } = rollableProps;
     const onRemoveClick = () => {
-        setItem((i: iItemModel) => {
+        setItem((i: Rollable) => {
             const wp = i.rollableProps || [];
 
             return {
@@ -30,8 +31,8 @@ const RollableEditRow: React.FC<RollableRowProps> = ({ rollableProps, setItem, i
     );
 };
 interface ItemFormProps {
-    item: iItemModel;
-    setItem: (item: React.SetStateAction<iItemModel>) => void;
+    item: Rollable;
+    setItem: Dispatch<SetStateAction<Rollable>>;
 }
 
 const RollableEditForm: React.FC<ItemFormProps> = ({ item, setItem }) => {
@@ -50,7 +51,7 @@ const RollableEditForm: React.FC<ItemFormProps> = ({ item, setItem }) => {
     };
 
     const onAddClick = () => {
-        setItem((i: iItemModel) => {
+        setItem((i: Rollable) => {
             const wps: RollableProperty[] = i.rollableProps || [];
             return { ...i, rollableProps: [...wps, getPropsFromRefs()] };
         });
@@ -77,13 +78,13 @@ const RollableEditForm: React.FC<ItemFormProps> = ({ item, setItem }) => {
 
 export const RollablePropertyForm: React.FC<ItemFormProps> = (props) => {
     const { item } = props;
-    const { rollableProps: weaponProps } = item;
+    const { rollableProps } = item;
     const [rows, setRows] = useState<JSX.Element[]>([]);
     useEffect(() => {
-        if (!weaponProps || weaponProps === undefined) return;
-        const r = weaponProps.map((rp, index) => <RollableEditRow setItem={props.setItem} rollableProps={rp} index={index} key={index} />);
+        if (!rollableProps || rollableProps === undefined) return;
+        const r = rollableProps.map((rp, index) => <RollableEditRow setItem={props.setItem} rollableProps={rp} index={index} key={index} />);
         setRows(r);
-    }, [weaponProps, props.setItem]);
+    }, [rollableProps, props.setItem]);
     return (
         <div className='rollable-property'>
             <div className='form'>

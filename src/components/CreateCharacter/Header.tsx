@@ -12,7 +12,7 @@ const StatHeaders: React.FC<CharacterProps> = ({ character }) => {
 
 
     const onStatHeaderClick = (stat: iStatModel) => {
-        character.stats.setValue({ ...stat, value: dice.roll("3:4d6").value});
+        character.stats.setValue({ ...stat, value: dice.roll("3:4d6").value });
     }
     const rollStats = (character: iCharacter) => {
         const { stats } = character.stats;
@@ -39,7 +39,7 @@ const StatHeaders: React.FC<CharacterProps> = ({ character }) => {
 
     return (
         <div className="stat-headers">
-            <i className="fas fa-dice stat-dice" title="Roll all Stats" onClick={() => rollStats(character)}></i>
+            <i className="fas fa-dice stat-dice" style={{ position: 'relative', top: '-.3em' }} title="Roll all Stats" onClick={() => rollStats(character)}></i>
             {buildHeaders(character)}
         </div>
     );

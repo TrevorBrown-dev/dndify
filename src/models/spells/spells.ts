@@ -1,44 +1,7 @@
-import { useCallback, useState } from "react";
-import { Rollable, RollableProperty } from "../items";
-
-export enum SPELL_LEVEL {
-    CANTRIP,
-    FIRST,
-    SECOND,
-    THIRD,
-    FOURTH,
-    FIFTH,
-    SIXTH,
-    SEVENTH,
-    EIGHTH,
-    NINTH
-
-}
-export enum SPELL_SCHOOL {
-    NONE = '',
-    ABJURATION = 'Abjuration',
-    CONJURATION = 'Conjuration',
-    DIVINATION='Divination',
-    ENCHANTMENT='Enchantment',
-    EVOCATION='Evocation',
-    ILLUSION='Illusion',
-    NECROMANCY='Necromancy'
-}
-
-export const mapSpellSchool = (school: SPELL_SCHOOL) => {
-    const icons: { [key: string]: string } = {
-        [SPELL_SCHOOL.NONE]: '',
-        [SPELL_SCHOOL.ABJURATION]: 'fas fa-shield-cross',
-        [SPELL_SCHOOL.CONJURATION]: 'fas fa-construction',
-        [SPELL_SCHOOL.DIVINATION]: 'fas fa-scroll-old',
-        [SPELL_SCHOOL.ENCHANTMENT]: 'fas fa-hand-sparkles',
-        [SPELL_SCHOOL.EVOCATION]: 'fas fa-fire',
-        [SPELL_SCHOOL.ILLUSION]: 'fas fa-smoke',
-        [SPELL_SCHOOL.NECROMANCY]:'fas fa-skull'
-    }
-    
-    return icons[school];
-} 
+import { useCallback, useState } from 'react';
+import { Rollable } from '../items';
+import { SPELL_LEVEL } from './SpellLevel';
+import { SPELL_SCHOOL } from './SpellSchool';
 
 /**
  * This is the schema for a single spell
@@ -52,7 +15,6 @@ export interface iSpellModel extends Rollable {
     component: string;
     duration: string;
     description: string;
-
 }
 
 /**
@@ -60,6 +22,7 @@ export interface iSpellModel extends Rollable {
  * Every interface will come with a blank version so there is always a default value
  * for everything
  */
+console.log(SPELL_LEVEL);
 export const blankSpell: iSpellModel = {
     name: '',
     level: SPELL_LEVEL.CANTRIP,
@@ -69,40 +32,45 @@ export const blankSpell: iSpellModel = {
     component: '',
     duration: '',
     description: '',
-    rollableProps: []
-}
-
-
+    rollableProps: [],
+};
 
 /**
  * A template of an array for spells. The array should have exactly 10 indicies in the first direction
  * Each index in the first direction represents the level of the spell.
- * 
+ *
  * [...cantrips],[...first],[...second],[...third],[...fourth],[...fifth],[...sixth],[...seventh],[...eighth],[...ninth]
- * 
+ *
  * @type {iSpellModel[][]}
  */
-export const blankSpells: iSpellModel[][] = [[], [], [], [], [], [], [], [], [], []]
+export const blankSpells: iSpellModel[][] = [[], [], [], [], [], [], [], [], [], []];
 
 /**
- * 
+ *
  * @param incomingSpells {iSpellModel[][]} The array of spells to be deserialized
  */
 export const useSpells = (incomingSpells: iSpellModel[][] = blankSpells) => {
     const [spells, setSpells] = useState(incomingSpells);
 
-    const addSpell = useCallback((spell: iSpellModel) => setSpells(s => {
-        s[spell.level].push(spell);
-        return s;
-    }), [setSpells])
+    const addSpell = useCallback(
+        (spell: iSpellModel) =>
+            setSpells((s) => {
+                s[spell.level].push(spell);
+                return s;
+            }),
+        [setSpells]
+    );
 
-    const removeSpell = useCallback((coords: [number, number]) => {
-        const [x, y] = coords;
-        setSpells(spells => {
-            spells[x].splice(y, 1);
-            return spells;
-        })
-    }, [setSpells])
+    const removeSpell = useCallback(
+        (coords: [number, number]) => {
+            const [x, y] = coords;
+            setSpells((spells) => {
+                spells[x].splice(y, 1);
+                return spells;
+            });
+        },
+        [setSpells]
+    );
 
     const serialize = useCallback(() => spells, [spells]);
     const deserialize = useCallback((spells: iSpellModel[][]) => setSpells(spells), [setSpells]);
@@ -113,10 +81,9 @@ export const useSpells = (incomingSpells: iSpellModel[][] = blankSpells) => {
         addSpell,
         removeSpell,
         serialize,
-        deserialize
-    }
+        deserialize,
+    };
     return obj;
-}
-
+};
 
 export type iSpells = ReturnType<typeof useSpells>;
