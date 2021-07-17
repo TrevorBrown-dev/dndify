@@ -60,16 +60,16 @@ const RollableEditForm: React.FC<ItemFormProps> = ({ item, setItem }) => {
 
     return (
         <div className='rp-form'>
-            <div id='rp-name'>
+            <div className='rp-name'>
                 <input type='text' value={rpVals.name} onChange={(e) => setRpVals((v) => ({ ...v, name: e.target.value }))} placeholder='Name' />
             </div>
-            <div id='rp-dice'>
+            <div className='rp-dice'>
                 <input type='text' value={rpVals.magnitude} onChange={(e) => setRpVals((v) => ({ ...v, magnitude: e.target.value }))} placeholder='Dice' />
             </div>
-            <div id='rp-type'>
+            <div className='rp-type'>
                 <input type='text' value={rpVals.magnitudeType} onChange={(e) => setRpVals((v) => ({ ...v, magnitudeType: e.target.value }))} placeholder='Type' />
             </div>
-            <div id='rp-add'>
+            <div className='rp-add'>
                 <i className='far fa-plus-square hoverable' onClick={onAddClick}></i>
             </div>
         </div>

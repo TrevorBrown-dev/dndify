@@ -4,6 +4,7 @@ import { iItemModel, useItems } from './items/items';
 import { iMoney, iMoneyModel, useMoney } from './money';
 import { blankProficiencies, iProficienciesModel, useProficiencies } from './proficiencies';
 import { iSavingThrowModel, useSavingThrows } from './savingThrows';
+import { blankSpells, iSpellModel, useSpells } from './spells';
 import { iStatModel, useStats } from './stats';
 export interface iSerializable<T> {
     serialize: () => T;
@@ -32,6 +33,7 @@ export interface iCharacterModel {
     money: iMoneyModel;
     description: Description;
     hp: number;
+    spells: iSpellModel[][];
     items: iItemModel[];
     stats: iStatModel[];
     classes: iClassModel[];
@@ -49,6 +51,7 @@ export const blankCharacter = (): iCharacterModel => {
         backstory: '',
         money: [0, 0, 0, 0, 0],
         items: [],
+        spells: blankSpells,
         description: blankDescription(),
         hp: 0,
         stats: [
@@ -107,6 +110,7 @@ export const useCharacter = (char: iCharacterModel) => {
     const otherProficiencies = useProficiencies(char.otherProficiencies);
     const money: iMoney = useMoney(char.money);
     const items = useItems(char);
+    const spells = useSpells(char.spells);
     const _proficiency = useCallback(() => {
         return 1 + Math.ceil(classes.totalLevel() / 4);
     }, [classes]);
@@ -124,12 +128,13 @@ export const useCharacter = (char: iCharacterModel) => {
             savingThrows: savingThrows.serialize(),
             proficiencies: proficiencies.serialize(),
             otherProficiencies: otherProficiencies.serialize(),
+            spells: spells.serialize(),
             items: items.serialize(),
             money: money.serialize(),
             background,
         };
         return char;
-    }, [savingThrows, name, description, race, money, items, hp, classes, stats, proficiencies, background, otherProficiencies, alignment, backstory, items, items.items]);
+    }, [savingThrows, name, spells, description, race, money, items, hp, classes, stats, proficiencies, background, otherProficiencies, alignment, backstory, items, items.items]);
 
     const deserialize = useCallback(
         (char: iCharacterModel) => {
@@ -142,13 +147,14 @@ export const useCharacter = (char: iCharacterModel) => {
             setRace(char.race);
             setDescription(char.description);
             setBackstory(char.backstory);
+            spells.deserialize(char.spells);
             savingThrows.deserialize(char.savingThrows);
             proficiencies.deserialize(char.proficiencies);
             otherProficiencies.deserialize(char.otherProficiencies);
             money.deserialize(char.money);
             setBackground(char.background);
         },
-        [savingThrows, otherProficiencies, proficiencies, setName, stats, classes, setDescription, setAlignment, setBackstory]
+        [savingThrows, otherProficiencies, spells, proficiencies, setName, stats, classes, setDescription, setAlignment, setBackstory]
     );
 
     const character = {
@@ -162,6 +168,7 @@ export const useCharacter = (char: iCharacterModel) => {
         setBackstory,
         setBackground,
         items,
+        spells,
         setAlignment,
         setName,
         setHP,

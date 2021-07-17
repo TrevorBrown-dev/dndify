@@ -10,6 +10,7 @@ export enum SPELL_LEVEL {
     EIGHTH,
     NINTH,
 }
+
 export const mapSpellLevel = (level: SPELL_LEVEL): string => {
     const map: { [key: number]: string } = {
         [SPELL_LEVEL.CANTRIP]: 'Cantrip',

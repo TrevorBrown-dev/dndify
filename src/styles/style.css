@@ -501,7 +501,7 @@ html > ::-webkit-scrollbar {
 .create-sec-items {
   display: grid;
   grid-template-rows: 1fr;
-  max-width: 75%;
+  max-width: 80%;
   row-gap: 1em;
   place-items: center;
 }
@@ -561,19 +561,37 @@ html > ::-webkit-scrollbar {
   max-width: 100%;
   overflow: hidden;
 }
-.create-sec-items .item-form #rollable-property .rollable-property {
-  margin-top: 1em;
-  max-width: 100%;
+
+.item-cards-container {
+  width: 100%;
+  display: grid;
+  place-items: center;
 }
-.create-sec-items .item-form #rollable-property .rollable-property .rp-form {
+
+.item-cards {
+  max-height: 41em;
+  font-size: 0.8em;
+  padding: 1em;
+  border: 1px solid black;
+  display: flex;
+  max-width: 32.7em;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.rollable-property {
+  margin-top: 1em;
+}
+.rollable-property .rp-form {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 30% 30% 30% 10%;
 }
-.create-sec-items .item-form #rollable-property .rollable-property .rp-form i {
+.rollable-property .rp-form i {
   font-size: 1.5em;
 }
-.create-sec-items .item-form #rollable-property .rollable-property .list {
+.rollable-property .list {
   margin-top: 0.7em;
   border: 1px solid #fb898e;
   border-radius: 2px;
@@ -582,10 +600,10 @@ html > ::-webkit-scrollbar {
   max-height: 15.5em;
   overflow-y: scroll;
 }
-.create-sec-items .item-form #rollable-property .rollable-property .list > :not(:first-child) {
+.rollable-property .list > :not(:first-child) {
   margin-top: 1em;
 }
-.create-sec-items .item-form #rollable-property .rollable-property .list .rollable-row {
+.rollable-property .list .rollable-row {
   color: #cdcdcd;
   font-weight: 200;
   display: grid;
@@ -593,38 +611,63 @@ html > ::-webkit-scrollbar {
   grid-template-areas: "rr-name rr-dice rr-type rr-trash";
   border-bottom: 1px dashed #e6e6e6;
 }
-.create-sec-items .item-form #rollable-property .rollable-property .list .rollable-row > * {
+.rollable-property .list .rollable-row > * {
   padding: 0.5em;
 }
-.create-sec-items .item-form #rollable-property .rollable-property .list .rollable-row #rr-name {
+.rollable-property .list .rollable-row .rr-name {
   grid-area: rr-name;
 }
-.create-sec-items .item-form #rollable-property .rollable-property .list .rollable-row #rr-dice {
+.rollable-property .list .rollable-row .rr-dice {
   grid-area: rr-dice;
 }
-.create-sec-items .item-form #rollable-property .rollable-property .list .rollable-row #rr-type {
+.rollable-property .list .rollable-row .rr-type {
   grid-area: rr-type;
 }
-.create-sec-items .item-form #rollable-property .rollable-property .list .rollable-row #rr-trash {
+.rollable-property .list .rollable-row .rr-trash {
   grid-area: rr-trash;
 }
-.create-sec-items .item-cards-container {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  place-items: center;
+
+.create-sec-spells {
+  width: 80%;
 }
-.create-sec-items .item-cards {
-  max-height: 41em;
-  font-size: 0.8em;
-  padding: 1em;
-  border: 1px solid black;
-  display: flex;
-  max-width: 34.5em;
-  flex-wrap: wrap;
-  overflow-y: auto;
+.create-sec-spells .submit button {
   width: 100%;
-  height: 100%;
+  margin: 1em 0em;
+}
+.create-sec-spells .spell-form {
+  gap: 0.5em;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 1fr 1fr 3fr;
+  grid-template-areas: "sf-name sf-name sf-name sf-name" "sf-level sf-level sf-school sf-school" "sf-casting-time sf-range sf-component sf-duration" "sf-desc sf-desc sf-desc sf-desc";
+}
+.create-sec-spells .spell-form input {
+  max-width: 100%;
+  width: 100% !important;
+}
+.create-sec-spells #sf-name {
+  grid-area: sf-name;
+}
+.create-sec-spells #sf-level {
+  grid-area: sf-level;
+}
+.create-sec-spells #sf-school {
+  grid-area: sf-school;
+}
+.create-sec-spells #sf-casting-time {
+  grid-area: sf-casting-time;
+}
+.create-sec-spells #sf-range {
+  grid-area: sf-range;
+}
+.create-sec-spells #sf-component {
+  grid-area: sf-component;
+}
+.create-sec-spells #sf-duration {
+  grid-area: sf-duration;
+}
+.create-sec-spells #sf-description {
+  grid-area: sf-desc;
 }
 
 .sec-backstory {

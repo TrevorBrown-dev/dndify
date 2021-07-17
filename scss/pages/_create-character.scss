@@ -196,7 +196,7 @@
 .create-sec-items {
     display: grid;
     grid-template-rows: 1fr;
-    max-width: 75%;
+    max-width: 80%;
     row-gap: 1em;
     place-items: center;
 
@@ -266,77 +266,129 @@
             grid-area: rp;
             max-width: 100%;
             overflow: hidden;
-            .rollable-property {
-                margin-top: 1em;
-                max-width: 100%;
-                .rp-form {
-                    display: grid;
-                    grid-template-rows: 1fr;
-                    grid-template-columns: 30% 30% 30% 10%;
-                    i {
-                        font-size: 1.5em;
-                    }
-                }
-                .list {
-                    margin-top: 0.7em;
-                    border: 1px solid $color_off_primary;
-                    border-radius: 2px;
-                    display: grid;
-                    background-color: $color_off_dark;
-                    $rp-row-height: 3.1em;
-                    max-height: 5 * $rp-row-height;
-                    overflow-y: scroll;
-                    & > :not(:first-child) {
-                        margin-top: 1em;
-                    }
-                    .rollable-row {
-                        color: darken($color_off_light, 10%);
-                        font-weight: 200;
-                        display: grid;
-                        grid-template-columns: 1fr 1fr 1fr 0.1fr;
-                        grid-template-areas: 'rr-name rr-dice rr-type rr-trash';
-                        border-bottom: 1px dashed $color_off_light;
-                        & > * {
-                            padding: 0.5em;
-                        }
-                        #rr-name {
-                            grid-area: rr-name;
-                        }
-                        #rr-dice {
-                            grid-area: rr-dice;
-                        }
+        }
+    }
+}
+.item-cards-container {
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+.item-cards {
+    max-height: 41em;
+    font-size: 0.8em;
+    padding: 1em;
+    border: 1px solid $color_dark;
+    display: flex;
+    $cards-per-row: 3;
 
-                        #rr-type {
-                            grid-area: rr-type;
-                        }
+    max-width: 10.9em * $cards-per-row;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    width: 100%;
+}
+.rollable-property {
+    margin-top: 1em;
+    .rp-form {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 30% 30% 30% 10%;
+        i {
+            font-size: 1.5em;
+        }
+    }
+    .list {
+        margin-top: 0.7em;
+        border: 1px solid $color_off_primary;
+        border-radius: 2px;
+        display: grid;
+        background-color: $color_off_dark;
+        $rp-row-height: 3.1em;
+        max-height: 5 * $rp-row-height;
+        overflow-y: scroll;
+        & > :not(:first-child) {
+            margin-top: 1em;
+        }
+        .rollable-row {
+            color: darken($color_off_light, 10%);
+            font-weight: 200;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 0.1fr;
+            grid-template-areas: 'rr-name rr-dice rr-type rr-trash';
+            border-bottom: 1px dashed $color_off_light;
+            & > * {
+                padding: 0.5em;
+            }
+            .rr-name {
+                grid-area: rr-name;
+            }
+            .rr-dice {
+                grid-area: rr-dice;
+            }
 
-                        #rr-trash {
-                            grid-area: rr-trash;
-                        }
-                    }
-                }
+            .rr-type {
+                grid-area: rr-type;
+            }
+
+            .rr-trash {
+                grid-area: rr-trash;
             }
         }
     }
-    .item-cards-container {
-        width: 100%;
-        height: 100%;
-        display: grid;
-        place-items: center;
-    }
-    .item-cards {
-        max-height: 41em;
-        font-size: 0.8em;
-        padding: 1em;
-        border: 1px solid $color_dark;
-        display: flex;
-        $cards-per-row: 3;
+}
 
-        max-width: 11.5em * $cards-per-row;
-        flex-wrap: wrap;
-        overflow-y: auto;
-        width: 100%;
-        height: 100%;
+.create-sec-spells {
+    width: 80%;
+    .submit {
+        button {
+            width: 100%;
+            margin: 1em 0em;
+        }
+    }
+    .spell-form {
+        gap: 0.5em;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 1fr 1fr 1fr 3fr;
+        grid-template-areas:
+            'sf-name sf-name sf-name sf-name'
+            'sf-level sf-level sf-school sf-school'
+            'sf-casting-time sf-range sf-component sf-duration'
+            'sf-desc sf-desc sf-desc sf-desc';
+
+        & input {
+            max-width: 100%;
+            width: 100% !important;
+        }
+    }
+    #sf-name {
+        grid-area: sf-name;
+    }
+
+    #sf-level {
+        grid-area: sf-level;
+    }
+
+    #sf-school {
+        grid-area: sf-school;
+    }
+
+    #sf-casting-time {
+        grid-area: sf-casting-time;
+    }
+    #sf-range {
+        grid-area: sf-range;
+    }
+
+    #sf-component {
+        grid-area: sf-component;
+    }
+    #sf-duration {
+        grid-area: sf-duration;
+    }
+
+    #sf-description {
+        grid-area: sf-desc;
     }
 }
 
