@@ -5,10 +5,10 @@
   color: #e40712 !important;
 }
 .color-off-primary {
-  color: #f82630;
+  color: #fb898e;
 }
 .color-off-primary-hover:hover {
-  color: #f82630;
+  color: #fb898e;
 }
 .color-off-light {
   color: #e6e6e6;
@@ -575,7 +575,7 @@ html > ::-webkit-scrollbar {
 }
 .create-sec-items .item-form #rollable-property .rollable-property .list {
   margin-top: 0.7em;
-  border: 1px solid #f82630;
+  border: 1px solid #fb898e;
   border-radius: 2px;
   display: grid;
   background-color: #2d2d2d;
@@ -768,7 +768,7 @@ html > ::-webkit-scrollbar {
   padding: 1em;
   width: 10em;
   height: 18em;
-  border: 2px solid #2d2d2d;
+  border: 2px solid #fb898e;
   background-color: #e6e6e6;
 }
 .item-card-content {
@@ -820,7 +820,7 @@ html > ::-webkit-scrollbar {
   padding: 1em;
   width: 10em;
   height: 18em;
-  border: 2px solid #2d2d2d;
+  border: 2px solid #fb898e;
   background-color: #e6e6e6;
 }
 .spell-card-content {

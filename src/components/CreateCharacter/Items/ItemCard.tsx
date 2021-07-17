@@ -16,6 +16,7 @@ const defaultItem: iItemModel = {
     `,
     rarity: Rarity.ARTIFACT,
     weight: '20lbs',
+    rollableProps: [],
 };
 export const ItemCard: React.FC<{ item?: iItemModel; character: iCharacter }> = ({ item = defaultItem, character }) => {
     let { name, description, cost, rarity, type, rollableProps: weaponProps, weight } = item;

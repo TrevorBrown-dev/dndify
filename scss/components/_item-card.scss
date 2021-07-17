@@ -1,13 +1,16 @@
+@mixin card-container {
+    $scale: 4;
+    border-radius: 15px;
+    margin: 0.1em;
+    padding: 1em;
+    width: 2.5em * $scale;
+    height: 4.5em * $scale;
+    border: 2px solid $color_off_primary;
+    background-color: $color_off_light;
+}
 .item-card {
     &-container {
-        $scale: 4;
-        border-radius: 15px;
-        margin: 0.1em;
-        padding: 1em;
-        width: 2.5em * $scale;
-        height: 4.5em * $scale;
-        border: 2px solid $color_off_dark;
-        background-color: $color_off_light;
+        @include card-container();
     }
 
     &-content {
@@ -62,14 +65,7 @@
 
 .spell-card {
     &-container {
-        $scale: 4;
-        border-radius: 15px;
-        margin: 0.1em;
-        padding: 1em;
-        width: 2.5em * $scale;
-        height: 4.5em * $scale;
-        border: 2px solid $color_off_dark;
-        background-color: $color_off_light;
+        @include card-container();
     }
     &-content {
         display: grid;

@@ -35,7 +35,7 @@
         color: $color_light;
         background-color: rgba($color_off_dark, 90%);
         padding: 2em;
-        border: 2px solid lighten($color_off_primary, 20%);
+        border: 2px solid $color_off_primary;
         border-radius: 20px;
         height: 80%;
         width: 40%;
