@@ -18,20 +18,20 @@ export const Spells: React.FC<CharacterProps> = ({ character }) => {
 
     const MapSpells = () => {
         const cards: JSX.Element[] = [];
-        character.spells.spells.forEach(level => {
-            level.forEach(spell => {
-                cards.push(<SpellCard spell={spell} />);
-            })
+        character.spells.spells.forEach((level) => {
+            level.forEach((spell) => {
+                cards.push(<SpellCard spell={spell} character={character} />);
+            });
         });
         return cards;
-    }
+    };
 
     return (
         <Section header='Spells' icon='fas fa-magic' id='spells' title='Spells' wikiReference='http://dnd5e.wikidot.com/spells'>
-            <div className="create-sec-spells">
+            <div className='create-sec-spells'>
                 <SpellForm spell={spell} setSpell={setSpell} />
                 <RollablePropertyForm item={spell} setItem={setSpell as Dispatch<React.SetStateAction<Rollable>>} />
-                <div className="submit">
+                <div className='submit'>
                     <button onClick={handleSubmit}>Add Spell</button>
                 </div>
                 <div className='item-cards-container'>

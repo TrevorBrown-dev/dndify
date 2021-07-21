@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { transform } from 'typescript';
+import { CharacterProps } from '.';
+import { SlidingIconButton } from '../misc/SlidingIconButton';
+import { SaveUploadCharacter } from '../SaveUploadCharacter';
 import { Sidebar } from '../Sidebar';
 
-export const CreateSidebar: React.FC = () => {
+export const CreateSidebar: React.FC<CharacterProps> = ({ character }) => {
     const [links, setLinks] = useState<JSX.Element[]>();
     const [elements, setElements] = useState<NodeListOf<HTMLHeadingElement>>();
     useEffect(() => {
@@ -30,11 +34,21 @@ export const CreateSidebar: React.FC = () => {
     return (
         <Sidebar>
             <Link to='/'>
-                <button className='back-button'>
-                    <i className='fas fa-angle-double-left'></i>
-                </button>
+                <div
+                    className='centered'
+                    style={{
+                        padding: '1em',
+                        width: '8.5em',
+                        position: 'relative',
+                        left: '51%',
+                        transform: 'translateX(-50%)',
+                    }}
+                >
+                    <SlidingIconButton icon='fas fa-angle-double-left' text='Home' title='Home' className='hoverable color-off-light color-off-primary-hover' style={{ textDecoration: 'none' }} />
+                </div>
             </Link>
-            <div className='header-links' style={{ maxHeight: '90vh' }}>
+            <SaveUploadCharacter character={character} />
+            <div className='header-links' style={{ maxHeight: '80vh' }}>
                 {links}
             </div>
         </Sidebar>

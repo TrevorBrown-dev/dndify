@@ -45,7 +45,7 @@ export const CreateCharacter: React.FC<CharacterProps> = ({ character }) => {
 
     return (
         <>
-            <CreateSidebar />
+            <CreateSidebar character={character} />
             <main className='page-main' onDrop={handleDrop} onDragOver={handleDrag}>
                 <div className='create-character'>
                     <Header character={character} />

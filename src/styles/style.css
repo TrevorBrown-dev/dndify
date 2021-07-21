@@ -1059,6 +1059,23 @@ input[type=number] {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
+.sliding-icon-button {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+}
+.sliding-icon-button:hover .sliding-text {
+  width: 100%;
+}
+.sliding-icon-button .sliding-text {
+  position: relative;
+  left: -0.8em;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  width: 0%;
+}
+
 @keyframes pop-open {
   0% {
     transform: scale(0.2, 0.2);
@@ -1184,6 +1201,15 @@ button:hover {
 }
 .rotate.reverse {
   transform: rotate(0deg);
+}
+
+.upload {
+  display: flex;
+  justify-content: space-evenly;
+}
+.upload i {
+  font-size: 1.2em;
+  padding: 1em;
 }
 
 .mini-stats {

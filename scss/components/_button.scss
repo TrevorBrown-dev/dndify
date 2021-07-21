@@ -45,3 +45,12 @@ button {
         transform: rotate(0deg);
     }
 }
+
+.upload {
+    display: flex;
+    justify-content: space-evenly;
+    i {
+        font-size: 1.2em;
+        padding: 1em;
+    }
+}

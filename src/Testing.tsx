@@ -1,5 +1,6 @@
 import { SpellCard } from './components/CreateCharacter/Spells/SpellCard';
 import { usePopup } from './components/misc/Notification';
+import { SlidingIconButton } from './components/misc/SlidingIconButton';
 import { iSpellModel } from './models/spells';
 import { SPELL_LEVEL } from './models/spells/SpellLevel';
 import { SPELL_SCHOOL } from './models/spells/SpellSchool';
@@ -26,11 +27,8 @@ const spells: SpellRegistry = {
     },
 };
 
-
-
-
 export const Testing: React.FC = () => {
-    const [setVisible, Popup] = usePopup("Hello There!");
+    const [setVisible, Popup] = usePopup('Hello There!');
     return (
         <div
             style={{
@@ -39,9 +37,7 @@ export const Testing: React.FC = () => {
                 gridColumn: '1/-1',
             }}
         >
-            <button onClick={() => setVisible()}>Set Visible</button>
-            <SpellCard spell={spells['Acid Splash']} />
-            {Popup()}
+            <SlidingIconButton icon='fas fa-save' text='Save' className='hoverable color-off-primary-hover' />
         </div>
     );
 };

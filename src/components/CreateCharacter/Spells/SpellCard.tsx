@@ -1,19 +1,21 @@
 import { useModal } from 'src/components/Modal';
+import { iCharacter } from 'src/models/character';
 import { iSpellModel } from 'src/models/spells';
 import { mapSpellLevel } from 'src/models/spells/SpellLevel';
 import { mapSpellSchool } from 'src/models/spells/SpellSchool';
+import { RollablePropertyModal } from '../Items/RollablePropertyModal';
 
 interface SpellCardProps {
     spell: iSpellModel;
+    character: iCharacter;
 }
-export const SpellCard: React.FC<SpellCardProps> = ({ spell }) => {
+export const SpellCard: React.FC<SpellCardProps> = ({ spell, character }) => {
     const { name, level, range, casting_time, component, description, duration, school, rollableProps } = spell;
     const [toggleRPModal, rpModal] = useModal(
         <>
-            Modal
+            <RollablePropertyModal weaponProps={spell.rollableProps} character={character} />
         </>
     );
-
 
     return (
         <>
