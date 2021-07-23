@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { transform } from 'typescript';
 import { CharacterProps } from '.';
 import { SlidingIconButton } from '../misc/SlidingIconButton';
 import { SaveUploadCharacter } from '../SaveUploadCharacter';
@@ -33,7 +32,7 @@ export const CreateSidebar: React.FC<CharacterProps> = ({ character }) => {
     }, [elements]);
     return (
         <Sidebar>
-            <Link to='/'>
+            <Link to='/' className='no-underline'>
                 <div
                     className='centered'
                     style={{
@@ -44,7 +43,7 @@ export const CreateSidebar: React.FC<CharacterProps> = ({ character }) => {
                         transform: 'translateX(-50%)',
                     }}
                 >
-                    <SlidingIconButton icon='fas fa-angle-double-left' text='Home' title='Home' className='hoverable color-off-light color-off-primary-hover' style={{ textDecoration: 'none' }} />
+                    <SlidingIconButton icon='fas fa-angle-double-left' text='Home' title='Home' className='hoverable color-off-light color-off-primary-hover' />
                 </div>
             </Link>
             <SaveUploadCharacter character={character} />

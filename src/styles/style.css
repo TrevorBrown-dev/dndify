@@ -271,6 +271,13 @@ h6 {
   text-decoration: underline;
 }
 
+.no-underline {
+  text-decoration: none !important;
+}
+.no-underline:hover {
+  text-decoration: none !important;
+}
+
 /* custom scrollbar */
 html > ::-webkit-scrollbar {
   position: absolute;
@@ -855,6 +862,34 @@ html > ::-webkit-scrollbar {
   vertical-align: bottom;
   position: relative;
   top: 4px;
+}
+
+.feat-card-container {
+  border-radius: 15px;
+  margin: 0.1em;
+  padding: 1em;
+  width: 10em;
+  height: 18em;
+  border: 2px solid #fb898e;
+  background-color: #e6e6e6;
+}
+.feat-card-content {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 15% 50% 35%;
+  grid-template-columns: 100%;
+}
+.feat-card-content .header {
+  text-align: center;
+}
+.feat-card-content .description {
+  overflow-y: auto;
+  padding: 1em;
+  text-align: left;
+  border: 1px solid black;
+}
+.feat-card-content .rollable {
+  font-size: 1.5em;
 }
 
 .spell-card-container {

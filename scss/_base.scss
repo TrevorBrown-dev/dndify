@@ -189,3 +189,9 @@ $width_phone_tiny: 600px;
         text-decoration: underline;
     }
 }
+.no-underline {
+    text-decoration: none !important;
+    &:hover {
+        text-decoration: none !important;
+    }
+}

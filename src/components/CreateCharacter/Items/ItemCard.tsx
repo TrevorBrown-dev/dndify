@@ -50,10 +50,10 @@ export const ItemCard: React.FC<{ item?: iItemModel; character: iCharacter }> = 
                     <div className='description'>{description}</div>
                     <div>
                         <i
-                            className={`fas fa-dice-d20 rollable ${weaponProps && 'hoverable-half color-primary-hover'}`}
+                            className={`fas fa-dice-d20 rollable ${weaponProps.length !== 0 && 'hoverable-half color-primary-hover'}`}
                             onClick={toggleOpen}
                             style={{
-                                color: weaponProps ? 'black' : '#919191',
+                                color: weaponProps.length !== 0 ? 'black' : '#919191',
                             }}
                         ></i>
                     </div>

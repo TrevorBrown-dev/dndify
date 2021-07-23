@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 import { iClassModel, useClasses } from './classes';
+import { iFeatModel, useFeats } from './feats/feats';
 import { iItemModel, useItems } from './items/items';
 import { iMoney, iMoneyModel, useMoney } from './money';
 import { blankProficiencies, iProficienciesModel, useProficiencies } from './proficiencies';
@@ -33,6 +34,7 @@ export interface iCharacterModel {
     money: iMoneyModel;
     description: Description;
     hp: number;
+    feats: iFeatModel[];
     spells: iSpellModel[][];
     items: iItemModel[];
     stats: iStatModel[];
@@ -51,6 +53,7 @@ export const blankCharacter = (): iCharacterModel => {
         backstory: '',
         money: [0, 0, 0, 0, 0],
         items: [],
+        feats: [],
         spells: blankSpells,
         description: blankDescription(),
         hp: 0,
@@ -105,6 +108,7 @@ export const useCharacter = (char: iCharacterModel) => {
     const [race, setRace] = useState(char.race);
     const classes = useClasses(char.classes);
     const stats = useStats(char.stats);
+    const feats = useFeats(char.feats);
     const savingThrows = useSavingThrows(char.stats);
     const proficiencies = useProficiencies(char.proficiencies);
     const otherProficiencies = useProficiencies(char.otherProficiencies);
@@ -124,6 +128,7 @@ export const useCharacter = (char: iCharacterModel) => {
             backstory,
             description,
             stats: stats.stats,
+            feats: feats.serialize(),
             classes: classes.serialize(),
             savingThrows: savingThrows.serialize(),
             proficiencies: proficiencies.serialize(),
@@ -153,8 +158,9 @@ export const useCharacter = (char: iCharacterModel) => {
             otherProficiencies.deserialize(char.otherProficiencies);
             money.deserialize(char.money);
             setBackground(char.background);
+            feats.deserialize(char.feats);
         },
-        [savingThrows, otherProficiencies, spells, proficiencies, setName, stats, classes, setDescription, setAlignment, setBackstory]
+        [savingThrows, otherProficiencies, feats, spells, proficiencies, setName, stats, classes, setDescription, setAlignment, setBackstory]
     );
 
     const character = {
@@ -167,6 +173,7 @@ export const useCharacter = (char: iCharacterModel) => {
         setDescription,
         setBackstory,
         setBackground,
+        feats,
         items,
         spells,
         setAlignment,

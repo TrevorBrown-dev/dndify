@@ -41,7 +41,13 @@ export const SpellCard: React.FC<SpellCardProps> = ({ spell, character }) => {
                     </div>
                     <div className='spell-card-rollable'>
                         <div className='rollable'>
-                            <i className='fas fa-dice-d20 hoverable-half color-primary-hover' onClick={toggleRPModal}></i>
+                            <i
+                                className={`fas fa-dice-d20 rollable ${rollableProps.length !== 0 && 'hoverable-half color-primary-hover'}`}
+                                onClick={toggleRPModal}
+                                style={{
+                                    color: rollableProps.length !== 0 ? 'black' : '#919191',
+                                }}
+                            ></i>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,8 @@
+import { FeatCard } from './components/CreateCharacter/Feats/FeatCard';
 import { SpellCard } from './components/CreateCharacter/Spells/SpellCard';
 import { usePopup } from './components/misc/Notification';
 import { SlidingIconButton } from './components/misc/SlidingIconButton';
+import { blankCharacter, useCharacter } from './models/character';
 import { iSpellModel } from './models/spells';
 import { SPELL_LEVEL } from './models/spells/SpellLevel';
 import { SPELL_SCHOOL } from './models/spells/SpellSchool';
@@ -28,6 +30,7 @@ const spells: SpellRegistry = {
 };
 
 export const Testing: React.FC = () => {
+    const char = useCharacter(blankCharacter());
     const [setVisible, Popup] = usePopup('Hello There!');
     return (
         <div
@@ -37,7 +40,7 @@ export const Testing: React.FC = () => {
                 gridColumn: '1/-1',
             }}
         >
-            <SlidingIconButton icon='fas fa-save' text='Save' className='hoverable color-off-primary-hover' />
+            <FeatCard character={char} feat={{ name: 'Test', notes: 'Test desc', rollableProps: [] }} />
         </div>
     );
 };
