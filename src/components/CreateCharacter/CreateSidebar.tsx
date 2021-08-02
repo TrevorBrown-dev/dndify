@@ -43,7 +43,9 @@ export const CreateSidebar: React.FC<CharacterProps> = ({ character }) => {
                         transform: 'translateX(-50%)',
                     }}
                 >
-                    <SlidingIconButton icon='fas fa-angle-double-left' text='Home' title='Home' className='hoverable color-off-light color-off-primary-hover' />
+                    <SlidingIconButton icon='fas fa-angle-double-left' title='Home' className='hoverable color-off-light color-off-primary-hover reduced'>
+                        Home
+                    </SlidingIconButton>
                 </div>
             </Link>
             <SaveUploadCharacter character={character} />

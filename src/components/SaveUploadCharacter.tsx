@@ -42,8 +42,12 @@ export const SaveUploadCharacter: React.FC<SaveUploadCharacterProps> = ({ charac
     return (
         <div className='upload'>
             <input type='file' ref={inputRef} onChange={handleLoadClick} hidden />
-            <SlidingIconButton icon='fas fa-save' className='hoverable color-off-primary-hover color-off-light' onClick={() => handleSaveClick()} text='Save' title='Save Character' />
-            <SlidingIconButton icon='fas fa-file-export' className='hoverable color-off-primary-hover color-off-light' onClick={() => clickInput()} text='Load' title='Load Character' />
+            <SlidingIconButton icon='fas fa-save' className='hoverable color-off-primary-hover color-off-light reduced' onClick={() => handleSaveClick()} title='Save Character'>
+                Save
+            </SlidingIconButton>
+            <SlidingIconButton icon='fas fa-file-export' className='hoverable color-off-primary-hover color-off-light reduced' onClick={() => clickInput()} title='Load Character'>
+                Load
+            </SlidingIconButton>
             {/* <i className='fas fa-save hoverable color-off-primary-hover color-off-light' title='Save Character' onClick={() => handleSaveClick()}></i> */}
             {/* <i className='fas fa-file-export hoverable color-off-primary-hover color-off-light' title='Load Character' onClick={() => clickInput()}></i> */}
         </div>

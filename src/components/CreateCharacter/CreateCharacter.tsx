@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { CharacterProps, Class, CreateSidebar, Header, Health, HitDice, Race } from './';
 import { Alignment } from './Alignment';
 import { Background } from './Background';
@@ -19,7 +20,12 @@ export const CreateCharacter: React.FC<CharacterProps> = ({ character }) => {
     create a button to roll the stats automatically
     Save button
   */
-
+    useEffect(() => {
+        document.querySelectorAll('input').forEach((input) => {
+            input.setAttribute('autocomplete', 'nope');
+            input.setAttribute('autofill', 'nope');
+        });
+    }, []);
     const handleDrop: React.DragEventHandler<HTMLElement> = (event) => {
         event.stopPropagation();
         event.preventDefault();

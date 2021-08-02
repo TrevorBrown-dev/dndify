@@ -8,10 +8,27 @@
     &:hover .sliding-text {
         width: 100%;
     }
+    &.reduced .sliding-text {
+        &.si-left {
+            left: -0.8em;
+
+            margin-left: 0em;
+        }
+        &.si-right {
+            right: -0.8em;
+            margin-right: 0em;
+        }
+    }
     .sliding-text {
+        &.si-left {
+            margin-left: 0.4em;
+        }
+        &.si-right {
+            margin-right: 0.4em;
+        }
         position: relative;
-        left: -0.8em;
         overflow: hidden;
+        white-space: nowrap;
         transition: all 0.2s ease;
         width: 0%;
     }
