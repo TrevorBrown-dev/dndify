@@ -751,6 +751,9 @@ html > ::-webkit-scrollbar {
 .create-sec-feats .feats-form .feat-desc {
   width: 100%;
 }
+.create-sec-feats .submit {
+  margin-bottom: 1em;
+}
 .create-sec-feats .submit button {
   width: 100%;
 }

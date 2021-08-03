@@ -7,7 +7,27 @@ import { ItemType, ItemTypes } from '../../../models/items/ItemType';
 import { Rarities, Rarity } from '../../../models/items/Rarity';
 import { ItemCard } from './ItemCard';
 import { RollablePropertyForm } from './RollableProperty';
-
+export const AddRPHeader = () => {
+    const [toggleRpInfo, rpModal] = useModal(
+        <>
+            <p style={{ marginTop: '2em' }}>
+                These are <em>Rollable Properties</em>. You can attach dice to your items and spells. These are predefined values for quick rolling.
+            </p>
+        </>
+    );
+    const handleQuestionClick = () => {
+        toggleRpInfo();
+    };
+    return (
+        <>
+            {rpModal}
+            <h5 style={{ color: '#1f1f1f', overflow: 'visible' }}>
+                Add Rollable Property
+                <i title={'Wiki Reference'} onClick={handleQuestionClick} className='far fa-question-circle info hoverable-half' style={{ position: 'relative', top: '.1em' }}></i>
+            </h5>
+        </>
+    );
+}
 /*
     The item card should take in an item object and render its details.
     
@@ -80,22 +100,9 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
         character.items.addItem(item);
         setItem(blankItem);
     };
-    /* 
-        This form is massive and glitchy this project is spiraling out of control
-    */
-    const [toggleRpInfo, rpModal] = useModal(
-        <>
-            <p style={{ marginTop: '2em' }}>
-                These are <em>Rollable Properties</em>. You can attach dice to your items and spells. These are predefined values for quick rolling.
-            </p>
-        </>
-    );
-    const handleQuestionClick = () => {
-        toggleRpInfo();
-    };
+
     return (
         <Section header='Items' id='items' title='Items' wikiReference='https://www.dndbeyond.com/equipment' icon='fas fa-swords'>
-            {rpModal}
             <div className='create-sec-items'>
                 <div className='item-form'>
                     <div id='name'>
@@ -189,10 +196,7 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
                         ></textarea>
                     </div>
                     <div id='rollable-property'>
-                        <h5 style={{ color: '#1f1f1f', overflow: 'visible' }}>
-                            Add Rollable Property
-                            <i title={'Wiki Reference'} onClick={handleQuestionClick} className='far fa-question-circle info hoverable-half' style={{ position: 'relative', top: '.1em' }}></i>
-                        </h5>
+                        <AddRPHeader />
                         <RollablePropertyForm item={item} setItem={setItem as Dispatch<React.SetStateAction<Rollable>>} />
                     </div>
                     <div id='submit'>

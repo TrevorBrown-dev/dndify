@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react';
 import { blankFeat } from 'src/models/feats/feats';
 import { Rollable } from 'src/models/items';
 import { CharacterProps } from '..';
+import { AddRPHeader } from '../Items';
 import { RollablePropertyForm } from '../Items/RollableProperty';
 import { Section } from '../Section';
 import { FeatCard } from './FeatCard';
@@ -23,7 +24,10 @@ export const Feats: React.FC<CharacterProps> = ({ character }) => {
                         <input type='text' value={feat.name} id='feat-name' onChange={(e) => setFeat((f) => ({ ...f, name: e.target.value }))} placeholder='Name' />
                     </h4>
                     <textarea name='feat-desc' id='feat-desc' value={feat.notes} onChange={(e) => setFeat((f) => ({ ...f, notes: e.target.value }))} placeholder='Description'></textarea>
-                    <RollablePropertyForm item={feat} setItem={setFeat as React.Dispatch<React.SetStateAction<Rollable>>} />
+                    <div>
+                        <AddRPHeader />
+                        <RollablePropertyForm item={feat} setItem={setFeat as React.Dispatch<React.SetStateAction<Rollable>>} />
+                    </div>
                     <div className='submit'>
                         <button onClick={handleSubmit}>Add Feat</button>
                     </div>
