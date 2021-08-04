@@ -1,0 +1,14 @@
+.edit-modal {
+    position: relative;
+    overflow-y: scroll;
+    height: 100%;
+    background-color: $color_off_light;
+    color: $color_dark;
+    header {
+        text-align: center;
+        font-size: 0.5em;
+    }
+    .button-collapse {
+        display: none;
+    }
+}

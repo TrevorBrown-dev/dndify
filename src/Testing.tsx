@@ -1,7 +1,9 @@
+import { Feats } from './components/CreateCharacter/Feats';
 import { FeatCard } from './components/CreateCharacter/Feats/FeatCard';
 import { SpellCard } from './components/CreateCharacter/Spells/SpellCard';
 import { usePopup } from './components/misc/Notification';
 import { SlidingIconButton } from './components/misc/SlidingIconButton';
+import { useModal } from './components/Modal';
 import { blankCharacter, useCharacter } from './models/character';
 import { iSpellModel } from './models/spells';
 import { SPELL_LEVEL } from './models/spells/SpellLevel';
@@ -31,7 +33,11 @@ const spells: SpellRegistry = {
 
 export const Testing: React.FC = () => {
     const char = useCharacter(blankCharacter());
-    const [setVisible, Popup] = usePopup('Hello There!');
+    const [toggleOpen, modal] = useModal(
+        <div className='edit-modal'>
+            <Feats character={char} />
+        </div>
+    );
     return (
         <div
             style={{
@@ -40,7 +46,8 @@ export const Testing: React.FC = () => {
                 gridColumn: '1/-1',
             }}
         >
-            <FeatCard character={char} feat={{ name: 'Test', notes: 'Test desc', rollableProps: [] }} />
+            {modal}
+            <button onClick={() => toggleOpen()}>Open</button>
         </div>
     );
 };

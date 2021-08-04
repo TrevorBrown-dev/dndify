@@ -1016,6 +1016,164 @@ html > ::-webkit-scrollbar {
   font-size: 2.5em;
 }
 
+.item-card-container {
+  border-radius: 15px;
+  margin: 0.1em;
+  padding: 1em;
+  width: 10em;
+  height: 18em;
+  border: 2px solid #fb898e;
+  background-color: #e6e6e6;
+}
+.item-card-content {
+  height: 100%;
+  font-size: 0.5em;
+  display: grid;
+  grid-template-rows: 1fr 0.5fr 5fr 2fr;
+}
+.item-card-content .header {
+  display: grid;
+  grid-template-rows: 2em 1fr;
+  grid-template-columns: 5fr 1fr;
+  grid-template-areas: "name icon" "rarity icon";
+}
+.item-card-content .header .name {
+  grid-area: name;
+}
+.item-card-content .header .rarity {
+  grid-area: rarity;
+}
+.item-card-content .header .icon {
+  grid-area: icon;
+  font-size: 2.5em;
+}
+.item-card-content .description {
+  overflow-y: auto;
+  padding: 1em;
+  text-align: left;
+  border: 1px solid black;
+}
+.item-card-content .rollable {
+  display: grid;
+  place-items: center;
+  font-size: 5em;
+  height: 100%;
+}
+.item-card-content .weight {
+  float: right;
+  color: #2d2d2d;
+  font-size: 0.8em;
+  vertical-align: bottom;
+  position: relative;
+  top: 4px;
+}
+
+.feat-card-container {
+  border-radius: 15px;
+  margin: 0.1em;
+  padding: 1em;
+  width: 10em;
+  height: 18em;
+  border: 2px solid #fb898e;
+  background-color: #e6e6e6;
+}
+.feat-card-content {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 15% 50% 35%;
+  grid-template-columns: 100%;
+}
+.feat-card-content .header {
+  text-align: center;
+}
+.feat-card-content .description {
+  overflow-y: auto;
+  padding: 1em;
+  text-align: left;
+  border: 1px solid black;
+}
+.feat-card-content .rollable {
+  font-size: 1.5em;
+}
+
+.spell-card-container {
+  border-radius: 15px;
+  margin: 0.1em;
+  padding: 1em;
+  width: 10em;
+  height: 18em;
+  border: 2px solid #fb898e;
+  background-color: #e6e6e6;
+}
+.spell-card-content {
+  display: grid;
+  grid-template-rows: 25% 50% 15%;
+  grid-template-columns: 100%;
+}
+.spell-card-header {
+  display: grid;
+  grid-template-rows: 1fr 1em 0.5em 0.5em;
+  grid-template-columns: repeat(10, 10%);
+  margin-bottom: 1em;
+  grid-template-areas: "sc-name sc-name sc-name sc-name sc-name sc-name sc-school sc-school sc-school sc-school" "sc-level sc-level sc-level sc-level sc-level sc-level sc-level sc-level sc-level sc-level" "sc-range sc-range sc-range sc-range sc-range sc-dur sc-dur sc-dur sc-dur sc-dur" "sc-cast sc-cast sc-cast sc-cast sc-cast sc-components sc-components sc-components sc-components sc-components";
+}
+.spell-card-header #sc-name {
+  grid-area: sc-name;
+  font-size: 0.7em;
+}
+.spell-card-header #sc-level {
+  font-size: 0.7em;
+  grid-area: sc-level;
+  text-align: center;
+}
+.spell-card-header #sc-school {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  grid-area: sc-school;
+}
+.spell-card-header #sc-school span {
+  display: block;
+  width: 100%;
+  margin-top: 0.5em;
+  font-size: 0.5em;
+}
+.spell-card-header #sc-range {
+  grid-area: sc-range;
+  font-size: 0.5em;
+}
+.spell-card-header #sc-dur {
+  font-size: 0.5em;
+  grid-area: sc-dur;
+}
+.spell-card-header #sc-cast {
+  font-size: 0.5em;
+  grid-area: sc-cast;
+}
+.spell-card-header #sc-components {
+  font-size: 0.5em;
+  grid-area: sc-components;
+}
+.spell-card-description .description {
+  overflow-y: auto;
+  height: 100%;
+  padding: 1em;
+  text-align: left;
+  border: 1px solid black;
+  font-size: 0.6em;
+}
+.spell-card-rollable {
+  margin-top: 0.5em;
+}
+.spell-card-rollable .rollable {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  font-size: 2.5em;
+}
+
 .item-modal {
   display: grid;
   grid-template-rows: 2fr 1fr;
@@ -1023,6 +1181,21 @@ html > ::-webkit-scrollbar {
 .item-modal .item-form {
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(6, 1fr);
+}
+
+.edit-modal {
+  position: relative;
+  overflow-y: scroll;
+  height: 100%;
+  background-color: #e6e6e6;
+  color: black;
+}
+.edit-modal header {
+  text-align: center;
+  font-size: 0.5em;
+}
+.edit-modal .button-collapse {
+  display: none;
 }
 
 input {
@@ -1184,8 +1357,8 @@ input[type=number] {
 }
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0vh;
+  left: 0vw;
   height: 100vh;
   width: 100vw;
   z-index: 999;

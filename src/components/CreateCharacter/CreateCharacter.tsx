@@ -74,7 +74,7 @@ export const CreateCharacter: React.FC<CharacterProps> = ({ character }) => {
                     </div>
                 </div>
             </main>
-            <MiniStats character={character} />
+            {/* <MiniStats character={character} /> */}
         </>
     );
 };
