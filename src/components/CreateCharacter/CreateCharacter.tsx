@@ -1,5 +1,5 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { DiceSidebar } from '../DiceSidebar/';
 import { CharacterProps, Class, CreateSidebar, Header, Health, HitDice, Race } from './';
 import { Alignment } from './Alignment';
 import { Background } from './Background';
@@ -7,7 +7,6 @@ import { Backstory } from './Backstory';
 import { CharacterDescription } from './CharacterDescription';
 import { Feats } from './Feats';
 import { Items } from './Items';
-import { MiniStats } from './MiniStats';
 import { OtherProficiencies } from './OtherProficiencies';
 import { SavingThrows } from './SavingThrows';
 import { Skills } from './Skills';
@@ -74,6 +73,7 @@ export const CreateCharacter: React.FC<CharacterProps> = ({ character }) => {
                     </div>
                 </div>
             </main>
+            <DiceSidebar character={character} />
             {/* <MiniStats character={character} /> */}
         </>
     );

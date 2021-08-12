@@ -1261,6 +1261,32 @@ input[type=number] {
   display: inline-block;
 }
 
+.sidebar-dice {
+  display: grid;
+  grid-template-rows: 1fr 3fr 1fr 1fr;
+  justify-items: center;
+}
+.sidebar-dice .sidebar-rollable-dice {
+  width: 100%;
+  background-color: #e6e6e6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.sidebar-dice .sidebar-rollable-dice .rollable-dice-item {
+  width: 100%;
+  font-size: 1.2em;
+  list-style: none;
+  display: grid;
+  margin: 0 0.4em;
+  padding: 0.5em 0em;
+  grid-template-columns: 1fr 0.8fr 1fr 1fr;
+}
+.sidebar-dice .sidebar-rollable-dice .rollable-dice-item input {
+  max-width: 100%;
+  width: 100%;
+}
+
 @keyframes in-from-right {
   0% {
     right: -11em;

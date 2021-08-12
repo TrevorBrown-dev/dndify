@@ -1,8 +1,4 @@
 import { Feats } from './components/CreateCharacter/Feats';
-import { FeatCard } from './components/CreateCharacter/Feats/FeatCard';
-import { SpellCard } from './components/CreateCharacter/Spells/SpellCard';
-import { usePopup } from './components/misc/Notification';
-import { SlidingIconButton } from './components/misc/SlidingIconButton';
 import { useModal } from './components/Modal';
 import { blankCharacter, useCharacter } from './models/character';
 import { iSpellModel } from './models/spells';
@@ -43,11 +39,8 @@ export const Testing: React.FC = () => {
             style={{
                 background: 'white',
                 height: '100vh',
-                gridColumn: '1/-1',
+                gridColumn: '1/-2',
             }}
-        >
-            {modal}
-            <button onClick={() => toggleOpen()}>Open</button>
-        </div>
+        ></div>
     );
 };

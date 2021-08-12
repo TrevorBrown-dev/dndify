@@ -1,0 +1,28 @@
+.sidebar-dice {
+    display: grid;
+    grid-template-rows: 1fr 3fr 1fr 1fr;
+    justify-items: center;
+
+    .sidebar-rollable-dice {
+        width: 100%;
+        background-color: $color_off_light;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .rollable-dice-item {
+            width: 100%;
+            input {
+                max-width: 100%;
+                width: 100%;
+            }
+            font-size: 1.2em;
+            list-style: none;
+            // font-size: 0.3em;
+            // background-color: $color_light;
+            display: grid;
+            margin: 0 0.4em;
+            padding: 0.5em 0em;
+            grid-template-columns: 1fr 0.8fr 1fr 1fr;
+        }
+    }
+}
