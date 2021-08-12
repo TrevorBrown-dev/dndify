@@ -758,6 +758,19 @@ html > ::-webkit-scrollbar {
   width: 100%;
 }
 
+.create-sec-gold {
+  position: relative;
+  left: -6%;
+}
+.create-sec-gold input {
+  max-width: 8ch;
+  width: 8ch;
+  margin-left: 0.3em;
+}
+.create-sec-gold .money-input:not(:last-child) {
+  margin-bottom: 0.4em;
+}
+
 .home {
   display: grid;
   grid-template-rows: 4fr 1fr;

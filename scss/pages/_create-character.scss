@@ -469,3 +469,16 @@
         }
     }
 }
+
+.create-sec-gold {
+    position: relative;
+    left: -6%;
+    input {
+        max-width: 8ch;
+        width: 8ch;
+        margin-left: 0.3em;
+    }
+    .money-input:not(:last-child) {
+        margin-bottom: 0.4em;
+    }
+}

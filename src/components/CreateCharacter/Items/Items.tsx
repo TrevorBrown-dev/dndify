@@ -5,6 +5,7 @@ import { CharacterProps, Section } from '..';
 import { iItemModel, Rollable } from '../../../models/items';
 import { ItemType, ItemTypes } from '../../../models/items/ItemType';
 import { Rarities, Rarity } from '../../../models/items/Rarity';
+import { Gold } from './Gold';
 import { ItemCard } from './ItemCard';
 import { RollablePropertyForm } from './RollableProperty';
 export const AddRPHeader = () => {
@@ -27,7 +28,7 @@ export const AddRPHeader = () => {
             </h5>
         </>
     );
-}
+};
 /*
     The item card should take in an item object and render its details.
     
@@ -218,6 +219,10 @@ export const Items: React.FC<CharacterProps> = ({ character }) => {
                         <legend>Items</legend>
                         {renderItems()}
                     </fieldset>
+                </div>
+                <div className='create-sec-money'>
+                    <h5 style={{ color: '#1f1f1f', overflow: 'visible', marginBottom: '.5em' }}>Money</h5>
+                    <Gold character={character} />
                 </div>
             </div>
         </Section>

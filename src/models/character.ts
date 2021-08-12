@@ -160,7 +160,7 @@ export const useCharacter = (char: iCharacterModel) => {
             setBackground(char.background);
             feats.deserialize(char.feats);
         },
-        [savingThrows, otherProficiencies, feats, spells, proficiencies, setName, stats, classes, setDescription, setAlignment, setBackstory]
+        [savingThrows, otherProficiencies, feats, spells, money, proficiencies, setName, stats, classes, setDescription, setAlignment, setBackstory]
     );
 
     const character = {
@@ -169,6 +169,7 @@ export const useCharacter = (char: iCharacterModel) => {
         alignment,
         background,
         backstory,
+        money,
         description,
         setDescription,
         setBackstory,

@@ -21,6 +21,7 @@ export type iMoney = ReturnType<typeof useMoney>;
                 return oldMoney;
             })
         }, [setMoney])
+       
         const addMoney = useCallback((money: Money, amount: number) => {
             setMoney((oldMoney) => {
                 oldMoney[money] += Math.abs(amount);
@@ -40,6 +41,7 @@ export type iMoney = ReturnType<typeof useMoney>;
         const obj = {
             money,
             addMoney,
+            setMoney,
             removeMoney, 
             serialize,
             deserialize
