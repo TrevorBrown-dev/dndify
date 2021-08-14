@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/dndify/static/css/main.c23f84d7.chunk.css",
-    "main.js": "/dndify/static/js/main.13ece712.chunk.js",
-    "main.js.map": "/dndify/static/js/main.13ece712.chunk.js.map",
+    "main.js": "/dndify/static/js/main.2f951420.chunk.js",
+    "main.js.map": "/dndify/static/js/main.2f951420.chunk.js.map",
     "runtime-main.js": "/dndify/static/js/runtime-main.6a789e1e.js",
     "runtime-main.js.map": "/dndify/static/js/runtime-main.6a789e1e.js.map",
     "static/css/2.db722d86.chunk.css": "/dndify/static/css/2.db722d86.chunk.css",
@@ -11,6 +11,8 @@
     "static/js/3.9fbc2166.chunk.js": "/dndify/static/js/3.9fbc2166.chunk.js",
     "static/js/3.9fbc2166.chunk.js.map": "/dndify/static/js/3.9fbc2166.chunk.js.map",
     "index.html": "/dndify/index.html",
+    "service-worker.js": "/dndify/service-worker.js",
+    "service-worker.js.map": "/dndify/service-worker.js.map",
     "static/css/2.db722d86.chunk.css.map": "/dndify/static/css/2.db722d86.chunk.css.map",
     "static/css/main.c23f84d7.chunk.css.map": "/dndify/static/css/main.c23f84d7.chunk.css.map",
     "static/js/2.4497765e.chunk.js.LICENSE.txt": "/dndify/static/js/2.4497765e.chunk.js.LICENSE.txt",
@@ -21,6 +23,6 @@
     "static/css/2.db722d86.chunk.css",
     "static/js/2.4497765e.chunk.js",
     "static/css/main.c23f84d7.chunk.css",
-    "static/js/main.13ece712.chunk.js"
+    "static/js/main.2f951420.chunk.js"
   ]
 }
